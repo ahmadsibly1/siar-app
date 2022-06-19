@@ -1,0 +1,10 @@
+.dashborad-admin {
+    width: 100%;
+    height: 100px;
+    background-color: #1a667e;
+    color: #fff;
+    padding: 10px;
+}
+.active {
+    background-color: #1a667e important!;
+}
