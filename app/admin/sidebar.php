@@ -55,9 +55,9 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="pages/widgets.html" class="nav-link <?php if ($title == 'Undian') {
-                                                                    echo 'active';
-                                                                } ?>">
+                <a href="undian.php" class="nav-link <?php if ($title == 'Undian Arisan') {
+                                                            echo 'active';
+                                                        } ?>">
                     <i class="nav-icon fas fa-random mr-3"></i>
                     <p>
                         Undian Arisan

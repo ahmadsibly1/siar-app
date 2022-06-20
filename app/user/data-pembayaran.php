@@ -42,7 +42,7 @@
                                             </div>
                                             <!-- /.card-header -->
                                             <div class="card-body ">
-                                                <button type="button" class="btn btn-info mb-3 " data-toggle="modal" data-target="#tambah-kelompok">
+                                                <button type="button" class="btn btn-info mb-3 " data-toggle="modal" data-target="#tambah-pembayaran">
                                                     Tambah Pembayaran
                                                 </button>
                                                 <div class="table-responsive">
@@ -65,19 +65,20 @@
                                                             $no = 0;
                                                             $id_user = $_GET['id_user'];
                                                             // $query = mysqli_query($koneksi, "SELECT * FROM pembayaran LEFT JOIN users ON pembayaran.id_pembayaran = users.id_user");
-                                                            $query = mysqli_query($koneksi, "SELECT * FROM pembayaran 
-                                                            LEFT JOIN kelompok 
-                                                            ON pembayaran.id_pembayaran = kelompok.id_kelompok 
+                                                            $query = mysqli_query($koneksi, "SELECT * FROM pembayaran
                                                             LEFT JOIN users 
-                                                            ON pembayaran.id_pembayaran = users.id_user WHERE id_pembayaran=$id_user");
+                                                            ON pembayaran.id_user = users.id_user
+                                                            LEFT JOIN kelompok 
+                                                            ON pembayaran.id_kelompok = kelompok.id_kelompok
+                                                            WHERE pembayaran.id_user = '$id_user'");
                                                             while ($pembayaran = mysqli_fetch_array($query)) {
                                                                 $no++
                                                             ?>
                                                                 <tr>
                                                                     <td><?= $no; ?></td>
                                                                     <td width='15%'><?= $pembayaran['bukti_bayar']; ?></td>
-                                                                    <td><?= $pembayaran['id_user']; ?></td>
-                                                                    <td><?= $pembayaran['id_kelompok']; ?></td>
+                                                                    <td><?= $pembayaran['nama_user']; ?></td>
+                                                                    <td><?= $pembayaran['nama_kelompok']; ?></td>
                                                                     <td><?= $pembayaran['bank']; ?></td>
                                                                     <td><?= date('d-m-Y', strtotime($pembayaran['tgl_bayar'])); ?></td>
                                                                     <td><?= rupiah($pembayaran['jumlah']); ?></td>
@@ -105,8 +106,8 @@
 
 
 
-        <!-- tambah kelompok -->
-        <div class="modal fade" id="tambah-kelompok">
+        <!-- tambah Pembyaran -->
+        <div class="modal fade" id="tambah-pembayaran">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -115,52 +116,88 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="tambah/tambah-kelompok.php" method="POST" enctype="multipart/form-data">
+                    <?php
+                    $query2 = mysqli_query($koneksi, "SELECT * FROM users, kelompok  WHERE username='$_SESSION[username]'");
+                    $anggota = mysqli_fetch_array($query2);
+                    ?>
+                    <form action="tambah/tambah-pembayaran.php" method="POST" name="pembayaran" enctype="multipart/form-data">
+                        <input type="hidden" name="id_regis" value="<?= $_SESSION['id_user'] ?>">
                         <div class="card-body">
                             <div class="row mb-3">
-                                <input type="hidden" class="form-control" id="id_user" name="id_user" value="id">
-                                <label for="nama_kelompok" class="col-sm-2 col-form-label">Nama kelompok</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nama_kelompok" name="nama_kelompok" required>
+                                <label for="exampleInputFile" class="col-sm-3 col-form-label">Foto Pembayaran</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="bukti_bayar" class="custom-file-input" id="exampleInputFile" required>
+                                            <label class="custom-file-label" for="exampleInputFile"></label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="tanggal_mulai" class="col-sm-2 col-form-label">Tanggal Mulai</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control form-control" type="date" name="tanggal_mulai" required>
+                                <label for=nama_pembayar" class="col-sm-3 col-form-label">Nama Pembayar</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control form-control" type="text" name="nama_pembayar" value="<?= $anggota['nama_user']; ?>" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for=tipe_arisan" class="col-sm-2 col-form-label">Tipe Arisan</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control form-control" type="text" name="tipe_arisan" required>
+                                <label for=nama_kelompok" class="col-sm-3 col-form-label">Nama Kelompok</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control form-control" type="text" name="nama_kelompok" value="<?= $anggota['nama_kelompok']; ?>" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="kuota" class="col-sm-2 col-form-label">Kuota</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="kuota" name="kuota" required>
+                                <label for="bank_tujuan" class="col-sm-3 col-form-label">Bank Tujuan</label>
+                                <div class="col-sm-9">
+                                    <div class="input-grup">
+                                        <select class="form-select form-control" aria-label="Default select example" id="bank_tujuan" name="bank_tujuan" placeholder="*" required>
+                                            <option selected>...Pilih...</option>
+                                            <option value="BRI">BRI</option>
+                                            <option value="BCA">BCA</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="isi" class="col-sm-2 col-form-label">Isi</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="isi" name="isi" required>
+                                <label for="tanggal_bayar" class="col-sm-3 col-form-label">Tanggal Bayar</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control form-control" type="date" name="tanggal_bayar" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="jumlah_iuran" class="col-sm-2 col-form-label">Jumlah Iuran</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="jumlah_iuran" name="jumlah_iuran" required>
+                                <label for=jumlah" class="col-sm-3 col-form-label">Jumlah</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control form-control" type="text" name="jumlah" required>
                                 </div>
                             </div>
-
+                            <div class="row mb-3">
+                                <label for=bulan" class="col-sm-3 col-form-label">Bulan</label>
+                                <div class="col-sm-9">
+                                    <div class="input-grup">
+                                        <select class="form-select form-control" aria-label="Default select example" id="bulan" name="bulan" placeholder="*" required>
+                                            <option selected>...Pilih...</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Buat</button>
-                            <a href="data-kelompok.php" type="submit" class="btn btn-default float-right">Cancel</a>
+                            <button type="submit" class="btn btn-primary float-right">Bayar</button>
+                            <a href="." type="submit" class="btn btn-default">Cancel</a>
                         </div>
                     </form>
                 </div>

@@ -62,8 +62,7 @@
                             <tbody>
                               <?php
                               $no = 0;
-                              $query = mysqli_query($koneksi, "SELECT * FROM kelompok
-                                                            ");
+                              $query = mysqli_query($koneksi, "SELECT * FROM kelompok");
                               while ($kelompok = mysqli_fetch_array($query)) {
                                 $no++
                               ?>
@@ -76,9 +75,9 @@
                                   <td><?= $kelompok['isi']; ?></td>
                                   <td><?= rupiah($kelompok['jumlah_iuran']); ?></td>
                                   <td>
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detail-kelompok<?= $kelompok['id_kelompok']; ?>">
+                                    <a type="button" class="btn btn-info" href="detail-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>">
                                       <i class="bi bi-eye-fill"></i>
-                                    </button>
+                                    </a>
                                     <a href="edit-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>"" class=" btn btn-success">
                                       <i class="bi bi-pen"></i>
                                     </a>

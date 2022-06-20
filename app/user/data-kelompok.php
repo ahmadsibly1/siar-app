@@ -66,7 +66,7 @@
                                                         <tbody>
                                                             <?php
                                                             $no = 0;
-                                                            $query = mysqli_query($koneksi, "SELECT * FROM kelompok LEFT JOIN users ON kelompok.id_user = users.id_user");
+                                                            $query = mysqli_query($koneksi, "SELECT * FROM kelompok");
                                                             while ($kelompok = mysqli_fetch_array($query)) {
                                                                 $no++
                                                             ?>
@@ -79,9 +79,9 @@
                                                                     <td width='10%'><?= $kelompok['isi']; ?></td>
                                                                     <td width='13%'><?= rupiah($kelompok['jumlah_iuran']); ?></td>
                                                                     <td>
-                                                                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#detail-kelompok<?= $kelompok['id_kelompok']; ?>">
+                                                                        <a type="button" class="btn btn-sm btn-info" href="detail-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>">
                                                                             <i class="bi bi-eye-fill"></i> Detail
-                                                                        </button>
+                                                                        </a>
                                                                         <a href="gabung-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>"" class=" btn btn-sm btn-success">
                                                                             <i class="bi bi-pen"></i> Gabung
                                                                         </a>

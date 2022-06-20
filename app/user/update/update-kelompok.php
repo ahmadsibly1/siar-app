@@ -2,7 +2,8 @@
 
 include('../../../conf/config.php');
 
-$id_user =  $_POST['id_user'];
+// $id_user =  $_POST['id_user'];
+$id_kelompok =  $_POST['id_kelompok'];
 
 
 // if (isset($_POST['submit'])) {
@@ -17,9 +18,9 @@ $id_user =  $_POST['id_user'];
 //     echo "<script>alert('data berhasil di tambah')</script>";
 // }
 
-echo $id_user;
-die();
-$query = mysqli_query($koneksi, "INSERT INTO kelompok (id_kelompok, id_user) VALUES ('','$id_user'");
+// echo $id_kelompok;
+// die();
+$query = mysqli_query($koneksi, "INSERT INTO users VALUES ($id_kelompok");
 
 if ($query == 1) {
 
