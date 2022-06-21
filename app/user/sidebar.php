@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="data-kelompok.php" class="nav-link">
+                <a href="data-kelompok.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link">
                     <i class="nav-icon fas fa-solid fa-user mr-3"></i>
                     <p>
                         Kelompok Arisan

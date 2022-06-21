@@ -50,13 +50,14 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th width="10%">Bukti Pembayaran</th>
+                                                                <th width="15%">Bukti Pembayaran</th>
                                                                 <th>Nama Pembayar</th>
                                                                 <th>Nama Kelompok</th>
                                                                 <th>Bank Tujuan</th>
                                                                 <th>Tanggal Transfer</th>
                                                                 <th width="10%">Jumlah</th>
                                                                 <th>Bulan</th>
+                                                                <th>Status</th>
 
                                                             </tr>
                                                         </thead>
@@ -76,13 +77,21 @@
                                                             ?>
                                                                 <tr>
                                                                     <td><?= $no; ?></td>
-                                                                    <td width='15%'><?= $pembayaran['bukti_bayar']; ?></td>
+                                                                    <td width='15%'>
+                                                                        <a href="tambah/images/<?= $pembayaran['bukti_bayar']; ?>">
+                                                                            <img src="tambah/images/<?= $pembayaran['bukti_bayar']; ?>" alt="" width="60px">
+                                                                        </a>
+                                                                    </td>
                                                                     <td><?= $pembayaran['nama_user']; ?></td>
                                                                     <td><?= $pembayaran['nama_kelompok']; ?></td>
                                                                     <td><?= $pembayaran['bank']; ?></td>
                                                                     <td><?= date('d-m-Y', strtotime($pembayaran['tgl_bayar'])); ?></td>
                                                                     <td><?= rupiah($pembayaran['jumlah']); ?></td>
                                                                     <td><?= $pembayaran['bulan']; ?></td>
+                                                                    <td>
+                                                                        <div id="status"><?= $pembayaran['status_pembayaran']; ?></div>
+
+                                                                    </td>
                                                                 </tr>
                                                             <?php } ?>
                                                         </tbody>
@@ -117,11 +126,18 @@
                         </button>
                     </div>
                     <?php
-                    $query2 = mysqli_query($koneksi, "SELECT * FROM users, kelompok  WHERE username='$_SESSION[username]'");
+                    $id_user = $_GET['id_user'];
+                    $query2 = mysqli_query($koneksi, "SELECT * FROM pembayaran
+                    LEFT JOIN users 
+                    ON pembayaran.id_user = users.id_user
+                    LEFT JOIN kelompok 
+                    ON pembayaran.id_kelompok = kelompok.id_kelompok 
+                    WHERE username='$_SESSION[username]'
+                    AND pembayaran.id_user = '$id_user'");
                     $anggota = mysqli_fetch_array($query2);
                     ?>
                     <form action="tambah/tambah-pembayaran.php" method="POST" name="pembayaran" enctype="multipart/form-data">
-                        <input type="hidden" name="id_regis" value="<?= $_SESSION['id_user'] ?>">
+                        <input type="hidden" name="id_user" value="<?= $_SESSION['username'] ?>">
                         <div class="card-body">
                             <div class="row mb-3">
                                 <label for="exampleInputFile" class="col-sm-3 col-form-label">Foto Pembayaran</label>
@@ -137,13 +153,15 @@
                             <div class="row mb-3">
                                 <label for=nama_pembayar" class="col-sm-3 col-form-label">Nama Pembayar</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control form-control" type="text" name="nama_pembayar" value="<?= $anggota['nama_user']; ?>" required>
+                                    <input class="form-control form-control" type="text" name="" value="<?= $anggota['nama_user']; ?>" aria-label="Disabled input example" disabled readonly>
+                                    <input class="form-control form-control" type="hidden" name="nama_pembayar" value="<?= $anggota['id_user']; ?>">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for=nama_kelompok" class="col-sm-3 col-form-label">Nama Kelompok</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control form-control" type="text" name="nama_kelompok" value="<?= $anggota['nama_kelompok']; ?>" required>
+                                    <input class="form-control form-control" type="text" name="" value="<?= $anggota['nama_kelompok']; ?>" aria-label="Disabled input example" disabled readonly>
+                                    <input class="form-control form-control" type="hidden" name="nama_kelompok" value="<?= $anggota['id_kelompok']; ?>">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -161,13 +179,13 @@
                             <div class="row mb-3">
                                 <label for="tanggal_bayar" class="col-sm-3 col-form-label">Tanggal Bayar</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control form-control" type="date" name="tanggal_bayar" required>
+                                    <input class="form-control form-control" type="date" name="tanggal_bayar">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for=jumlah" class="col-sm-3 col-form-label">Jumlah</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control form-control" type="text" name="jumlah" required>
+                                    <input class="form-control form-control" type="text" value="<?= $anggota['jumlah_iuran']; ?>" name="jumlah" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -196,7 +214,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary float-right">Bayar</button>
+                            <button type="submit" name="simpan" class="btn btn-primary float-right">Bayar</button>
                             <a href="." type="submit" class="btn btn-default">Cancel</a>
                         </div>
                     </form>

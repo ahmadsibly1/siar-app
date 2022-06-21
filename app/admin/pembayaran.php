@@ -47,7 +47,7 @@
                                                     Tambah Pembayaran
                                                 </button>
                                                 <div class="table-responsive">
-                                                    <table id=" example1" class="table table-responsive table-sm table-bordered table-striped" style="font-size: 13px;">
+                                                    <table id=" example1" class="table table-sm table-striped" style="font-size: 13px;">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
@@ -76,7 +76,11 @@
                                                             ?>
                                                                 <tr>
                                                                     <td><?= $no; ?></td>
-                                                                    <td width='15%'><?= $pembayaran['bukti_bayar']; ?></td>
+                                                                    <td width='15%'>
+                                                                        <a href="../user/tambah/images/<? $pembayaran['bukti_bayar']; ?>">
+                                                                            <img src="../user/tambah/images/<?= $pembayaran['bukti_bayar']; ?>" alt="" width="60px">
+                                                                        </a>
+                                                                    </td>
                                                                     <td><?= $pembayaran['nama_user']; ?></td>
                                                                     <td><?= $pembayaran['nama_kelompok']; ?></td>
                                                                     <td><?= $pembayaran['bank']; ?></td>
@@ -84,16 +88,19 @@
                                                                     <td><?= rupiah($pembayaran['jumlah']); ?></td>
                                                                     <td><?= $pembayaran['bulan']; ?></td>
                                                                     <td>
-                                                                        <input type="hidden" name="id_pembayaran" value="<?php echo $pembayaran['id_pembayaran']; ?>">
-                                                                        <select class="form-control1" type="from-control" name="status_pembayaran">
-                                                                            <option value="<?= $pembayaran['status_pembayaran']; ?>"><?= $pembayaran['status_pembayaran']; ?> </option>
-                                                                            <option value="Dikonfirmasi">Dikonfirmasi</option>
-                                                                            <option value="Delumdikonfirmasi">Belumdikonfirmasi</option>
-                                                                        </select>
+                                                                        <form action="simpan-pembayaran.php" method="post">
+                                                                            <input type="hidden" name="id_pembayaran" value="<?php echo $pembayaran['id_pembayaran']; ?>">
+                                                                            <select class="form-control1" type="from-control" name="status_pembayaran">
+                                                                                <option value="<?= $pembayaran['status_pembayaran']; ?>"><?= $pembayaran['status_pembayaran']; ?> </option>
+                                                                                <option value="Dikonfirmasi">Dikonfirmasi</option>
+                                                                                <!-- <option value="Delumdikonfirmasi">Belum dikonfirmasi</option> -->
+                                                                            </select>
+
                                                                     </td>
-                                                                    <td><button type="submit" name="simpan" class="btn btn-danger">Ubah</button></td>
+                                                                    <td><button type="submit" name="simpan" class="btn btn-info">Ubah</button></td>
+                                                                    </form>
                                                                     <td>
-                                                                        <a href="hapus/hapus-kelompok.php?id=<?= $pembayaran['id_pembayaran']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
+                                                                        <a href="hapus/hapus-pembayaran.php?id=<?= $pembayaran['id_pembayaran']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
                                                                     </td>
                                                                 </tr>
                                                             <?php } ?>

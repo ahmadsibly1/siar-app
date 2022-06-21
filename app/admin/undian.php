@@ -43,7 +43,7 @@
                                  <!-- /.card-header -->
                                  <div class="card-body ">
                                     <div class="table-responsive">
-                                       <table id=" example1" class="table table-sm table-bordered table-striped" style="font-size: 13px;">
+                                       <table id=" example1" class="table table-sm table-striped" style="font-size: 13px;">
                                           <thead>
                                              <tr>
                                                 <th>No</th>
@@ -111,11 +111,11 @@
 
                                                    </td>
                                                    <td>
-                                                      <a type="button" class="btn btn-info" href="detail-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>">
-                                                         <i class="bi bi-eye-fill"></i>
+                                                      <a type="button" class="btn btn-sm btn-info" href="detail-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>">
+                                                         <i class="bi bi-eye-fill">Anggota</i>
                                                       </a>
-                                                      <a href="edit-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>"" class=" btn btn-success">
-                                                         <i class="bi bi-pen"></i>
+                                                      <a href="edit-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>"" class=" btn btn-sm btn-success">
+                                                         <i class="bi bi-pen">Edit</i>
                                                       </a>
                                                       <!-- modal target -->
 
