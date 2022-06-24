@@ -37,9 +37,7 @@ agama = '$agama'
 WHERE id_user=$id_user";
 
 if (mysqli_query($koneksi, $query)) {
-    // echo $query;
-    // die();
-    // echo "Record updated successfully";
+
     $message = "Data Berhasil di Ubah!";
     echo "<script type='text/javascript'>
     alert('$message');

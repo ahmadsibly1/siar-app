@@ -53,10 +53,7 @@
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "paging": true,
-            "ordering": true,
-            "info": true,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "buttons": ["pdf", "print"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
             "paging": true,
@@ -67,6 +64,10 @@
             "autoWidth": false,
             "responsive": true,
         });
+    });
+
+    $(document).ready(function() {
+        $('#saldo').DataTable();
     });
 </script>
 

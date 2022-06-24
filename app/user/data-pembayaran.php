@@ -33,24 +33,25 @@
                                     <div class="col-12">
                                         <!-- /.card -->
                                         <div class="card">
-                                            <div class="card-header">
+                                            <div class="card-header justify-content-between">
                                                 <div class="card-title">
-                                                    <div class="d-flex justify-content-center">
-                                                        <h3>Pembayaran</h3>
+                                                    <div class=" d-flex">
+                                                        <h3 class="">Pembayaran</h3>
                                                     </div>
                                                 </div>
+                                                <button type="button" class="btn btn-info mb-3 float-right" data-toggle="modal" data-target="#tambah-pembayaran">
+                                                    Tambah Pembayaran
+                                                </button>
                                             </div>
                                             <!-- /.card-header -->
                                             <div class="card-body ">
-                                                <button type="button" class="btn btn-info mb-3 " data-toggle="modal" data-target="#tambah-pembayaran">
-                                                    Tambah Pembayaran
-                                                </button>
+
                                                 <div class="table-responsive">
-                                                    <table id=" example1" class="table table-responsive table-sm table-bordered table-striped" style="font-size: 13px;">
+                                                    <table id="pembayaran" class="table table-md" style="font-size: 13px;">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
-                                                                <th width="15%">Bukti Pembayaran</th>
+                                                                <th width="10%">Bukti Pembayaran</th>
                                                                 <th>Nama Pembayar</th>
                                                                 <th>Nama Kelompok</th>
                                                                 <th>Bank Tujuan</th>
@@ -58,7 +59,6 @@
                                                                 <th width="10%">Jumlah</th>
                                                                 <th>Bulan</th>
                                                                 <th>Status</th>
-
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -77,7 +77,7 @@
                                                             ?>
                                                                 <tr>
                                                                     <td><?= $no; ?></td>
-                                                                    <td width='15%'>
+                                                                    <td width='10%'>
                                                                         <a href="tambah/images/<?= $pembayaran['bukti_bayar']; ?>">
                                                                             <img src="tambah/images/<?= $pembayaran['bukti_bayar']; ?>" alt="" width="60px">
                                                                         </a>
@@ -92,6 +92,7 @@
                                                                         <div id="status"><?= $pembayaran['status_pembayaran']; ?></div>
 
                                                                     </td>
+
                                                                 </tr>
                                                             <?php } ?>
                                                         </tbody>
@@ -225,7 +226,11 @@
         </div>
 
 
-
+        <script>
+            $(document).ready(function() {
+                $('#pembayaran').DataTable();
+            });
+        </script>
 
 
         <!-- Control Sidebar -->

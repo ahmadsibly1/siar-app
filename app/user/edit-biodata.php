@@ -115,6 +115,7 @@
                                                             <input class="form-control" type="text" name="agama" value="<?= $anggota['agama']; ?>">
                                                         </div>
                                                     </div>
+
                                                     <!-- <div class="row mb-3">
                                                         <label for="exampleInputFile" class="col-sm-2 col-form-label"> upload KTP</label>
                                                         <div class="col-sm-10">

@@ -65,19 +65,19 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="pages/widgets.html" class="nav-link <?php if ($title == 'Saldo') {
-                                                                    echo 'active';
-                                                                } ?>">
+                <a href="saldo.php" class="nav-link <?php if ($title == 'Saldo') {
+                                                        echo 'active';
+                                                    } ?>">
                     <i class="nav-icon fas fa-solid fa-dollar-sign mr-3"></i>
                     <p>
                         Saldo
                     </p>
                 </a>
             </li>
-            <li class="nav-item mb-2" style="background-color: #f44336; opacity: 0.8;">
+            <li class="nav-item mb-2 menu-open">
                 <a href="logout.php" class="nav-link">
-                    <i class="nav-icon fas fa-solid fa-arrow-left mr-3" style="color: #ffffff;"></i>
-                    <p style="color: #ffffff;">
+                    <i class="nav-icon fas fa-solid fa-arrow-left mr-3" style="color:#f44336;"></i>
+                    <p style="color:#f44336;">
                         Logout
                     </p>
                 </a>

@@ -18,163 +18,146 @@
       <?php include('sidebar.php'); ?>
       <!-- /.sidebar -->
     </aside>
-
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
+    <div class="content-wrapper mt-4">
 
-      <div class="container-fluid">
-        <div class="row mb-2 mt-3">
-          <div class="col-sm-12">
-            <!-- Main content -->
-            <section class="content">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-12">
-                    <!-- /.card -->
-                    <div class="card">
-                      <div class="card-header">
-                        <div class="card-title">
-                          <div class="d-flex justify-content-center">
-                            <h3>Data Anggota</h3>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.card-header -->
-                      <div class="card-body ">
-                        <!-- <button type="button" class="btn btn-info mb-3 " data-toggle="modal" data-target="#modal-lg">
-                          Tambah Anggota
-                        </button> -->
-                        <div class="table-responsive">
-                          <table id=" example1" class="table table-sm table-striped" style="font-size: 13px;">
-                            <thead>
-                              <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>KTP</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Tempat Lahir</th>
-                                <th>Tanggal Lahir</th>
-                                <th>HP</th>
-                                <th>Aksi</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                              $no = 0;
-                              $query = mysqli_query($koneksi, "SELECT * FROM users");
-                              while ($anggota = mysqli_fetch_array($query)) {
-                                $no++
-                              ?>
-                                <tr>
-                                  <td><?= $no; ?></td>
-                                  <td width='13%'><?= $anggota['nama_user']; ?></td>
-                                  <td>
-                                    <a href="../../conf/img/<?= $anggota['ktp']; ?>">
-                                      <img src="../../conf/img/<?= $anggota['ktp']; ?>" alt="" width="60px">
-                                    </a>
-                                  </td>
-                                  <td><?= $anggota['jenis_kelamin']; ?></td>
-                                  <td><?= $anggota['tempat_lahir']; ?></td>
-                                  <td><?= date('d-m-Y', strtotime($anggota['tanggal_lahir'])); ?></td>
-                                  <td><?= $anggota['no_telp']; ?></td>
-                                  <td>
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg<?= $anggota['id_user']; ?>">
-                                      <i class="bi bi-eye-fill"></i>
+      <!-- Main content -->
+      <section class="content" style="margin-top: 80px;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Data Anggota</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example1" class="table table-striped" style="font-size: 13px;">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>KTP</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
+                        <th>HP</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $no = 0;
+                      $query = mysqli_query($koneksi, "SELECT * FROM users");
+                      while ($anggota = mysqli_fetch_array($query)) {
+                        $no++
+                      ?>
+                        <tr>
+                          <td><?= $no; ?></td>
+                          <td width='13%'><?= $anggota['nama_user']; ?></td>
+                          <td>
+                            <a href="../../conf/img/<?= $anggota['ktp']; ?>">
+                              <img src="../../conf/img/<?= $anggota['ktp']; ?>" alt="" width="60px">
+                            </a>
+                          </td>
+                          <td><?= $anggota['jenis_kelamin']; ?></td>
+                          <td><?= $anggota['tempat_lahir']; ?></td>
+                          <td><?= date('d-m-Y', strtotime($anggota['tanggal_lahir'])); ?></td>
+                          <td><?= $anggota['no_telp']; ?></td>
+                          <td>
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg<?= $anggota['id_user']; ?>">
+                              <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <!-- modal target -->
+                            <div class="modal fade" id="modal-lg<?= $anggota['id_user']; ?>">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">Detail Data Anggota</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <!-- modal target -->
-                                    <div class="modal fade" id="modal-lg<?= $anggota['id_user']; ?>">
-                                      <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <h4 class="modal-title">Detail Data Anggota</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                              <span aria-hidden="true">&times;</span>
-                                            </button>
-                                          </div>
-                                          <div class="modal-body">
-                                            <div class="mb-3 row">
-                                              <label for="" class="col-sm-3 col-form-label">Nama</label>
-                                              <div class="col-sm-9">
-                                                <input class="form-control" type="text" value="<?= $anggota['nama_user']; ?>" aria-label="readonly input example" readonly>
-                                              </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                              <label for="" class="col-sm-3 col-form-label">No HP</label>
-                                              <div class="col-sm-9">
-                                                <input class="form-control" type="text" value="<?= $anggota['no_telp']; ?>" aria-label="readonly input example" readonly>
-                                              </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                              <label for="" class="col-sm-3 col-form-label">NIK</label>
-                                              <div class="col-sm-9">
-                                                <input class="form-control" type="text" value="<?= $anggota['nik']; ?>" aria-label="readonly input example" readonly>
-                                              </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                              <label for="" class="col-sm-3 col-form-label">Tempat Lahir</label>
-                                              <div class="col-sm-9">
-                                                <input class="form-control" type="text" value="<?= $anggota['tempat_lahir']; ?>" aria-label="readonly input example" readonly>
-                                              </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                              <label for="" class="col-sm-3 col-form-label">Tanggal Lahir</label>
-                                              <div class="col-sm-9">
-                                                <input class="form-control" type="text" value="<?= date('d-m-Y', strtotime($anggota['tanggal_lahir'])); ?>" aria-label="readonly input example" readonly>
-                                              </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                              <label for="" class="col-sm-3 col-form-label">Alamat</label>
-                                              <div class="col-sm-9">
-                                                <input class="form-control" type="text" value="<?= $anggota['alamat_user']; ?>" aria-label="readonly input example" readonly>
-                                              </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                              <label for="" class="col-sm-3 col-form-label">Jenis Kelamin</label>
-                                              <div class="col-sm-9">
-                                                <input class="form-control" type="text" value="<?= $anggota['jenis_kelamin']; ?>" aria-label="readonly input example" readonly>
-                                              </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                              <label for="" class="col-sm-3 col-form-label">Agama</label>
-                                              <div class="col-sm-9">
-                                                <input class="form-control" type="text" value="<?= $anggota['agama']; ?>" aria-label="readonly input example" readonly>
-                                              </div>
-                                            </div>
-
-                                          </div>
-                                          <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
-                                          </div>
-                                        </div>
-                                        <!-- /.modal-content -->
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="mb-3 row">
+                                      <label for="" class="col-sm-3 col-form-label">Nama</label>
+                                      <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="<?= $anggota['nama_user']; ?>" aria-label="readonly input example" readonly>
                                       </div>
-                                      <!-- /.modal-dialog -->
+                                    </div>
+                                    <div class="mb-3 row">
+                                      <label for="" class="col-sm-3 col-form-label">No HP</label>
+                                      <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="<?= $anggota['no_telp']; ?>" aria-label="readonly input example" readonly>
+                                      </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                      <label for="" class="col-sm-3 col-form-label">NIK</label>
+                                      <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="<?= $anggota['nik']; ?>" aria-label="readonly input example" readonly>
+                                      </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                      <label for="" class="col-sm-3 col-form-label">Tempat Lahir</label>
+                                      <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="<?= $anggota['tempat_lahir']; ?>" aria-label="readonly input example" readonly>
+                                      </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                      <label for="" class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                                      <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="<?= date('d-m-Y', strtotime($anggota['tanggal_lahir'])); ?>" aria-label="readonly input example" readonly>
+                                      </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                      <label for="" class="col-sm-3 col-form-label">Alamat</label>
+                                      <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="<?= $anggota['alamat_user']; ?>" aria-label="readonly input example" readonly>
+                                      </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                      <label for="" class="col-sm-3 col-form-label">Jenis Kelamin</label>
+                                      <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="<?= $anggota['jenis_kelamin']; ?>" aria-label="readonly input example" readonly>
+                                      </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                      <label for="" class="col-sm-3 col-form-label">Agama</label>
+                                      <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="<?= $anggota['agama']; ?>" aria-label="readonly input example" readonly>
+                                      </div>
                                     </div>
 
-                                    <a href="hapus/hapus_anggota.php?id=<?= $anggota['id_user']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
-                                  </td>
-                                </tr>
-                              <?php } ?>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                      <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                  </div>
-                  <!-- /.col -->
-                </div>
-                <!-- /.row -->
-              </div>
-              <!-- /.container-fluid -->
-            </section>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+                                  </div>
+                                  <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
+                                  </div>
+                                </div>
+                                <!-- /.modal-content -->
+                              </div>
+                              <!-- /.modal-dialog -->
+                            </div>
 
+                            <a href="hapus/hapus_anggota.php?id=<?= $anggota['id_user']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
+                          </td>
+                        </tr>
+                      <?php } ?>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 
     <div class="modal fade" id="modal-lg">
       <div class="modal-dialog modal-lg">
