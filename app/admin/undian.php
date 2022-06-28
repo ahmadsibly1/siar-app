@@ -57,48 +57,7 @@
                                           <td><?= date('d-m-Y', strtotime($kelompok['tanggal_mulai'])); ?></td>
                                           <td><?= $kelompok['tipe_arisan']; ?></td>
                                           <td>
-                                             <!-- Jam Countdown -->
-                                             <div id="jam<?= $kelompok['id_kelompok']; ?>"></div>
-                                             <?php
-                                             $date_mulai = $kelompok['tanggal_mulai'];
-                                             $date = date('Y-m-d', strtotime('+6 days', strtotime($date_mulai))); //operasi penjumlahan tanggal sebanyak 6 hari
-                                             // echo $date;
-                                             // die();
-                                             $time = date('00:00:00');
-                                             $date_today = $date . ' ' . $time;
-                                             ?>
-                                             <script>
-                                                // Set the date we're counting down to
-                                                var count_id = "<?php echo $date_today; ?>";
-                                                var countDownDate = new Date(count_id).getTime();
-
-                                                // Update the count down every 1 second
-                                                var x = setInterval(function() {
-
-                                                   // Get today's date and time
-                                                   var now = new Date().getTime();
-
-                                                   // Find the distance between now and the count down date
-                                                   var distance = countDownDate - now;
-
-                                                   // Time calculations for days, hours, minutes and seconds
-                                                   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                                                   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                                                   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                                                   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                                                   // Output the result in an element with id="demo"
-                                                   document.getElementById("jam<?= $kelompok['id_kelompok']; ?>").innerHTML = days + " Hari " + hours + "Jam " +
-                                                      minutes + "Menit " + seconds + "Detik ";
-
-                                                   // If the count down is over, write some text 
-                                                   if (distance < 0) {
-                                                      clearInterval(x);
-                                                      document.getElementById("jam<?= $kelompok['id_kelompok']; ?>").innerHTML = "Waktunya Undian Arisan";
-                                                   }
-                                                }, 1000);
-                                             </script>
-
+                                             <h1 id="counter" class="text-center mt-5 m-auto p-3 text-white"></h1>
                                           </td>
                                           <td>
                                              <a type="button" class="btn btn-sm btn-info" href="detail-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>">
@@ -108,10 +67,6 @@
                                                 <i class="bi bi-pen">Edit</i>
                                              </a>
                                              <!-- modal target -->
-
-
-
-
                                           </td>
                                        </tr>
                                     <?php } ?>
@@ -130,7 +85,36 @@
          </section>
          <!-- /.content -->
       </div>
-      <!-- tambah kelompok -->
+      <!-- Contdown -->
+      <!-- Script -->
+      <script>
+         <?php
+         $data = strtotime($date);
+         echo $data;
+         die();
+         $getDate = date("F d, Y", $data);
+         ?>
+         var countDownDate = new Date("<?php echo "$getDate $time"; ?>").getTime();
+         // Update the count down every 1 second
+         var x = setInterval(function() {
+            var now = new Date().getTime();
+            // Find the distance between now an the count down date
+            var distance = countDownDate - now;
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // Output the result in an element with id="counter"11
+            document.getElementById("counter").innerHTML = days + "Day : " + hours + "h " +
+               minutes + "m " + seconds + "s ";
+            // If the count down is over, write some text 
+            if (distance < 0) {
+               clearInterval(x);
+               document.getElementById("counter").innerHTML = "EXPIRED";
+            }
+         }, 1000);
+      </script>
 
       <!-- edit kelompok -->
 

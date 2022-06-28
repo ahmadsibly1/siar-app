@@ -46,9 +46,6 @@
                                             </div>
                                             <!-- /.card-header -->
                                             <div class="card-body ">
-                                                <!-- <button type="button" class="btn btn-info mb-3 " data-toggle="modal" data-target="#tambah-kelompok">
-                                                    Tambah Kelompok
-                                                </button> -->
                                                 <div class="table-responsive">
                                                     <table id=" example1" class="table table-md" style="font-size: 13px;">
                                                         <thead>
@@ -72,7 +69,7 @@
                                                             ?>
                                                                 <tr>
                                                                     <td width='4%'><?= $no; ?></td>
-                                                                    <td width='13%'><?= $kelompok['nama_kelompok']; ?></td>
+                                                                    <td width='13%'><b><?= $kelompok['nama_kelompok']; ?></b></td>
                                                                     <td width='13%'><?= date('d-m-Y', strtotime($kelompok['tanggal_mulai'])); ?></td>
                                                                     <td width='10%'><?= $kelompok['tipe_arisan']; ?></td>
                                                                     <td width='10%'><?= $kelompok['kuota']; ?></td>
@@ -190,7 +187,7 @@
                                                             ?>
                                                                 <tr>
                                                                     <td width='4%'><?= $no; ?></td>
-                                                                    <td width='13%'><?= $kelompok['nama_kelompok']; ?></td>
+                                                                    <td width='13%'><b><?= $kelompok['nama_kelompok']; ?></b></td>
                                                                     <td width='13%'><?= date('d-m-Y', strtotime($kelompok['tanggal_mulai'])); ?></td>
                                                                     <td width='10%'><?= $kelompok['tipe_arisan']; ?></td>
                                                                     <td width='10%'><?= $kelompok['kuota']; ?></td>

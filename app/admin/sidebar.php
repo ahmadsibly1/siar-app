@@ -25,14 +25,29 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="data-kelompok.php?page=datakelompok" class="nav-link <?php if ($title == 'Data Kelompok') {
-                                                                                    echo 'active';
-                                                                                } ?>">
+                <a href="" class="nav-link <?php if ($title == 'Data Kelompok') {
+                                                echo 'active';
+                                            } ?>">
                     <i class="nav-icon fas fa-solid fa-users mr-3"></i>
                     <p>
                         Data Kelompok
+                        <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item menu-open">
+                        <a href="data-kelompok.php?page=datakelompok" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Kelompok Aktif</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="antrian-kelompok.php" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Antrian Kelompok</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item mb-2">
                 <a href="data-anggota.php" class="nav-link <?php if ($title == 'Data Anggota') {
@@ -82,6 +97,7 @@
                     </p>
                 </a>
             </li>
+
         </ul>
     </nav>
 

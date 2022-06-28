@@ -1,4 +1,4 @@
-<?php $title = "Pembayaran"; ?>
+<?php $title = "Data Kelompok"; ?>
 
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
