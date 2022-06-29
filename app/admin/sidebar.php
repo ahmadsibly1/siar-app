@@ -36,7 +36,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item menu-open">
-                        <a href="data-kelompok.php?page=datakelompok" class="nav-link">
+                        <a href="data-kelompok.php" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Kelompok Aktif</p>
                         </a>
@@ -60,14 +60,29 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="pembayaran.php" class="nav-link <?php if ($title == 'Pembayaran') {
-                                                                echo 'active';
-                                                            } ?>">
+                <a href="" class="nav-link <?php if ($title == 'Pembayaran') {
+                                                echo 'active';
+                                            } ?>">
                     <i class="nav-icon fas fa-solid fa-credit-card mr-3"></i>
                     <p>
                         Pembayaran
+                        <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item menu-open">
+                        <a href="pembayaran.php" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Bukti Pembayaran</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Bukti Penerima</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item mb-2">
                 <a href="undian.php" class="nav-link <?php if ($title == 'Undian Arisan') {

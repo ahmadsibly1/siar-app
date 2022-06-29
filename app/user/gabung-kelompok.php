@@ -112,7 +112,7 @@
                                                     </div>
                                                     <!-- /.card-body -->
                                                     <div class="card-footer">
-                                                        <button type="submit" class="btn btn-primary float-right">Gabung</button>
+                                                        <button type="submit" name="simpan" class="btn btn-primary float-right">Gabung</button>
                                                         <a href="data-kelompok.php" type="submit" class="btn btn-default">Cancel</a>
 
                                                     </div>

@@ -28,7 +28,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Data Kelompok</h3>
+                  <h3 class="card-title">Kelompok Aktif</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body ">
@@ -53,6 +53,7 @@
                       <?php
                       $no = 0;
                       $query = mysqli_query($koneksi, "SELECT * FROM kelompok");
+                      $query2 = mysqli_query($koneksi, "UPDATE kelompok SET isi = isi + 1 WHERE users.id_kelompok not nulL and users.ikut = 'Terima'");
                       while ($kelompok = mysqli_fetch_array($query)) {
                         $no++
                       ?>

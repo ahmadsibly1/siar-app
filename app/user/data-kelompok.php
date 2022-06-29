@@ -179,9 +179,11 @@
                                                             $id_user = $_GET['id_user'];
                                                             $no = 0;
                                                             $query = mysqli_query($koneksi, "SELECT * FROM kelompok 
-                                                            LEFT JOIN users 
+                                                            INNER JOIN users 
                                                             ON kelompok.id_kelompok = users.id_kelompok 
-                                                            WHERE id_user='$id_user'");
+                                                            WHERE id_user='$id_user'
+                                                            AND ikut='Terima'");
+
                                                             while ($kelompok = mysqli_fetch_array($query)) {
                                                                 $no++
                                                             ?>

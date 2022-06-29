@@ -38,8 +38,8 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama Anggota</th>
+                                                <th>Nama Kelompok</th>
                                                 <th>Tanggal Mulai</th>
-                                                <th>Jenis</th>
                                                 <th>Jumlah Iuran</th>
                                                 <th colspan="2">Status</th>
                                                 <th>Aksi</th>
@@ -50,7 +50,7 @@
                                             // $id_user = $_GET['id_user'];
                                             $no = 0;
                                             $query = mysqli_query($koneksi, "SELECT * FROM kelompok 
-                                                            LEFT JOIN users 
+                                                            inner JOIN users 
                                                             ON kelompok.id_kelompok = users.id_kelompok 
                                                             ");
                                             while ($kelompok = mysqli_fetch_array($query)) {
@@ -59,20 +59,21 @@
                                                 <tr>
                                                     <td><?= $no; ?></td>
                                                     <td width='20%'><?= $kelompok['nama_user']; ?></td>
+                                                    <td><?= $kelompok['nama_kelompok']; ?></td>
                                                     <td><?= date('d-m-Y', strtotime($kelompok['tanggal_mulai'])); ?></td>
-                                                    <td><?= $kelompok['tipe_arisan']; ?></td>
                                                     <td><?= rupiah($kelompok['jumlah_iuran']); ?></td>
                                                     <td>
-                                                        <form action="simpan-pembayaran.php" method="post">
-                                                            <input type="hidden" name="id_user" value="<?php echo $pembayaran['id_user']; ?>">
-                                                            <select class="form-control1" type="from-control" name="status_pembayaran">
-                                                                <option value=""></option>
-                                                                <option value="Dikonfirmasi">Dikonfirmasi</option>
-                                                                <option value="Delumdikonfirmasi">Belum dikonfirmasi</option>
+                                                        <form action="simpan-antrian-kelompok.php" method="post">
+                                                            <input type="hidden" name="id_user" value="<?php echo $kelompok['id_user']; ?>">
+                                                            <select class="form-control1" type="from-control" name="ikut">
+                                                                <option value="<?php echo $kelompok['ikut']; ?>"><?php echo $kelompok['ikut']; ?></option>
+                                                                <option value="Terima">Terima</option>
+                                                                <option value="Tolak">Tolak</option>
                                                             </select>
 
                                                     </td>
                                                     <td><button type="submit" name="simpan" class="btn btn-info">Ubah</button></td>
+                                                    <td><button type="submit" name="simpan" class="btn btn-info">Lihat</button></td>
 
                                                 </tr>
                                             <?php } ?>

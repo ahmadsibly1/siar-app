@@ -6,24 +6,26 @@ $id_kelompok =  $_POST['id_kelompok'];
 
 
 
-
-// proses upload foto
-// menentukan destinasi untuk menyimpan foro
-// $dir = "../../../conf/img/";
-// // temporaari file
-// $tmpFile = $_FILES['ktp']['tmp_name'];
-
-// move_uploaded_file($tmpFile, $dir . $ktp);
-
 $query = "UPDATE users SET id_kelompok='$id_kelompok' WHERE id_user=$id_user";
-
-if (mysqli_query($koneksi, $query)) {
-
-    $message = "Data Berhasil di Ubah!";
-    echo "<script type='text/javascript'>
-    alert('$message');
-    window.location.href = '../data-kelompok.php?id_user=$id_user';
-    </script>";
-} else {
-    echo "Error updating record: " . mysqli_error($koneksi);
+if (isset($_POST['simpan'])) {
+    $sql = mysqli_query($koneksi, $query);
+    if ($sql) {
+        $message = "Anda berhasil bergabung ke kelompok! tunggu konfirmasi dari admin";
+        echo "<script type='text/javascript'>
+        alert('$message');
+        window.location.href = '../data-kelompok.php?id_user=$id_user';
+        </script>";
+    } else {
+        echo "Error updating record: " . mysqli_error($koneksi);
+    }
 }
+// if (mysqli_query($koneksi, $query)) {
+
+//     $message = "Anda berhasil bergabung ke kelompok! tunggu konfirmasi dari admin";
+//     echo "<script type='text/javascript'>
+//     alert('$message');
+//     window.location.href = '../data-kelompok.php?id_user=$id_user';
+//     </script>";
+// } else {
+//     echo "Error updating record: " . mysqli_error($koneksi);
+// }

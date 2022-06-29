@@ -1,4 +1,4 @@
-<?php $title = "Data Kelompok"; ?>
+<?php $title = "Pembayaran"; ?>
 
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
@@ -28,7 +28,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pembayaran</h3>
+                                    <h3 class="card-title">Bukti Pembayaran</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
