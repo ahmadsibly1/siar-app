@@ -33,7 +33,7 @@
                                 <!-- /.card-header -->
                                 <div class="card-body ">
 
-                                    <table id="example1" class="table table-sm table-striped table-bordered" style="font-size: 13px;">
+                                    <table id="saldo" class="table table-sm table-striped table-bordered" style="font-size: 13px;">
                                         <thead>
                                             <tr>
                                                 <th>No</th>

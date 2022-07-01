@@ -53,10 +53,11 @@ if ($_SESSION['level'] == "") {
                     $totalSaldo = 0;
                     // $query = mysqli_query($koneksi, "SELECT * FROM pembayaran LEFT JOIN users ON pembayaran.id_pembayaran = users.id_user");
                     $query = mysqli_query($koneksi, "SELECT * FROM saldo
-                                                      LEFT JOIN pembayaran 
+                                                      RIGHT JOIN pembayaran 
                                                       ON saldo.id_pembayaran = pembayaran.id_pembayaran
-                                                      LEFT JOIN kelompok 
-                                                      ON saldo.id_kelompok = kelompok.id_kelompok");
+                                                      RIGHT JOIN kelompok 
+                                                      ON saldo.id_kelompok = kelompok.id_kelompok
+                                                      ");
                     while ($saldo = mysqli_fetch_array($query)) {
                       $no++
 
@@ -70,8 +71,8 @@ if ($_SESSION['level'] == "") {
                           <td><?= $saldo['bulan']; ?></td>
                           <td>X</td>
                         </tr>
-                      <?php } ?>
                       </tbody>
+                    <?php } ?>
 
                   </table>
                 </div>

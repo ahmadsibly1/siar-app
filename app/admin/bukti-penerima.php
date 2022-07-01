@@ -32,14 +32,14 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="example1" class="table table-striped style=" style="font-size: 13px;">
+                                    <table id="penerima" class="table table-striped style=" style="font-size: 13px;">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama Anggota</th>
                                                 <th>Tanggal Terima</th>
                                                 <th>Jumlah Terima</th>
-                                                <th>Keterangan</th>
+
                                                 <th colspan="2">Status</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -48,30 +48,38 @@
                                             <?php
                                             $no = 0;
                                             // $query = mysqli_query($koneksi, "SELECT * FROM pembayaran LEFT JOIN users ON pembayaran.id_pembayaran = users.id_user");
-                                            $query = mysqli_query($koneksi, "SELECT * FROM pembayaran
+                                            $query = mysqli_query($koneksi, "SELECT * FROM penerima
                                                             LEFT JOIN users 
-                                                            ON pembayaran.id_user = users.id_user
+                                                            ON penerima.id_user = users.id_user
                                                             LEFT JOIN kelompok 
-                                                            ON pembayaran.id_kelompok = kelompok.id_kelompok");
-                                            while ($pembayaran = mysqli_fetch_array($query)) {
+                                                            ON penerima.id_kelompok = kelompok.id_kelompok");
+                                            while ($penerima = mysqli_fetch_array($query)) {
                                                 $no++
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
                                                     <!-- <td width='5%'>
-                                                        <a href="../user/tambah/images/<? $pembayaran['bukti_bayar']; ?>">
-                                                            <img src="../user/tambah/images/<?= $pembayaran['bukti_bayar']; ?>" alt="" width="60px">
+                                                        <a href="../user/tambah/images/<? $penerima['bukti_bayar']; ?>">
+                                                            <img src="../user/tambah/images/<?= $penerima['bukti_bayar']; ?>" alt="" width="60px">
                                                         </a>
                                                     </td> -->
-                                                    <td><?= $pembayaran['nama_user']; ?></td>
-                                                    <td>tanggal terima</td>
-                                                    <td><?= rupiah($pembayaran['jumlah'] * 12); ?></td>
-                                                    <td><?= date('d-m-Y', strtotime($pembayaran['tgl_bayar'])); ?></td>
+                                                    <td><?= $penerima['nama_user']; ?></td>
+                                                    <td><?= date('d-m-Y', strtotime($penerima['tanggal_terima'])); ?></td>
                                                     <td>
-                                                        <form action="simpan-pembayaran.php" method="post">
-                                                            <input type="hidden" name="id_pembayaran" value="<?php echo $pembayaran['id_pembayaran']; ?>">
-                                                            <select class="form-control1" type="from-control" name="status_pembayaran">
-                                                                <option value="<?= $pembayaran['status_pembayaran']; ?>"><?= $pembayaran['status_pembayaran']; ?> </option>
+                                                        <?php
+                                                        if ($penerima['tipe_arisan'] == 'Bulanan') {
+                                                            echo rupiah($penerima['jumlah_terima'] * 12);
+                                                        } else {
+                                                            echo rupiah($penerima['jumlah_terima'] * 6);
+                                                        }
+                                                        ?>
+                                                    </td>
+
+                                                    <td>
+                                                        <form action="simpan-penerima.php" method="post">
+                                                            <input type="hidden" name="id_penerima" value="<?php echo $penerima['id_penerima']; ?>">
+                                                            <select class="form-control1" type="from-control" name="status_penerima">
+                                                                <option value="<?= $penerima['status_penerima']; ?>"><?= $penerima['status_penerima']; ?> </option>
                                                                 <option value="Dikonfirmasi">Dikonfirmasi</option>
                                                                 <!-- <option value="Delumdikonfirmasi">Belum dikonfirmasi</option> -->
                                                             </select>
@@ -80,7 +88,7 @@
                                                     <td><button type="submit" name="simpan" class="btn btn-info">Ubah</button></td>
                                                     </form>
                                                     <td>
-                                                        <a href="hapus/hapus-pembayaran.php?id=<?= $pembayaran['id_pembayaran']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
+                                                        <a href="hapus/hapus-penerima.php?id=<?= $penerima['id_penerima']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
