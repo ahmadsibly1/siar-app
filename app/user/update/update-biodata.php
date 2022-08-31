@@ -31,7 +31,6 @@ password = '$password',
 no_telp = '$notelp',
 nik = '$nik',
 tempat_lahir = '$tempatlahir',
-alamat_user = '$alamat_user',
 jenis_kelamin = '$jeniskelamin',
 agama = '$agama'
 WHERE id_user=$id_user";

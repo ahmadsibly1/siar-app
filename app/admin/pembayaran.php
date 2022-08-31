@@ -1,4 +1,4 @@
-<?php $title = "Pembayaran"; ?>
+<?php $title = "Data Pembayaran"; ?>
 
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
@@ -32,7 +32,7 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="example1" class="table table-responsive table-bordered table-striped style=" style="font-size: 13px;">
+                                    <table id="example1" class="table table-striped style=" style="font-size: 13px;">
                                         <thead>
                                             <tr>
                                                 <th>No</th>

@@ -33,7 +33,7 @@
                                 <!-- /.card-header -->
                                 <div class="card-body ">
 
-                                    <table id="saldo" class="table table-sm table-striped table-bordered" style="font-size: 13px;">
+                                    <table id="example1" class="table table-sm" style="font-size: 13px;">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -41,7 +41,7 @@
                                                 <th>Nama Kelompok</th>
                                                 <th>Tanggal Mulai</th>
                                                 <th>Jumlah Iuran</th>
-                                                <th colspan="2">Status</th>
+                                                <th>Status</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -58,7 +58,7 @@
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
-                                                    <td width='20%'><?= $kelompok['nama_user']; ?></td>
+                                                    <td><?= $kelompok['nama_user']; ?></td>
                                                     <td><?= $kelompok['nama_kelompok']; ?></td>
                                                     <td><?= date('d-m-Y', strtotime($kelompok['tanggal_mulai'])); ?></td>
                                                     <td><?= rupiah($kelompok['jumlah_iuran']); ?></td>
@@ -72,10 +72,15 @@
                                                             </select>
 
                                                     </td>
-                                                    <td><button type="submit" name="simpan" class="btn btn-info">Ubah</button></td>
-                                                    <td><button type="submit" name="simpan" class="btn btn-info">Lihat</button></td>
+                                                    <td>
+                                                        <button type="submit" name="simpan" class="btn btn-info">Ubah</button>
+                                                        <!-- <button type="submit" name="simpan" class="btn btn-info">Lihat</button> -->
+                                                        <a href="#" class="btn btn-success">Lihat</a>
+                                                    </td>
+
 
                                                 </tr>
+                                                </form>
                                             <?php } ?>
                                         </tbody>
                                     </table>

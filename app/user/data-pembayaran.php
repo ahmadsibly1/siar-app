@@ -1,3 +1,4 @@
+<?php $title = "pembayaran"; ?>
 <?php session_start(); ?>
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
@@ -72,6 +73,7 @@
                                                             LEFT JOIN kelompok 
                                                             ON pembayaran.id_kelompok = kelompok.id_kelompok
                                                             WHERE pembayaran.id_user = '$id_user'");
+
                                                             while ($pembayaran = mysqli_fetch_array($query)) {
                                                                 $no++
                                                             ?>
@@ -135,10 +137,15 @@
                     ON pembayaran.id_kelompok = kelompok.id_kelompok 
                     WHERE username='$_SESSION[username]'
                     AND pembayaran.id_user = '$id_user'");
+                    $result = mysqli_num_rows($query2);
                     $anggota = mysqli_fetch_array($query2);
+
+                    $query3 = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$_SESSION[username]'");
+                    $data2 = mysqli_fetch_array($query3);
                     ?>
                     <form action="tambah/tambah-pembayaran.php" method="POST" name="pembayaran" enctype="multipart/form-data">
                         <input type="hidden" name="id_user" value="<?= $_SESSION['username'] ?>">
+
                         <div class="card-body">
                             <div class="row mb-3">
                                 <label for="exampleInputFile" class="col-sm-3 col-form-label">Foto Pembayaran</label>
@@ -155,7 +162,7 @@
                                 <label for=nama_pembayar" class="col-sm-3 col-form-label">Nama Pembayar</label>
                                 <div class="col-sm-9">
                                     <input class="form-control form-control" type="text" name="" value="<?= $anggota['nama_user']; ?>" aria-label="Disabled input example" disabled readonly>
-                                    <input class="form-control form-control" type="hidden" name="nama_pembayar" value="<?= $anggota['id_user']; ?>">
+                                    <input class="form-control form-control" type="text" name="nama_pembayar" value="<?= $data2['id_user']; ?>">
                                 </div>
                             </div>
                             <div class="row mb-3">

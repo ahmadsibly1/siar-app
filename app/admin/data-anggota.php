@@ -32,7 +32,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                  <table id="example1" class="table table-striped" style="font-size: 13px;">
+                  <table id="example1" class="table table-responsive-md table-striped" style="font-size: 13px;">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -48,7 +48,7 @@
                     <tbody>
                       <?php
                       $no = 0;
-                      $query = mysqli_query($koneksi, "SELECT * FROM users");
+                      $query = mysqli_query($koneksi, "SELECT * FROM users WHERE level ='user' ORDER BY id_user DESC");
                       while ($anggota = mysqli_fetch_array($query)) {
                         $no++
                       ?>
@@ -109,12 +109,7 @@
                                         <input class="form-control" type="text" value="<?= date('d-m-Y', strtotime($anggota['tanggal_lahir'])); ?>" aria-label="readonly input example" readonly>
                                       </div>
                                     </div>
-                                    <div class="mb-3 row">
-                                      <label for="" class="col-sm-3 col-form-label">Alamat</label>
-                                      <div class="col-sm-9">
-                                        <input class="form-control" type="text" value="<?= $anggota['alamat_user']; ?>" aria-label="readonly input example" readonly>
-                                      </div>
-                                    </div>
+
                                     <div class="mb-3 row">
                                       <label for="" class="col-sm-3 col-form-label">Jenis Kelamin</label>
                                       <div class="col-sm-9">

@@ -42,7 +42,7 @@
                         <th>No</th>
                         <th>Nama Kelompok</th>
                         <th>Tanggal Mulai</th>
-                        <th>Jenis</th>
+                        <!-- <th>Jenis</th> -->
                         <th>Kuota</th>
                         <th>Terisi</th>
                         <th>Jumlah Iuran</th>
@@ -53,7 +53,7 @@
                       <?php
                       $no = 0;
                       $query = mysqli_query($koneksi, "SELECT * FROM kelompok");
-                      $query2 = mysqli_query($koneksi, "UPDATE kelompok SET isi = isi + 1 WHERE users.id_kelompok not nulL and users.ikut = 'Terima'");
+                      // $query2 = mysqli_query($koneksi, "UPDATE kelompok SET isi = isi + 1 WHERE users.id_kelompok not nulL and users.ikut = 'Terima'");
                       while ($kelompok = mysqli_fetch_array($query)) {
                         $no++
                       ?>
@@ -61,7 +61,7 @@
                           <td><?= $no; ?></td>
                           <td width='20%'><?= $kelompok['nama_kelompok']; ?></td>
                           <td><?= date('d-m-Y', strtotime($kelompok['tanggal_mulai'])); ?></td>
-                          <td><?= $kelompok['tipe_arisan']; ?></td>
+                          <!-- <td><?= $kelompok['tipe_arisan']; ?></td> -->
                           <td><?= $kelompok['kuota']; ?></td>
                           <td><?= $kelompok['isi']; ?></td>
                           <td><?= rupiah($kelompok['jumlah_iuran']); ?></td>
@@ -197,24 +197,24 @@
                   <input class="form-control form-control" type="date" name="tanggal_mulai" required>
                 </div>
               </div>
-              <div class="row mb-3">
+              <!-- <div class="row mb-3">
                 <label for=tipe_arisan" class="col-sm-2 col-form-label">Tipe Arisan</label>
                 <div class="col-sm-10">
                   <input class="form-control form-control" type="text" name="tipe_arisan" required>
                 </div>
-              </div>
+              </div> -->
               <div class="row mb-3">
                 <label for="kuota" class="col-sm-2 col-form-label">Kuota</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="kuota" name="kuota" required>
                 </div>
               </div>
-              <div class="row mb-3">
+              <!-- <div class="row mb-3">
                 <label for="isi" class="col-sm-2 col-form-label">Isi</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="isi" name="isi" required>
                 </div>
-              </div>
+              </div> -->
               <div class="row mb-3">
                 <label for="jumlah_iuran" class="col-sm-2 col-form-label">Jumlah Iuran</label>
                 <div class="col-sm-10">

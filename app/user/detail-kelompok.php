@@ -61,7 +61,8 @@
                                                                                             inner join kelompok 
                                                                                             ON users.id_kelompok = kelompok.id_kelompok
                                                                                             WHERE users.id_kelompok = kelompok.id_kelompok
-                                                                                            AND users.id_kelompok = '$kelas'");
+                                                                                            AND users.id_kelompok = '$kelas'
+                                                                                            AND users.ikut = 'Terima'");
                                                             while ($data = mysqli_fetch_array($query)) {
                                                                 $no++
                                                             ?>

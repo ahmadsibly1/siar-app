@@ -53,6 +53,7 @@
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
+
             // "buttons": ["pdf", "print"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
@@ -67,10 +68,14 @@
     });
 
     $(document).ready(function() {
-        $('#saldo').DataTable();
+        $('#saldo').DataTable({
+            scrollX: true,
+        });
+
     });
     $(document).ready(function() {
         $('#penerima').DataTable();
+
     });
 </script>
 

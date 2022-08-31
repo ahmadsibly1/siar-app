@@ -92,12 +92,7 @@
                                             <input class="form-control" type="text" value="<?= date('d-m-Y', strtotime($anggota['tanggal_lahir'])); ?>" aria-label="Disabled input example" disabled readonly>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <label for=alamat_user" class="col-sm-2 col-form-label">Alamat</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" type="text" value="<?= $anggota['alamat_user']; ?>" aria-label="Disabled input example" disabled readonly>
-                                        </div>
-                                    </div>
+
                                     <div class="row mb-3">
                                         <label for="jeniskelamin" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                                         <div class="col-sm-10">

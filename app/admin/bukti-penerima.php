@@ -1,4 +1,4 @@
-<?php $title = "Pembayaran"; ?>
+<?php $title = "Data Penerima"; ?>
 
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>

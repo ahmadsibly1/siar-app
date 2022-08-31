@@ -3,7 +3,7 @@
 include('../../../conf/config.php');
 
 // $bukti_bayar =  $_FILES['bukti_bayar'];
-$nama_pembayar =  $_POST['nama_pembayar'];
+$nama_pembayar =  $_POST['id_user'];
 $nama_kelompok =  $_POST['nama_kelompok'];
 $bank_tujuan =  $_POST['bank_tujuan'];
 $tanggal_bayar =  $_POST['tanggal_bayar'];

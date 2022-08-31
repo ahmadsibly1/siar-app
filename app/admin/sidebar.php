@@ -60,29 +60,25 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="" class="nav-link <?php if ($title == 'Pembayaran') {
-                                                echo 'active';
-                                            } ?>">
+                <a href="pembayaran.php" class="nav-link <?php if ($title == 'Data Pembayaran') {
+                                                                echo 'active';
+                                                            } ?>">
                     <i class="nav-icon fas fa-solid fa-credit-card mr-3"></i>
                     <p>
-                        Pembayaran
-                        <i class="fas fa-angle-left right"></i>
+                        Data Pembayaran
                     </p>
                 </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item menu-open">
-                        <a href="pembayaran.php" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Bukti Pembayaran</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="bukti-penerima.php" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Bukti Penerima</p>
-                        </a>
-                    </li>
-                </ul>
+
+            </li>
+            <li class="nav-item mb-2">
+                <a href="bukti-penerima.php" class="nav-link <?php if ($title == 'Data Penerima') {
+                                                                    echo 'active';
+                                                                } ?>">
+                    <i class="nav-icon bi bi-wallet-fill mr-3"></i>
+                    <p>
+                        Data Penerima
+                    </p>
+                </a>
             </li>
             <li class="nav-item mb-2">
                 <a href="undian.php" class="nav-link <?php if ($title == 'Undian Arisan') {

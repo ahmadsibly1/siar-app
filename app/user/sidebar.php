@@ -44,10 +44,20 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="data-pembayaran.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link">
+                <a href="data-pembayaran.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'pembayaran') {
+                                                                                                        echo 'active';
+                                                                                                    } ?>">
                     <i class="nav-icon fas fa-solid fa-credit-card mr-3"></i>
                     <p>
                         Pembayaran
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="data-pembayaran.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link">
+                    <i class="nav-icon bi bi-wallet-fill mr-3"></i>
+                    <p>
+                        Bukti Penerima
                     </p>
                 </a>
             </li>

@@ -58,12 +58,13 @@
 
                                                 $query2 = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$_SESSION[username]'");
                                                 $data2 = mysqli_fetch_array($query2);
+                                                // die(var_dump($data2));
                                                 ?>
 
                                                 <form action="update/update-kelompok.php" method="POST">
                                                     <div class="card-body">
                                                         <div class="row mb-3">
-                                                            <input type="hidden" class="form-control" id="id_kelompok" name="id_kelompok" value="<?= $kelompok['id_kelompok']; ?>">
+                                                            <input type="hidden" class="form-control" name="id_kelompok" value="<?= $kelompok['id_kelompok']; ?>">
                                                             <input type="hidden" class="form-control" name="id_user" value="<?= $data2['id_user']; ?>">
 
                                                             <label for="nama_kelompok" class="col-sm-2 col-form-label">Nama kelompok</label>

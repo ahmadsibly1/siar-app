@@ -63,8 +63,8 @@
                                              <a type="button" class="btn btn-sm btn-info" href="detail-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>">
                                                 <i class="bi bi-eye-fill">Anggota</i>
                                              </a>
-                                             <a href="edit-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>"" class=" btn btn-sm btn-success">
-                                                <i class="bi bi-pen">Edit</i>
+                                             <a href="wheel/index.php?= $kelompok['id_kelompok']; ?>"" class=" btn btn-sm btn-success">
+                                                <i class="bi bi-pen">Undi</i>
                                              </a>
                                              <!-- modal target -->
                                           </td>
