@@ -55,7 +55,8 @@
                                                             LEFT JOIN users 
                                                             ON pembayaran.id_user = users.id_user
                                                             LEFT JOIN kelompok 
-                                                            ON pembayaran.id_kelompok = kelompok.id_kelompok");
+                                                            ON pembayaran.id_kelompok = kelompok.id_kelompok
+                                                            ORDER BY pembayaran.id_pembayaran DESC");
                                             while ($pembayaran = mysqli_fetch_array($query)) {
                                                 $no++
                                             ?>

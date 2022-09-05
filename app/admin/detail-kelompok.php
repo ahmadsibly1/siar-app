@@ -49,14 +49,14 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $kelas = $_GET['id_kelompok'];
+                                                $id_kelompok = $_GET['id_kelompok'];
                                                 $no = 0;
                                                 $query = mysqli_query($koneksi, "SELECT * 
                                                                                 FROM users 
                                                                                 inner join kelompok 
                                                                                 ON users.id_kelompok = kelompok.id_kelompok
                                                                                 WHERE users.id_kelompok = kelompok.id_kelompok
-                                                                                AND users.id_kelompok = '$kelas'");
+                                                                                AND users.id_kelompok = '$id_kelompok'");
 
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $no++

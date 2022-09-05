@@ -53,7 +53,6 @@
                       <?php
                       $no = 0;
                       $query = mysqli_query($koneksi, "SELECT * FROM kelompok");
-                      // $query2 = mysqli_query($koneksi, "UPDATE kelompok SET isi = isi + 1 WHERE users.id_kelompok not nulL and users.ikut = 'Terima'");
                       while ($kelompok = mysqli_fetch_array($query)) {
                         $no++
                       ?>

@@ -3,3 +3,7 @@ function printArrVar() {
 }
 
 function printArrVar();
+
+
+var parent = document.getElementById("gabung");
+parent.removeChild(parent.lastChild);

@@ -1,4 +1,4 @@
-<?php $page = 'home';
+<?php $title = 'dashboard';
 include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
 

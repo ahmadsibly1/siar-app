@@ -19,8 +19,10 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="navbar">
-            <li class="nav-item menu-open mb-2">
-                <a href="index.php?page=dashboard.php" class="nav-link">
+            <li class="nav-item mb-2">
+                <a href="index.php" class="nav-link <?php if ($title == 'dashboard') {
+                                                        echo 'active';
+                                                    } ?>">
                     <i class="nav-icon fas fa-tachometer-alt mr-3"></i>
                     <p>
                         Dashboard
@@ -28,7 +30,9 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="biodata.php?page=id" class="nav-link">
+                <a href="biodata.php?page=id" class="nav-link <?php if ($title == 'biodata') {
+                                                                    echo 'active';
+                                                                } ?>">
                     <i class="nav-icon fas fa-solid fa-users mr-3"></i>
                     <p>
                         Biodata
@@ -36,7 +40,9 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="data-kelompok.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link">
+                <a href="data-kelompok.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'kelompok') {
+                                                                                                    echo 'active';
+                                                                                                } ?>">
                     <i class="nav-icon fas fa-solid fa-user mr-3"></i>
                     <p>
                         Kelompok Arisan
@@ -54,7 +60,9 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="data-pembayaran.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link">
+                <a href="data-pembayaran.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'penerima') {
+                                                                                                        echo 'active';
+                                                                                                    } ?>">
                     <i class="nav-icon bi bi-wallet-fill mr-3"></i>
                     <p>
                         Bukti Penerima
@@ -62,7 +70,9 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="pages/widgets.html" class="nav-link">
+                <a href="pages/widgets.html" class="nav-link <?php if ($title == 'undian') {
+                                                                    echo 'active';
+                                                                } ?>">
                     <i class="nav-icon fas fa-random mr-3"></i>
                     <p>
                         Undian Arisan

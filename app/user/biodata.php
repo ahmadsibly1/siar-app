@@ -1,5 +1,5 @@
 <?php session_start();
-
+$title = 'biodata';
 // $id_user = $_GET['id_user'];
 
 ?>

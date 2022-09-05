@@ -73,7 +73,6 @@
                                                             LEFT JOIN kelompok 
                                                             ON pembayaran.id_kelompok = kelompok.id_kelompok
                                                             WHERE pembayaran.id_user = '$id_user'");
-
                                                             while ($pembayaran = mysqli_fetch_array($query)) {
                                                                 $no++
                                                             ?>
@@ -91,8 +90,15 @@
                                                                     <td><?= rupiah($pembayaran['jumlah']); ?></td>
                                                                     <td><?= $pembayaran['bulan']; ?></td>
                                                                     <td>
-                                                                        <div id="status"><?= $pembayaran['status_pembayaran']; ?></div>
+                                                                        <!-- <div id="status"><?= $pembayaran['status_pembayaran']; ?></div> -->
+                                                                        <?php
+                                                                        if ($pembayaran['status_pembayaran'] == 'Pending') {
+                                                                            echo '<span class="badge badge-warning p-2">Pending</span>';
+                                                                        } elseif ($pembayaran['status_pembayaran'] == 'Dikonfirmasi') {
+                                                                            echo '<span class="badge badge-success p-2">Diterima</span>';
+                                                                        }
 
+                                                                        ?>
                                                                     </td>
 
                                                                 </tr>
@@ -131,20 +137,23 @@
                     <?php
                     $id_user = $_GET['id_user'];
                     $query2 = mysqli_query($koneksi, "SELECT * FROM pembayaran
-                    LEFT JOIN users 
+                    RIGHT JOIN users 
                     ON pembayaran.id_user = users.id_user
-                    LEFT JOIN kelompok 
+                    RIGHT JOIN kelompok 
                     ON pembayaran.id_kelompok = kelompok.id_kelompok 
-                    WHERE username='$_SESSION[username]'
-                    AND pembayaran.id_user = '$id_user'");
+                    WHERE pembayaran.id_user = '$id_user'");
                     $result = mysqli_num_rows($query2);
                     $anggota = mysqli_fetch_array($query2);
 
-                    $query3 = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$_SESSION[username]'");
-                    $data2 = mysqli_fetch_array($query3);
+                    $query3 = mysqli_query($koneksi, "SELECT * FROM users 
+                    LEFT JOIN kelompok 
+                    ON users.id_kelompok = kelompok.id_kelompok WHERE users.id_user = '$id_user'");
+                    $data3 = mysqli_fetch_array($query3);
+
                     ?>
+                    <!-- ganti hidden menjadi text -->
                     <form action="tambah/tambah-pembayaran.php" method="POST" name="pembayaran" enctype="multipart/form-data">
-                        <input type="hidden" name="id_user" value="<?= $_SESSION['username'] ?>">
+                        <!-- <input type="hidden" name="id_user" value="<?= $_SESSION['username'] ?>"> -->
 
                         <div class="card-body">
                             <div class="row mb-3">
@@ -161,15 +170,15 @@
                             <div class="row mb-3">
                                 <label for=nama_pembayar" class="col-sm-3 col-form-label">Nama Pembayar</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control form-control" type="text" name="" value="<?= $anggota['nama_user']; ?>" aria-label="Disabled input example" disabled readonly>
-                                    <input class="form-control form-control" type="text" name="nama_pembayar" value="<?= $data2['id_user']; ?>">
+                                    <input class="form-control form-control" type="text" name="" value="<?= $data3['nama_user']; ?>" aria-label="Disabled input example" disabled readonly>
+                                    <input class="form-control form-control" type="hidden" name="id_user" value="<?= $id_user; ?>">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for=nama_kelompok" class="col-sm-3 col-form-label">Nama Kelompok</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control form-control" type="text" name="" value="<?= $anggota['nama_kelompok']; ?>" aria-label="Disabled input example" disabled readonly>
-                                    <input class="form-control form-control" type="hidden" name="nama_kelompok" value="<?= $anggota['id_kelompok']; ?>">
+                                    <input class="form-control form-control" type="text" name="" value="<?= $data3['nama_kelompok']; ?>" aria-label="Disabled input example" disabled readonly>
+                                    <input class="form-control form-control" type="hidden" name="nama_kelompok" value="<?= $data3['id_kelompok']; ?>">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -193,7 +202,7 @@
                             <div class="row mb-3">
                                 <label for=jumlah" class="col-sm-3 col-form-label">Jumlah</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control form-control" type="text" value="<?= $anggota['jumlah_iuran']; ?>" name="jumlah" required>
+                                    <input class="form-control form-control" type="text" value="<?= rupiah($data3['jumlah_iuran']); ?>" name="jumlah" disabled>
                                 </div>
                             </div>
                             <div class="row mb-3">
