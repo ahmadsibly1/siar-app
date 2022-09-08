@@ -2,7 +2,7 @@
 
 include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
-<?php session_start();
+<?php
 // cek apakah yang mengakses halaman ini sudah login
 if ($_SESSION['level'] == "") {
   header("location:../../index.php");
