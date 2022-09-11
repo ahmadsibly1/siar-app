@@ -60,9 +60,9 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="data-pembayaran.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'penerima') {
-                                                                                                        echo 'active';
-                                                                                                    } ?>">
+                <a href="data-penerima.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'penerima') {
+                                                                                                    echo 'active';
+                                                                                                } ?>">
                     <i class="nav-icon bi bi-wallet-fill mr-3"></i>
                     <p>
                         Bukti Penerima

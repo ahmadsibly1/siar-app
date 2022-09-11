@@ -23,6 +23,7 @@ if ($nama_kelompok == "") {
     </script>";
 } else {
     $query = mysqli_query($koneksi, "INSERT INTO pembayaran (id_pembayaran, bukti_bayar, id_user, id_kelompok, bank, tgl_bayar, jumlah, bulan) VALUES ('','$bukti_bayar','$id_user','$nama_kelompok','$bank_tujuan','$tanggal_bayar ','$jumlah','$bulan')");
+    // die(var_dump($query));
     if ($query == 1) {
 
         $message = "Pembayarana berhasil dan menunggu konfirmasi dari admin";

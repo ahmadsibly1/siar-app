@@ -37,7 +37,7 @@
                                             <div class="card-header justify-content-between">
                                                 <div class="card-title">
                                                     <div class=" d-flex">
-                                                        <h3 class="">Pembayaran</h3>
+                                                        <h4 class="">Pembayaran</h4>
                                                     </div>
                                                 </div>
                                                 <button type="button" class="btn btn-info mb-3 float-right" data-toggle="modal" data-target="#tambah-pembayaran">
@@ -203,6 +203,7 @@
                                 <label for=jumlah" class="col-sm-3 col-form-label">Jumlah</label>
                                 <div class="col-sm-9">
                                     <input class="form-control form-control" type="text" value="<?= rupiah($data3['jumlah_iuran']); ?>" name="jumlah" disabled>
+                                    <input class="form-control form-control" type="hidden" name="jumlah" value="<?= $data3['jumlah_iuran']; ?>">
                                 </div>
                             </div>
                             <div class="row mb-3">

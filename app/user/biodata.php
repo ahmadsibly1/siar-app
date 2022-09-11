@@ -39,7 +39,7 @@ $title = 'biodata';
                                 <div class="card-header">
                                     <div class="card-title">
                                         <div class="d-flex justify-content-center">
-                                            <h3>Biodata</h3>
+                                            <h4>Biodata</h4>
                                         </div>
                                     </div>
                                 </div>

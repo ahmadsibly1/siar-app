@@ -5,7 +5,7 @@ $id_user     = $_POST['id_user'];
 $id_kelompok =  $_POST['id_kelompok'];
 
 
-$query = "UPDATE users SET id_kelompok='$id_kelompok' WHERE id_user=$id_user";
+$query = "UPDATE users SET id_kelompok='$id_kelompok', ikut = 'Pending' WHERE id_user=$id_user";
 
 if (isset($_POST['simpan'])) {
     $sql = mysqli_query($koneksi, $query);

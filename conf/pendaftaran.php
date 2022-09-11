@@ -29,4 +29,3 @@ echo "<script>
         alert('$message');
         window.location.href = '../index.php';
         </script>";
-// header('Location:../index.php');

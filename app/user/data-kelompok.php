@@ -40,7 +40,7 @@ $title = 'kelompok';
                                             <div class="card-header">
                                                 <div class="card-title">
                                                     <div class="d-flex justify-content-center">
-                                                        <h3>Kelompok Tersedia</h3>
+                                                        <h4>Kelompok Tersedia</h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -84,16 +84,16 @@ $title = 'kelompok';
                                                                             <i class="bi bi-pen"></i> Gabung
                                                                         </a>
                                                                         <?php
-                                                                        $query2 = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$_SESSION[username]'");
-                                                                        $data2 = mysqli_fetch_array($query2);
-                                                                        if ($data2['id_kelompok'] == !0) {
-                                                                            echo '
-                                                                            <script>
-                                                                            var parent = document.getElementById("gabung");
-                                                                            parent.style.visibility = "hidden";
-                                                                            </script>
-                                                                            ';
-                                                                        }
+                                                                        // $query2 = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$_SESSION[username]'");
+                                                                        // $data2 = mysqli_fetch_array($query2);
+                                                                        // if ($data2['id_kelompok'] == !0) {
+                                                                        //     echo '
+                                                                        //     <script>
+                                                                        //     var parent = document.getElementById("gabung");
+                                                                        //     parent.style.visibility = "hidden";
+                                                                        //     </script>
+                                                                        //     ';
+                                                                        // }
                                                                         ?>
                                                                         <!-- modal target -->
                                                                         <div class="modal fade" id="detail-kelompok<?= $kelompok['id_kelompok']; ?>">

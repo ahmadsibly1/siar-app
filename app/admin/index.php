@@ -38,12 +38,96 @@ if ($_SESSION['level'] == "") {
               </div>
             </div><!-- /.col -->
           </div><!-- /.row -->
+
+          <div class="row mb-2">
+            <div class="col-sm-3">
+              <div class="info-box">
+                <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Messages</span>
+                  <span class="info-box-number">1,410</span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="info-box">
+                <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Messages</span>
+                  <span class="info-box-number">1,410</span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="info-box">
+                <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Messages</span>
+                  <span class="info-box-number">1,410</span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="info-box">
+                <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Messages</span>
+                  <span class="info-box-number">1,410</span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+            </div>
+          </div>
+          <?php
+          $query = mysqli_query($koneksi, "SELECT * FROM users WHERE id_kelompok > 0 AND ikut = 'Pending'");
+          while ($data = mysqli_fetch_array($query)) {
+            # code...
+          ?>
+            <div class="row mb-2">
+              <div class="col-sm-12">
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <strong><?= $data['nama_user']; ?></strong> Telah bergabung kelompok, segera tinjau untuk konfirmasi.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+
+                </div>
+              </div><!-- /.col -->
+            </div>
+          <?php  } ?>
+
+
+          <?php
+          $query = mysqli_query($koneksi, "SELECT * FROM pembayaran INNER JOIN users ON pembayaran.id_user = users.id_user WHERE status_pembayaran = 'Pending'");
+          while ($data = mysqli_fetch_array($query)) {
+            # code...
+          ?>
+            <div class="row mb-1">
+              <div class="col-sm-12">
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <strong><?= $data['nama_user']; ?></strong> Telah melakukan pembayaran bulan ke <?= $data['bulan']; ?>, segera tinjau untuk konfirmasi.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+
+                </div>
+              </div><!-- /.col -->
+            </div>
+          <?php  } ?>
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->
 
       <!-- Main content -->
-
       <!-- /.content -->
     </div>
 

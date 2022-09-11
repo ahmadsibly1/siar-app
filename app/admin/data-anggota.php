@@ -28,7 +28,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Data Anggota</h3>
+                  <h4 class="">Data Anggota</h4>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">

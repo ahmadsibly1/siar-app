@@ -28,7 +28,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Antrian Kelompok</h3>
+                                    <h4>Antrian Kelompok</h4>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body ">
@@ -52,7 +52,7 @@
                                             $query = mysqli_query($koneksi, "SELECT * FROM kelompok 
                                                             inner JOIN users 
                                                             ON kelompok.id_kelompok = users.id_kelompok 
-                                                            ");
+                                                            ORDER BY users.id_user DESC");
                                             while ($kelompok = mysqli_fetch_array($query)) {
                                                 $no++
                                             ?>
