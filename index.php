@@ -48,7 +48,7 @@
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-12">
-                            <button type="submit" name="login" class="btn btn-block mb-2 text-light" style="background-color: #1a667e;">MASUK</button>
+                            <button onclick="login('conf/autentikasi.php')" type="submit" name="login" class="btn btn-block mb-2 text-light" style="background-color: #1a667e;">MASUK</button>
                         </div>
                         <div class="col-12">
                             <a href="registrasi.php" class="btn btn-danger btn-block" style="background-color: #e65100;">PENDAFTARAN</a>
@@ -69,7 +69,8 @@
 
 
 
-
+    <!-- SweetAlert2 -->
+    <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
 
     <!-- jQuery -->
     <script src="app/plugins/jquery/jquery.min.js"></script>
@@ -77,6 +78,18 @@
     <script src="app/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="app/dist/js/adminlte.min.js"></script>
+
+    <script>
+        function login(url) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+    </script>
 </body>
 
 </html>

@@ -133,10 +133,8 @@
 
 
 
-  <!-- new form -->
-
-
-
+  <!-- sweet alert2-->
+  <script src="app/plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
 
   <!-- jQuery -->
@@ -298,6 +296,24 @@
     }
     // DropzoneJS Demo Code End
   </script>
+
+
+  <!-- function pendaftaran -->
+  <!-- <script>
+    function pendaftaran(url) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = url;
+        }
+      })
+    }
+  </script> -->
 </body>
 
 </html>

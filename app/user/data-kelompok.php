@@ -63,11 +63,17 @@ $title = 'kelompok';
                                                         <tbody>
                                                             <?php
                                                             $no = 0;
+                                                            $user = $_GET['id_user'];
                                                             $query = mysqli_query($koneksi, "SELECT * FROM kelompok");
+                                                            $query2 = mysqli_query($koneksi, "SELECT * FROM users WHERE id_user = '$user'");
+                                                            $data2 = mysqli_fetch_array($query2);
+                                                            // die(var_dump($data2));
                                                             while ($kelompok = mysqli_fetch_array($query)) {
                                                                 $no++
+
                                                             ?>
                                                                 <tr>
+
                                                                     <td width='4%'><?= $no; ?></td>
                                                                     <td width='13%'><b><?= $kelompok['nama_kelompok']; ?></b></td>
                                                                     <td width='13%'><?= date('d-m-Y', strtotime($kelompok['tanggal_mulai'])); ?></td>
@@ -79,65 +85,72 @@ $title = 'kelompok';
                                                                         <a type="button" class="btn btn-sm btn-info" href="detail-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>">
                                                                             <i class="bi bi-eye-fill"></i> Detail
                                                                         </a>
-
-                                                                        <a href="gabung-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>" id="gabung" class=" btn btn-sm btn-success">
-                                                                            <i class="bi bi-pen"></i> Gabung
+                                                                        <a href="gabung-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>" id="gabung ">
+                                                                            <button class="btn btn-sm btn-success" <?php if ($data2['ikut'] == 'Terima') {
+                                                                                                                        echo 'disabled';
+                                                                                                                    } ?>>
+                                                                                <i class="bi bi-pen"></i>
+                                                                                Gabung
+                                                                            </button>
                                                                         </a>
-                                                                        <?php
-                                                                        // $query2 = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$_SESSION[username]'");
-                                                                        // $data2 = mysqli_fetch_array($query2);
-                                                                        // if ($data2['id_kelompok'] == !0) {
-                                                                        //     echo '
-                                                                        //     <script>
-                                                                        //     var parent = document.getElementById("gabung");
-                                                                        //     parent.style.visibility = "hidden";
-                                                                        //     </script>
-                                                                        //     ';
-                                                                        // }
-                                                                        ?>
-                                                                        <!-- modal target -->
-                                                                        <div class="modal fade" id="detail-kelompok<?= $kelompok['id_kelompok']; ?>">
-                                                                            <div class="modal-dialog modal-lg">
-                                                                                <div class="modal-content">
-                                                                                    <div class="modal-header">
-                                                                                        <h4 class="modal-title">Detail Anggota Kelompok</h4>
-                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                            <span aria-hidden="true">&times;</span>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="modal-body">
-                                                                                        <div class="mb-3 row">
-                                                                                            <label for="" class="col-sm-3 col-form-label">Nama</label>
-                                                                                            <div class="col-sm-9">
-                                                                                                <input class="form-control" type="text" value="<?= $kelompok['nama_user']; ?>" aria-label="readonly input example" readonly>
-                                                                                            </div>
-                                                                                        </div>
+                                                                    </td>
 
-                                                                                        <!-- Jam Countdown -->
-                                                                                        <div style="padding-left:350px">
-                                                                                            <br>
-
-                                                                                            <div id="jam"></div>
-                                                                                            <div id="unit">
-                                                                                                <span>Jam</span>
-                                                                                                <span>Menit</span>
-                                                                                                <span>Detik</span>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                    </div>
-                                                                                    <div class="modal-footer justify-content-between">
-                                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
-                                                                                    </div>
+                                                                    <!-- modal target -->
+                                                                    <div class="modal fade" id="detail-kelompok<?= $kelompok['id_kelompok']; ?>">
+                                                                        <div class="modal-dialog modal-lg">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h4 class="modal-title">Detail Anggota Kelompok</h4>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
                                                                                 </div>
-                                                                                <!-- /.modal-content -->
+                                                                                <div class="modal-body">
+                                                                                    <div class="mb-3 row">
+                                                                                        <label for="" class="col-sm-3 col-form-label">Nama</label>
+                                                                                        <div class="col-sm-9">
+                                                                                            <input class="form-control" type="text" value="<?= $kelompok['nama_user']; ?>" aria-label="readonly input example" readonly>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <!-- Jam Countdown -->
+                                                                                    <div style="padding-left:350px">
+                                                                                        <br>
+
+                                                                                        <div id="jam"></div>
+                                                                                        <div id="unit">
+                                                                                            <span>Jam</span>
+                                                                                            <span>Menit</span>
+                                                                                            <span>Detik</span>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="modal-footer justify-content-between">
+                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
+                                                                                </div>
                                                                             </div>
-                                                                            <!-- /.modal-dialog -->
+                                                                            <!-- /.modal-content -->
                                                                         </div>
+                                                                        <!-- /.modal-dialog -->
+                                                                    </div>
                                                                     </td>
                                                                 </tr>
+
                                                             <?php } ?>
                                                         </tbody>
+                                                        <?php
+                                                        // $query = mysqli_query($koneksi, "SELECT * FROM users WHERE id_user = '$_GET[id_user]'");
+                                                        // $result = mysqli_fetch_array($query);
+                                                        // if ($result['id_kelompok'] == 0) {
+                                                        //     echo "<script>
+                                                        //     let gabung = document.getElementById('gabung');
+                                                        //     gabung.classList.add('disabled');
+                                                        // </script>";
+                                                        // }
+
+
+                                                        ?>
                                                     </table>
                                                 </div>
                                             </div>

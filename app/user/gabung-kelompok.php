@@ -106,7 +106,7 @@
                                                         <div class="row mb-3">
                                                             <label for="jumlah_iuran" class="col-sm-2 col-form-label">Ketentuan</label>
                                                             <div class="col-sm-10">
-                                                                <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem tempore suscipit ea quod veniam magnam quo placeat, tempora aliquam dolores.</li>
+                                                                <li>Admin mendapat berapa % dari hasil kocokan.</li>
                                                                 <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, minus.</li>
                                                             </div>
                                                         </div>

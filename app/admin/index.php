@@ -30,7 +30,7 @@ if ($_SESSION['level'] == "") {
       <!-- Content Header (Page header) -->
       <div class="content-header">
         <div class="container-fluid">
-          <div class="row mb-2">
+          <div class="row mb-3">
             <div class="col-sm-12">
               <div class="dashborad-admin">
                 <h1 name="nama_user" class="m-1">Selamat Datang <?= $_SESSION['username']; ?>!</h1>
@@ -39,51 +39,64 @@ if ($_SESSION['level'] == "") {
             </div><!-- /.col -->
           </div><!-- /.row -->
 
-          <div class="row mb-2">
-            <div class="col-sm-3">
+          <div class="row mb-3">
+            <div class="col-sm-4">
               <div class="info-box">
-                <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+                <span class="info-box-icon" style="background-color: #e65100; color:#ffffff; --fa-animation-duration: 2s;"><i class="fa-solid fa-user fa-beat"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Jumlah Anggota</span>
+                  <?php
+                  $query = mysqli_query($koneksi, "SELECT * FROM users WHERE level='user'");
+                  $data = mysqli_num_rows($query);
+                  ?>
+                  <span class="info-box-number"><?= $data; ?></span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="info-box">
+                <span class="info-box-icon" style="background-color: #e65100; color:#ffffff; --fa-animation-duration: 2s;"><i class="fas fa-solid fa-users fa-beat"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Jumlah Kelompok</span>
+                  <?php
+                  $query = mysqli_query($koneksi, "SELECT * FROM kelompok");
+                  $data = mysqli_num_rows($query);
+                  ?>
+                  <span class="info-box-number"><?= $data; ?></span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="info-box">
+                <span class="info-box-icon" style="background-color: #e65100; color:#ffffff; --fa-animation-duration: 2s;"><i class="fas fa-solid fa-dollar-sign fa-beat"></i></span>
+
+                <div class="info-box-content">
+                  <?php
+                  $query = mysqli_query($koneksi, "SELECT SUM(jumlah) AS total FROM pembayaran");
+                  $data = mysqli_num_rows($query);
+                  $total = mysqli_fetch_array($query);
+                  ?>
+                  <span class="info-box-text">Total Saldo</span>
+                  <span class="info-box-number"> Rp. <?= number_format($total['total']); ?></span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+            </div>
+            <!-- <div class="col-sm-3">
+              <div class="info-box">
+                <span class="info-box-icon" style="background-color: #e65100; color:#ffffff; --fa-animation-duration: 2s;"><i class="far fa-envelope fa-beat"></i></span>
 
                 <div class="info-box-content">
                   <span class="info-box-text">Messages</span>
                   <span class="info-box-number">1,410</span>
                 </div>
-                <!-- /.info-box-content -->
+               
               </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="info-box">
-                <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
-
-                <div class="info-box-content">
-                  <span class="info-box-text">Messages</span>
-                  <span class="info-box-number">1,410</span>
-                </div>
-                <!-- /.info-box-content -->
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="info-box">
-                <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
-
-                <div class="info-box-content">
-                  <span class="info-box-text">Messages</span>
-                  <span class="info-box-number">1,410</span>
-                </div>
-                <!-- /.info-box-content -->
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="info-box">
-                <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
-
-                <div class="info-box-content">
-                  <span class="info-box-text">Messages</span>
-                  <span class="info-box-number">1,410</span>
-                </div>
-                <!-- /.info-box-content -->
-              </div>
-            </div>
+            </div> -->
           </div>
           <?php
           $query = mysqli_query($koneksi, "SELECT * FROM users WHERE id_kelompok > 0 AND ikut = 'Pending'");

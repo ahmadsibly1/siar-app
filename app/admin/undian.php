@@ -39,7 +39,7 @@
                                        <th>No</th>
                                        <th>Nama Kelompok</th>
                                        <th>Waktu Undian</th>
-                                       <th>Jumlah Anggota</th>
+                                       <th>Tipe</th>
                                        <th>Countdown</th>
                                        <th width="17%">Aksi</th>
                                     </tr>

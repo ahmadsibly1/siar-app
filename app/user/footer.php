@@ -69,6 +69,23 @@
         });
     });
 </script>
+
+<!-- copy text -->
+<script type="text/javascript">
+    var span = document.querySelector("span");
+
+    function copyTeks() {
+        document.execCommand("copy");
+        alert("data '" + span.textContent + "' berhasil di salin")
+    }
+    span.addEventListener("copy", function(event) {
+        event.preventDefault();
+        if (event.clipboardData) {
+            event.clipboardData.setData("text/plain", span.textContent);
+            console.log(event.clipboardData.getData("text"))
+        }
+    });
+</script>
 </body>
 
 </html>

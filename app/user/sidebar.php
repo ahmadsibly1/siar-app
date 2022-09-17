@@ -63,7 +63,7 @@
                 <a href="data-penerima.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'penerima') {
                                                                                                     echo 'active';
                                                                                                 } ?>">
-                    <i class="nav-icon bi bi-wallet-fill mr-3"></i>
+                    <i class="nav-icon fa-solid fa-money-bill-transfer mr-3"></i>
                     <p>
                         Bukti Penerima
                     </p>

@@ -52,8 +52,8 @@ if (mysqli_num_rows($query) == 1) {
 } else {
     $message = "Username atau Password salah!";
     echo "<script type='text/javascript'>
-    alert('$message');
-    window.location.href = '../index.php';
-    </script>";
-    // header("Location: ../");
+        window.location.href = '../index.php';
+        </script>";
 }
+?>
+<script src="../app/plugins/sweetalert2/sweetalert2.all.min.js"></script>
