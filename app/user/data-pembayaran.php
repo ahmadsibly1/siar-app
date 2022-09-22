@@ -1,4 +1,4 @@
-<?php $title = "pembayaran"; ?>
+<?php $title = "Pembayaran"; ?>
 <?php session_start(); ?>
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
@@ -6,6 +6,7 @@
 
 
 <body class="hold-transition sidebar-mini layout-fixed">
+
     <div class="wrapper">
 
         <!-- Navbar -->
@@ -24,102 +25,124 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
 
-            <div class="container-fluid">
-                <div class="row mb-2 mt-3">
-                    <div class="col-sm-12">
-                        <!-- Main content -->
-                        <section class="content">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <!-- /.card -->
-                                        <div class="card">
-                                            <div class="card-header justify-content-between">
-                                                <div class="card-title">
-                                                    <div class=" d-flex">
-                                                        <h4 class="">Pembayaran</h4>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn btn-info mb-3 float-right" data-toggle="modal" data-target="#tambah-pembayaran">
-                                                    Tambah Pembayaran
-                                                </button>
-                                            </div>
-                                            <!-- /.card-header -->
-                                            <div class="card-body ">
 
-                                                <div class="table-responsive">
-                                                    <table id="pembayaran" class="table table-md" style="font-size: 13px;">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th width="10%">Bukti Pembayaran</th>
-                                                                <th>Nama Pembayar</th>
-                                                                <th>Nama Kelompok</th>
-                                                                <th>Bank Tujuan</th>
-                                                                <th>Tanggal Transfer</th>
-                                                                <th width="10%">Jumlah</th>
-                                                                <th>Bulan</th>
-                                                                <th>Status</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php
-                                                            $no = 0;
-                                                            $id_user = $_GET['id_user'];
-                                                            // $query = mysqli_query($koneksi, "SELECT * FROM pembayaran LEFT JOIN users ON pembayaran.id_pembayaran = users.id_user");
-                                                            $query = mysqli_query($koneksi, "SELECT * FROM pembayaran
-                                                            LEFT JOIN users 
-                                                            ON pembayaran.id_user = users.id_user
-                                                            LEFT JOIN kelompok 
-                                                            ON pembayaran.id_kelompok = kelompok.id_kelompok
-                                                            WHERE pembayaran.id_user = '$id_user'");
-                                                            while ($pembayaran = mysqli_fetch_array($query)) {
-                                                                $no++
-                                                            ?>
-                                                                <tr>
-                                                                    <td><?= $no; ?></td>
-                                                                    <td width='10%'>
-                                                                        <a href="tambah/images/<?= $pembayaran['bukti_bayar']; ?>">
-                                                                            <img src="tambah/images/<?= $pembayaran['bukti_bayar']; ?>" alt="" width="60px">
-                                                                        </a>
-                                                                    </td>
-                                                                    <td><?= $pembayaran['nama_user']; ?></td>
-                                                                    <td><?= $pembayaran['nama_kelompok']; ?></td>
-                                                                    <td><?= $pembayaran['bank']; ?></td>
-                                                                    <td><?= date('d-m-Y', strtotime($pembayaran['tgl_bayar'])); ?></td>
-                                                                    <td><?= rupiah($pembayaran['jumlah']); ?></td>
-                                                                    <td><?= $pembayaran['bulan']; ?></td>
-                                                                    <td>
-                                                                        <!-- <div id="status"><?= $pembayaran['status_pembayaran']; ?></div> -->
-                                                                        <?php
-                                                                        if ($pembayaran['status_pembayaran'] == 'Pending') {
-                                                                            echo '<span class="badge badge-warning p-2">Pending</span>';
-                                                                        } elseif ($pembayaran['status_pembayaran'] == 'Dikonfirmasi') {
-                                                                            echo '<span class="badge badge-success p-2">Diterima</span>';
-                                                                        }
+            <!-- Main content -->
+            <section class="content-header">
 
-                                                                        ?>
-                                                                    </td>
 
-                                                                </tr>
-                                                            <?php } ?>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <!-- /.card-body -->
+                <!-- box pembayaran -->
+                <!-- <div class="row mb-3">
+                    <?php
+                    $id_user = $_GET['id_user'];
+                    $query = mysqli_query($koneksi, "SELECT * FROM pembayaran
+                    INNER JOIN kelompok
+                    ON pembayaran.id_kelompok = kelompok.id_kelompok
+                    WHERE id_user='$id_user'");
+                    $data = mysqli_fetch_array($query);
+
+                    for ($i = 1; $i < $data['kuota'] + 1; $i++) {
+
+                    ?>
+                        <div class="col-md-1 mb-3">
+                            <button type="button" class="btn" style="background-color: #1a667e; color:white;" <?php if ($data['status_pembayaran'] == 'Dikonfirmasi') {
+                                                                                                                    echo 'disabled';
+                                                                                                                } ?>>
+                                Bulan <span class="badge" style="background-color: #e65100;"><?= $i; ?></span>
+                            </button>
+                        </div>
+                    <?php } ?> -->
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-12">
+
+                            <!-- /.card -->
+                            <div class="card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        <div class="d-flex">
+                                            <h4 class="">Pembayaran</h4>
                                         </div>
-                                        <!-- /.card -->
                                     </div>
-                                    <!-- /.col -->
+                                    <button type="button" class="btn mb-3 float-right" data-toggle="modal" data-target="#tambah-pembayaran" style="background-color: #1a667e; color:white;">
+                                        Tambah Pembayaran
+                                    </button>
                                 </div>
-                                <!-- /.row -->
+                                <!-- /.card-header -->
+                                <div class="card-body ">
+
+                                    <div class="table-responsive">
+                                        <table id="pembayaran" class="table table-md">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th width="10%">Bukti Pembayaran</th>
+                                                    <th>Nama Pembayar</th>
+                                                    <th>Nama Kelompok</th>
+                                                    <th>Bank Tujuan</th>
+                                                    <th>Tanggal Transfer</th>
+                                                    <th width="10%">Jumlah</th>
+                                                    <th>Bulan</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $no = 0;
+                                                $id_user = $_GET['id_user'];
+                                                // $query = mysqli_query($koneksi, "SELECT * FROM pembayaran LEFT JOIN users ON pembayaran.id_pembayaran = users.id_user");
+                                                $query = mysqli_query($koneksi, "SELECT * FROM pembayaran
+                                                    LEFT JOIN users 
+                                                    ON pembayaran.id_user = users.id_user
+                                                    LEFT JOIN kelompok 
+                                                    ON pembayaran.id_kelompok = kelompok.id_kelompok
+                                                    WHERE pembayaran.id_user = '$id_user'");
+                                                while ($pembayaran = mysqli_fetch_array($query)) {
+                                                    $no++
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td width='10%'>
+                                                            <a href="tambah/images/<?= $pembayaran['bukti_bayar']; ?>">
+                                                                <img src="tambah/images/<?= $pembayaran['bukti_bayar']; ?>" alt="" width="60px">
+                                                            </a>
+                                                        </td>
+                                                        <td><?= $pembayaran['nama_user']; ?></td>
+                                                        <td><?= $pembayaran['nama_kelompok']; ?></td>
+                                                        <td><?= $pembayaran['bank']; ?></td>
+                                                        <td><?= date('d-m-Y', strtotime($pembayaran['tgl_bayar'])); ?></td>
+                                                        <td><?= rupiah($pembayaran['jumlah']); ?></td>
+                                                        <td><?= $pembayaran['bulan']; ?></td>
+                                                        <td>
+                                                            <!-- <div id="status"><?= $pembayaran['status_pembayaran']; ?></div> -->
+                                                            <?php
+                                                            if ($pembayaran['status_pembayaran'] == 'Pending') {
+                                                                echo '<span class="badge badge-warning p-2">Pending</span>';
+                                                            } elseif ($pembayaran['status_pembayaran'] == 'Dikonfirmasi') {
+                                                                echo '<span class="badge badge-success p-2">Diterima</span>';
+                                                            }
+
+                                                            ?>
+                                                        </td>
+
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
                             </div>
-                            <!-- /.container-fluid -->
-                        </section>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+
         </div>
 
 
@@ -232,7 +255,9 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button type="submit" name="simpan" class="btn btn-primary float-right">Bayar</button>
+                            <button type="submit" name="simpan" class="btn btn-primary float-right" <?php if ($data3['ikut'] == 'Belum' || $data3['ikut'] == 'Pending') {
+                                                                                                        echo 'disabled';
+                                                                                                    } ?>>Bayar</button>
                             <a href="." type="submit" class="btn btn-default">Cancel</a>
                         </div>
                     </form>
@@ -243,11 +268,7 @@
         </div>
 
 
-        <script>
-            $(document).ready(function() {
-                $('#pembayaran').DataTable();
-            });
-        </script>
+
 
 
         <!-- Control Sidebar -->

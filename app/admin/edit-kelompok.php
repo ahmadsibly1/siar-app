@@ -63,12 +63,6 @@
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for=tipe_arisan" class="col-sm-2 col-form-label">Tipe Arisan</label>
-                      <div class="col-sm-10">
-                        <input class="form-control form-control" type="text" name="tipe_arisan" value=" <?= $kelompok['tipe_arisan']; ?>">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
                       <label for="kuota" class="col-sm-2 col-form-label">Kuota</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="kuota" name="kuota" value=" <?= $kelompok['kuota']; ?>">

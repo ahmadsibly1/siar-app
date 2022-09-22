@@ -1,5 +1,5 @@
 <?php session_start();
-$title = 'biodata';
+$title = 'Biodata';
 // $id_user = $_GET['id_user'];
 
 ?>
@@ -30,7 +30,7 @@ $title = 'biodata';
             <!-- Content Header (Page header) -->
 
             <!-- Main content -->
-            <section class="content" style="margin-top: 20px;">
+            <section class="content-header">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">

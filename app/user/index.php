@@ -1,4 +1,4 @@
-<?php $title = 'dashboard';
+<?php $title = 'Dashboard';
 include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
 

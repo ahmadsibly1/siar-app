@@ -19,24 +19,26 @@
       <!-- /.sidebar -->
     </aside>
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper mt-4">
-
-      <!-- Main content -->
-      <section class="content" style="margin-top: 80px;">
+    <div class="content-wrapper" style="margin-top: 60px;">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
         <div class="container-fluid">
-          <div class="row">
+          <div class="row mb-3">
             <div class="col-12">
               <div class="card">
-                <div class="card-header">
-                  <h4>Kelompok Aktif</h4>
+                <div class="card-header justify-content-between">
+                  <div class="card-title">
+                    <h4>Kelompok Aktif</h4>
+                  </div>
+                  <button type="button" class="btn btn-info mb-3 float-lg-right" data-toggle="modal" data-target="#tambah-kelompok">
+                    Tambah Kelompok
+                  </button>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body ">
-                  <button type="button" class="btn btn-info mb-3 " data-toggle="modal" data-target="#tambah-kelompok">
-                    Tambah Kelompok
-                  </button>
 
-                  <table id=" example1" class="table table-sm table-striped" style="font-size: 13px;">
+
+                  <table id="myTable" class="table table-sm table-striped">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -165,146 +167,134 @@
           <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
-    </div>
-
-
-
-    <!-- tambah kelompok -->
-    <div class="modal fade" id="tambah-kelompok">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Form Tambah Kelompok</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form action="tambah/tambah-kelompok.php" method="POST">
-            <div class="card-body">
-              <div class="row mb-3">
-                <input type="hidden" class="form-control" id="id_user" name="id_user" value="id">
-                <label for="nama_kelompok" class="col-sm-2 col-form-label">Nama kelompok</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="nama_kelompok" name="nama_kelompok" required>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label for="tanggal_mulai" class="col-sm-2 col-form-label">Tanggal Mulai</label>
-                <div class="col-sm-10">
-                  <input class="form-control form-control" type="date" name="tanggal_mulai" required>
-                </div>
-              </div>
-              <!-- <div class="row mb-3">
-                <label for=tipe_arisan" class="col-sm-2 col-form-label">Tipe Arisan</label>
-                <div class="col-sm-10">
-                  <input class="form-control form-control" type="text" name="tipe_arisan" required>
-                </div>
-              </div> -->
-              <div class="row mb-3">
-                <label for="kuota" class="col-sm-2 col-form-label">Kuota</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="kuota" name="kuota" required>
-                </div>
-              </div>
-              <!-- <div class="row mb-3">
-                <label for="isi" class="col-sm-2 col-form-label">Isi</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="isi" name="isi" required>
-                </div>
-              </div> -->
-              <div class="row mb-3">
-                <label for="jumlah_iuran" class="col-sm-2 col-form-label">Jumlah Iuran</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="jumlah_iuran" name="jumlah_iuran" required>
-                </div>
-              </div>
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Buat</button>
-              <a href="data-kelompok.php" type="submit" class="btn btn-default float-right">Cancel</a>
-            </div>
-          </form>
-        </div>
-        <!-- /.modal-content -->
+        </section>
+        <!-- /.content -->
       </div>
-      <!-- /.modal-dialog -->
-    </div>
 
 
-    <!-- edit kelompok -->
-    <div class="modal fade" id="edit-kelompok">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Form Tambah Kelompok</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+
+      <!-- tambah kelompok -->
+      <div class="modal fade" id="tambah-kelompok">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Form Tambah Kelompok</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="tambah/tambah-kelompok.php" method="POST">
+              <div class="card-body">
+                <div class="row mb-3">
+                  <input type="hidden" class="form-control" id="id_user" name="id_user" value="id">
+                  <label for="nama_kelompok" class="col-sm-3 col-form-label">Nama kelompok</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="nama_kelompok" name="nama_kelompok" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="tanggal_mulai" class="col-sm-3 col-form-label">Tanggal Mulai</label>
+                  <div class="col-sm-9">
+                    <input class="form-control form-control" type="date" name="tanggal_mulai" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="kuota" class="col-sm-3 col-form-label">Kuota</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="kuota" name="kuota" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="jumlah_iuran" class="col-sm-3 col-form-label">Jumlah Iuran</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="jumlah_iuran" name="jumlah_iuran" required>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Buat</button>
+                <a href="data-kelompok.php" type="submit" class="btn btn-default float-right">Cancel</a>
+              </div>
+            </form>
           </div>
-          <form action="" method="POST">
-            <div class="card-body">
-              <div class="row mb-3">
-                <input type="hidden" class="form-control" id="id_user" name="id_user" value="id">
-                <label for="nama_kelompok" class="col-sm-2 col-form-label">Nama kelompok</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="nama_kelompok" name="nama_kelompok" required>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label for="tanggal_mulai" class="col-sm-2 col-form-label">Tanggal Mulai</label>
-                <div class="col-sm-10">
-                  <input class="form-control form-control" type="date" name="tanggal_mulai" required>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label for=tipe_arisan" class="col-sm-2 col-form-label">Tipe Arisan</label>
-                <div class="col-sm-10">
-                  <input class="form-control form-control" type="text" name="tipe_arisan" required>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label for="kuota" class="col-sm-2 col-form-label">Kuota</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="kuota" name="kuota" required>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label for="isi" class="col-sm-2 col-form-label">Isi</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="isi" name="isi" required>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label for="jumlah_iuran" class="col-sm-2 col-form-label">Jumlah Iuran</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="jumlah_iuran" name="jumlah_iuran" required>
-                </div>
-              </div>
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Buat</button>
-              <a href="data-kelompok.php" type="submit" class="btn btn-default float-right">Cancel</a>
-            </div>
-          </form>
+          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
       </div>
-      <!-- /.modal-dialog -->
+
+
+      <!-- edit kelompok -->
+      <div class="modal fade" id="edit-kelompok">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Form Tambah Kelompok</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="" method="POST">
+              <div class="card-body">
+                <div class="row mb-3">
+                  <input type="hidden" class="form-control" id="id_user" name="id_user" value="id">
+                  <label for="nama_kelompok" class="col-sm-2 col-form-label">Nama kelompok</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nama_kelompok" name="nama_kelompok" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="tanggal_mulai" class="col-sm-2 col-form-label">Tanggal Mulai</label>
+                  <div class="col-sm-10">
+                    <input class="form-control form-control" type="date" name="tanggal_mulai" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for=tipe_arisan" class="col-sm-2 col-form-label">Tipe Arisan</label>
+                  <div class="col-sm-10">
+                    <input class="form-control form-control" type="text" name="tipe_arisan" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="kuota" class="col-sm-2 col-form-label">Kuota</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="kuota" name="kuota" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="isi" class="col-sm-2 col-form-label">Isi</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="isi" name="isi" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="jumlah_iuran" class="col-sm-2 col-form-label">Jumlah Iuran</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="jumlah_iuran" name="jumlah_iuran" required>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Buat</button>
+                <a href="data-kelompok.php" type="submit" class="btn btn-default float-right">Cancel</a>
+              </div>
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
+
+
+
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
     </div>
-
-
-
-
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-  </div>
-  <!-- ./wrapper -->
-  <?php include('footer.php'); ?>
+    <!-- ./wrapper -->
+    <?php include('footer.php'); ?>

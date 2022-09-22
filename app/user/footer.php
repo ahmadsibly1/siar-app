@@ -86,6 +86,11 @@
         }
     });
 </script>
+<script>
+    $(document).ready(function() {
+        $('#pembayaran').DataTable();
+    });
+</script>
 </body>
 
 </html>

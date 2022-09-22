@@ -79,12 +79,6 @@
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
-                                                            <label for=tipe_arisan" class="col-sm-2 col-form-label">Tipe Arisan</label>
-                                                            <div class="col-sm-10">
-                                                                <input class="form-control form-control" type="text" name="tipe_arisan" value="<?= $kelompok['tipe_arisan']; ?>" aria-label="Disabled input example" disabled readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
                                                             <label for="kuota" class="col-sm-2 col-form-label">Kuota</label>
                                                             <div class="col-sm-10">
                                                                 <input type="text" class="form-control" id="kuota" name="kuota" value=" <?= $kelompok['kuota']; ?>" aria-label="Disabled input example" disabled readonly>
@@ -103,20 +97,43 @@
                                                             </div>
                                                         </div>
                                                         <hr>
+                                                        <div class="row">
+                                                            <label for="jumlah_iuran" class="col-sm-2 col-form-label text-danger">Penting!</label>
+                                                        </div>
                                                         <div class="row mb-3">
                                                             <label for="jumlah_iuran" class="col-sm-2 col-form-label">Ketentuan</label>
                                                             <div class="col-sm-10">
-                                                                <li>Admin mendapat berapa % dari hasil kocokan.</li>
-                                                                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, minus.</li>
+                                                                <li>Pembayaran arisan wajib lunas maksimal 2 hari sebelum waktu undian.</li>
+                                                                <li>Waktu undian dilakukan pada tanggal 1 setiap bulannya.</li>
+                                                                <li>Admin mendapat biaya administrasi sebesar 5% dari hasil undian.</li>
+                                                                <li>Bagi anggota yang sudah mendapatkan arisan wajib komitmen dengan pembayaran tagihannya.</li>
+                                                                <li>Data anggota arisan akan diberikan kepada RT 01 demi kenyamanan bersama.</li>
+                                                                <li>Jika anda bergabung maka anda patuh tehadap ketentuan yang telah dibuat</li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault" onclick="isChecked()">
+                                                                    <label class="form-check-label" for="flexCheckDefault">
+                                                                        Setuju
+                                                                    </label>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <!-- /.card-body -->
                                                     <div class="card-footer">
-                                                        <button type="submit" name="simpan" class="btn btn-primary float-right">Gabung</button>
+                                                        <button type="submit" name="simpan" class="btn btn-primary float-right" id="gabung" disabled>Gabung</button>
                                                         <a href="data-kelompok.php" type="submit" class="btn btn-default">Cancel</a>
-
                                                     </div>
+                                                    <script>
+                                                        function isChecked() {
+                                                            var checkBox = document.getElementById("flexCheckDefault");
+                                                            var text = document.getElementById("gabung");
+                                                            if (checkBox.checked == true) {
+                                                                text.disabled = false;
+                                                            } else {
+                                                                text.disabled = true;
+                                                            }
+                                                        }
+                                                    </script>
                                                 </form>
                                             </div>
                                             <!-- /.card-body -->
@@ -164,12 +181,6 @@
                             <label for="tanggal_mulai" class="col-sm-2 col-form-label">Tanggal Mulai</label>
                             <div class="col-sm-10">
                                 <input class="form-control form-control" type="date" name="tanggal_mulai" required>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for=tipe_arisan" class="col-sm-2 col-form-label">Tipe Arisan</label>
-                            <div class="col-sm-10">
-                                <input class="form-control form-control" type="text" name="tipe_arisan" required>
                             </div>
                         </div>
                         <div class="row mb-3">

@@ -5,7 +5,8 @@ include('../../../conf/config.php');
 $id = $_GET['id'];
 
 $query = mysqli_query($koneksi, "DELETE FROM kelompok WHERE id_kelompok='$id'");
-if ($query == 1) {
+$query2 = mysqli_query($koneksi, "UPDATE users SET id_kelompok='0', ikut='Belum' WHERE id_kelompok='$id'");
+if ($query == 1 && $query2 == 1) {
 
     $message = "Data Berhasil di hapus!";
     echo "<script type='text/javascript'>

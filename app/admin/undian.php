@@ -19,27 +19,28 @@
          <!-- /.sidebar -->
       </aside>
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper mt-4">
+      <div class="content-wrapper" style="margin-top: 60px;">
 
          <!-- Main content -->
-         <section class="content" style="margin-top: 80px;">
+         <section class="content-header">
             <div class="container-fluid">
                <div class="row">
                   <div class="col-12">
                      <div class="card">
                         <div class="card-header">
-                           <h3 class="card-title">Undian</h3>
+                           <div class="card-title">
+                              <h4>Undian</h4>
+                           </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body ">
                            <div class="table-responsive">
-                              <table id=" example1" class="table table-sm table-striped" style="font-size: 13px;">
+                              <table id="myTable" class="table table-md table-striped">
                                  <thead>
                                     <tr>
                                        <th>No</th>
                                        <th>Nama Kelompok</th>
                                        <th>Waktu Undian</th>
-                                       <th>Tipe</th>
                                        <th>Countdown</th>
                                        <th width="17%">Aksi</th>
                                     </tr>
@@ -55,7 +56,6 @@
                                           <td><?= $no; ?></td>
                                           <td width='20%'><?= $kelompok['nama_kelompok']; ?></td>
                                           <td><?= date('d-m-Y', strtotime($kelompok['tanggal_mulai'])); ?></td>
-                                          <td><?= $kelompok['tipe_arisan']; ?></td>
                                           <td>
                                              <h1 id="counter" class="text-center mt-5 m-auto p-3 text-white"></h1>
                                           </td>

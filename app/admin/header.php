@@ -46,5 +46,10 @@
     <!-- <link rel="stylesheet" href="../dist/jam/style.css" type="text/css" />
     <script type="text/javascript" src="../dist/jam/jam.js"></script> -->
     <!-- JAM -->
+    <!-- Font style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>

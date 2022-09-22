@@ -20,7 +20,7 @@
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="navbar">
             <li class="nav-item mb-2">
-                <a href="index.php" class="nav-link <?php if ($title == 'dashboard') {
+                <a href="index.php" class="nav-link <?php if ($title == 'Dashboard') {
                                                         echo 'active';
                                                     } ?>">
                     <i class="nav-icon fas fa-tachometer-alt mr-3"></i>
@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="biodata.php?page=id" class="nav-link <?php if ($title == 'biodata') {
+                <a href="biodata.php?page=id" class="nav-link <?php if ($title == 'Biodata') {
                                                                     echo 'active';
                                                                 } ?>">
                     <i class="nav-icon fas fa-solid fa-users mr-3"></i>
@@ -40,7 +40,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="data-kelompok.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'kelompok') {
+                <a href="data-kelompok.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'Kelompok') {
                                                                                                     echo 'active';
                                                                                                 } ?>">
                     <i class="nav-icon fas fa-solid fa-user mr-3"></i>
@@ -50,7 +50,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="data-pembayaran.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'pembayaran') {
+                <a href="data-pembayaran.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'Pembayaran') {
                                                                                                         echo 'active';
                                                                                                     } ?>">
                     <i class="nav-icon fas fa-solid fa-credit-card mr-3"></i>
@@ -60,7 +60,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="data-penerima.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'penerima') {
+                <a href="data-penerima.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'Penerima') {
                                                                                                     echo 'active';
                                                                                                 } ?>">
                     <i class="nav-icon fa-solid fa-money-bill-transfer mr-3"></i>
@@ -70,7 +70,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="pages/widgets.html" class="nav-link <?php if ($title == 'undian') {
+                <a href="pages/widgets.html" class="nav-link <?php if ($title == 'Undian') {
                                                                     echo 'active';
                                                                 } ?>">
                     <i class="nav-icon fas fa-random mr-3"></i>

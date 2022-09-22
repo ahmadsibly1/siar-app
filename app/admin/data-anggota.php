@@ -19,10 +19,10 @@
       <!-- /.sidebar -->
     </aside>
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper mt-4">
+    <div class="content-wrapper" style="margin-top: 60px;">
 
       <!-- Main content -->
-      <section class="content" style="margin-top: 80px;">
+      <section class="content-header">
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
@@ -32,7 +32,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                  <table id="example1" class="table table-responsive-md table-striped" style="font-size: 13px;">
+                  <table id="myTable" class="table table-responsive-md table-striped">
                     <thead>
                       <tr>
                         <th>No</th>

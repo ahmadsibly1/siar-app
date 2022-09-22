@@ -19,20 +19,33 @@
             <!-- /.sidebar -->
         </aside>
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper mt-4">
+        <div class="content-wrapper" style="margin-top: 60px;">
 
             <!-- Main content -->
-            <section class="content" style="margin-top: 80px;">
+            <section class="content-header">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h5>Kirim Tagihan</h5>
+                                        </div>
+                                        <div class="col-md-3">
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-3">jsjsd</div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card">
                                 <div class="card-header">
                                     <h4>Bukti Pembayaran</h4>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="example1" class="table table-striped style=" style="font-size: 13px;">
+                                    <table id="myTable" class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -83,7 +96,9 @@
                                                             </select>
 
                                                     </td>
-                                                    <td><button type="submit" name="simpan" class="btn btn-info">Ubah</button></td>
+                                                    <td>
+                                                        <button type="submit" name="simpan" class="btn btn-info">Ubah</button>
+                                                    </td>
                                                     </form>
                                                     <td>
                                                         <a href="hapus/hapus-pembayaran.php?id=<?= $pembayaran['id_pembayaran']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
