@@ -1,4 +1,7 @@
-<?php $title = "Data Kelompok"; ?>
+<?php
+$title = "Data Kelompok";
+$title2 = "Antrian kelompok";
+?>
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
 <?php include('../../conf/rupiah.php'); ?>

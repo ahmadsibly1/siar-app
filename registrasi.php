@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="app/dist/css/adminlte.min.css">
   <!-- daterange picker -->
   <link rel="stylesheet" href="app/plugins/daterangepicker/daterangepicker.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 
 <body class="hold-transition sidebar-mini">

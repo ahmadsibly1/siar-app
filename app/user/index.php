@@ -33,41 +33,33 @@ if ($_SESSION['level'] == "") {
                 <div class="container-fluid">
                     <div class="row mb-3">
                         <div class="col-sm-12">
-                            <div class="dashborad-admin">
+                            <div class="bg-dark rounded px-3 py-2">
                                 <h1 name="nama_user" class="m-1">Selamat Datang <?= $_SESSION['username']; ?>!</h1>
                                 <p class="m-1">Di Sistem Informasi Arisan RT 01 RW 07 Kelurahan Lengkong wetan</p>
+                                <hr class="border border-light border-3">
+                                <div class="mb-3">
+                                    Untuk melakukan pembayaran melalui <strong><i>Bank BRI</i></strong>, Silahkan salin nomor ini &nbsp;
+                                    <button type="button" class="btn btn-light">
+                                        <span onclick="copyTeks()" id="dataCopy">
+                                            <strong>098872277</strong>
+                                        </span>
+                                    </button>
+                                    &nbsp; Atas nama Ahmad Fauzi
+                                </div>
+                                <div>
+                                    Untuk melakukan pembayaran melalui <strong><i>Bank BCA</i></strong>, Silahkan salin nomor ini &nbsp;
+                                    <button type="button" class="btn btn-light">
+                                        <span onclick="copyTeks()" id="dataCopy">
+                                            <strong>098872277</strong>
+                                        </span>
+                                    </button>
+                                    &nbsp; Atas nama Ahmad Fauzi
+                                </div>
                             </div>
+
                         </div><!-- /.col -->
                     </div><!-- /.row -->
 
-
-                    <div class="row mb-1">
-                        <div class="col-sm-12">
-                            <div class="alert alert-warning">
-                                Untuk melakukan pembayaran melalui <strong>Bank BRI</strong>, Silahkan salin nomor ini &nbsp;
-                                <button type="button" class="btn btn-light">
-                                    <span onclick="copyTeks()" id="dataCopy">
-                                        <strong>098872277</strong>
-                                    </span>
-                                </button>
-                                &nbsp; Atas nama Ahmad Fauzi
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-2">
-                        <div class="col-sm-12">
-                            <div class="alert alert-warning">
-                                Untuk melakukan pembayaran melalui <strong>Bank BCA</strong>, Silahkan salin nomor ini &nbsp;
-                                <button type="button" class="btn btn-light">
-                                    <span onclick="copyTeks()" id="dataCopy">
-                                        <strong>56798872277</strong>
-
-                                    </span>
-                                </button>
-                                &nbsp; Atas nama Ahmad Fauzi
-                            </div>
-                        </div>
-                    </div>
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->

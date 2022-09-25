@@ -73,7 +73,7 @@ $title = 'Kelompok';
 
                                                         <td><?= $no; ?></td>
                                                         <td><b><?= $kelompok['nama_kelompok']; ?></b></td>
-                                                        <td><?= date('d-m-Y', strtotime($kelompok['tanggal_mulai'])); ?></td>
+                                                        <td><?= date('d-F-Y', strtotime($kelompok['tanggal_mulai'])); ?></td>
                                                         <td><?= $kelompok['kuota']; ?></td>
                                                         <td><?= $kelompok['isi']; ?></td>
                                                         <td><?= rupiah($kelompok['jumlah_iuran']); ?></td>
@@ -135,18 +135,6 @@ $title = 'Kelompok';
 
                                                 <?php } ?>
                                             </tbody>
-                                            <?php
-                                            // $query = mysqli_query($koneksi, "SELECT * FROM users WHERE id_user = '$_GET[id_user]'");
-                                            // $result = mysqli_fetch_array($query);
-                                            // if ($result['id_kelompok'] == 0) {
-                                            //     echo "<script>
-                                            //     let gabung = document.getElementById('gabung');
-                                            //     gabung.classList.add('disabled');
-                                            // </script>";
-                                            // }
-
-
-                                            ?>
                                         </table>
                                     </div>
                                 </div>
@@ -174,23 +162,23 @@ $title = 'Kelompok';
                                 $data = mysqli_fetch_assoc($query);
 
                                 if ($data['ikut'] == "Terima") {
-                                    $message = '<div class="ikut text-white text-center p-2" style="background-color: #1a667e;">
+                                    $message = '<div class="ikut text-white text-center p-2 rounded" style="background-color: #1a667e;">
                                                 <h3>Anda sedang mengikuti kelompok ' . $data["nama_kelompok"] . '</h3>
                                                 </div>';
                                     echo $message;
                                 } elseif ($data['ikut'] == "Pending") {
-                                    $message2 = '<div class="ikut text-white text-center p-2 bg-warning">
+                                    $message2 = '<div class="ikut text-white text-center p-2 bg-warning rounded">
                                                 <h3>Sedang menunggu konfirmasi admin</h3>
                                                 </div>';
                                     echo $message2;
                                 } else {
-                                    $message2 = '<div class="ikut text-white text-center p-2" style="background-color: #1a667e;">
+                                    $message2 = '<div class="ikut text-white text-center p-2 rounded" style="background-color: #1a667e;">
                                                 <h3>Anda tidak mengikuti kelompok manapun</h3>
                                                 </div>';
                                     echo $message2;
                                 }
                             } else {
-                                $message2 = '<div class="ikut text-white text-center p-2" style="background-color: #1a667e;">
+                                $message2 = '<div class="ikut text-white text-center p-2 rounded" style="background-color: #1a667e;">
                                             <h3>Anda tidak mengikuti kelompok manapun</h3>
                                             </div>';
                                 echo $message2;

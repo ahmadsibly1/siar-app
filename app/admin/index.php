@@ -32,7 +32,7 @@ if ($_SESSION['level'] == "") {
         <div class="container-fluid">
           <div class="row mb-3">
             <div class="col-sm-12">
-              <div class="dashborad-admin">
+              <div class="dashborad-admin rounded">
                 <h1 name="nama_user" class="m-1">Selamat Datang <?= $_SESSION['username']; ?>!</h1>
                 <p class="m-1">Di Sistem Informasi Arisan RT 01 RW 07 Kelurahan Lengkong wetan</p>
               </div>

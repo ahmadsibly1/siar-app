@@ -1,4 +1,8 @@
-<?php $title = "Data Penerima"; ?>
+<?php
+$title = "Data transaksi";
+$title2 = "Data penerima";
+
+?>
 
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>

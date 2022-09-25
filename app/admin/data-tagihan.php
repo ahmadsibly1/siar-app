@@ -1,6 +1,6 @@
 <?php
 $title = "Data transaksi";
-$title2 = "Data pembayaran";
+$title2 = "Data tagihan";
 ?>
 
 <?php include('header.php'); ?>
@@ -29,38 +29,75 @@ $title2 = "Data pembayaran";
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <!-- <div class="card">
+                            <div class="card">
                                 <div class="card-header">
                                     <h5>Kirim Tagihan</h5>
                                 </div>
+                                <?php
+                                // $query = mysqli_query($koneksi, "SELECT * FROM transaksi");
+                                // $bulan = mysqli_fetch_array($query);
+                                ?>
                                 <div class="card-body">
                                     <div class="row justify-content-center">
                                         <div class="col-md-3">
-                                            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                                <option selected>Pilih Bulan</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                                <option selected>Pilih kelompok</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
+                                            <?php
+                                            $sql = mysqli_query($koneksi, "SELECT * FROM transaksi");
+                                            $pilihan = mysqli_fetch_array($sql);
+                                            ?>
+                                            <form action="data-tagihan.php" method="POST">
+                                                <select class="form-select form-select-md mb-3" name="bulan" aria-label=".form-select-lg example">
+
+                                                    <option selected>Pilih Bulan</option>
+                                                    <option <?php if ($pilihan == 1) {
+                                                                echo 'selected';
+                                                            } ?> value="Januari">Januari</option>
+                                                    <option <?php if ($pilihan == 2) {
+                                                                echo 'selected';
+                                                            } ?> value="Februari">Februari</option>
+                                                    <option <?php if ($pilihan == 3) {
+                                                                echo 'selected';
+                                                            } ?> value="Maret">Maret</option>
+                                                    <option <?php if ($pilihan == 4) {
+                                                                echo 'selected';
+                                                            } ?> value="April">April</option>
+                                                    <option <?php if ($pilihan == 5) {
+                                                                echo 'selected';
+                                                            } ?> value="Mei">Mei</option>
+                                                    <option <?php if ($pilihan == 6) {
+                                                                echo 'selected';
+                                                            } ?> value="Juni">Juni</option>
+                                                    <option <?php if ($pilihan == 7) {
+                                                                echo 'selected';
+                                                            } ?> value="Juli">Juli</option>
+                                                    <option <?php if ($pilihan == 8) {
+                                                                echo 'selected';
+                                                            } ?> value="Agustus">Agustus</option>
+                                                    <option <?php if ($pilihan == 9) {
+                                                                echo 'selected';
+                                                            } ?> value="September">September</option>
+                                                    <option <?php if ($pilihan == 10) {
+                                                                echo 'selected';
+                                                            } ?> value="Oktober">Oktober</option>
+                                                    <option <?php if ($pilihan == 11) {
+                                                                echo 'selected';
+                                                            } ?> value="November">November</option>
+                                                    <option <?php if ($pilihan == 12) {
+                                                                echo 'selected';
+                                                            } ?> value="Desember">Desember</option>
+                                                </select>
                                         </div>
                                         <div class="col-md-1">
-                                            <button class="btn btn-primary">cari</button>
+                                            <button class="btn btn-dark" type="submit">Cari</button>
+
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
 
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Bukti Pembayaran</h4>
+                                    <h4>Data Tagihan</h4>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -68,62 +105,54 @@ $title2 = "Data pembayaran";
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Bukti Pembayaran</th>
-                                                <th>Nama Pembayar</th>
+                                                <th>Nama</th>
                                                 <th>Nama Kelompok</th>
-                                                <th>Bank Tujuan</th>
-                                                <th>Tanggal Transfer</th>
                                                 <th>Jumlah</th>
                                                 <th>Bulan</th>
-                                                <th colspan="2">Status</th>
+                                                <th>Status</th>
                                                 <th>Aksi</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
+
                                             $no = 0;
-                                            // $query = mysqli_query($koneksi, "SELECT * FROM pembayaran LEFT JOIN users ON pembayaran.id_pembayaran = users.id_user");
-                                            $query = mysqli_query($koneksi, "SELECT * FROM pembayaran
-                                                            LEFT JOIN users 
-                                                            ON pembayaran.id_user = users.id_user
-                                                            LEFT JOIN kelompok 
-                                                            ON pembayaran.id_kelompok = kelompok.id_kelompok
-                                                            ORDER BY pembayaran.id_pembayaran DESC");
-                                            while ($pembayaran = mysqli_fetch_array($query)) {
+                                            // if (isset($_POST['submit'])) {
+                                            // $bulan = $_POST['bulan'];
+                                            // $kelompok = $_POST['kelompok'];
+                                            $query2 = mysqli_query($koneksi, "SELECT * FROM transaksi
+                                                                INNER JOIN users ON transaksi.id_user = users.id_user
+                                                                INNER JOIN kelompok ON users.id_kelompok = kelompok.id_kelompok
+                                                                WHERE transaksi.bulan = 1 AND transaksi.status_transaksi = 'Belum bayar'");
+                                            while ($transaksi = mysqli_fetch_array($query2)) {
                                                 $no++
                                             ?>
                                                 <tr>
-                                                    <td><?= $no; ?></td>
-                                                    <td width='5%'>
-                                                        <a href="../user/tambah/images/<? $pembayaran['bukti_bayar']; ?>">
-                                                            <img src="../user/tambah/images/<?= $pembayaran['bukti_bayar']; ?>" alt="" width="60px">
-                                                        </a>
-                                                    </td>
-                                                    <td><?= $pembayaran['nama_user']; ?></td>
-                                                    <td><?= $pembayaran['nama_kelompok']; ?></td>
-                                                    <td><?= $pembayaran['bank']; ?></td>
-                                                    <td><?= date('d-m-Y', strtotime($pembayaran['tgl_bayar'])); ?></td>
-                                                    <td><?= rupiah($pembayaran['jumlah']); ?></td>
-                                                    <td><?= $pembayaran['bulan']; ?></td>
-                                                    <td>
-                                                        <form action="simpan-pembayaran.php" method="post">
-                                                            <input type="hidden" name="id_pembayaran" value="<?php echo $pembayaran['id_pembayaran']; ?>">
-                                                            <select class="form-control1" type="from-control" name="status_pembayaran">
-                                                                <option value="<?= $pembayaran['status_pembayaran']; ?>"><?= $pembayaran['status_pembayaran']; ?> </option>
-                                                                <option value="Dikonfirmasi">Dikonfirmasi</option>
-                                                                <!-- <option value="Delumdikonfirmasi">Belum dikonfirmasi</option> -->
-                                                            </select>
 
+                                                    <td><?= $no; ?></td>
+                                                    <td><?= $transaksi['nama_user']; ?></td>
+                                                    <td><?= $transaksi['nama_kelompok']; ?></td>
+                                                    <td><?= rupiah($transaksi['jumlah_iuran']); ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($transaksi['bulan'] == 1) {
+                                                            echo date("F", strtotime("+1 month"));
+                                                        } elseif ($transaksi['bulan'] == 2) {
+                                                            echo date("F", strtotime("+1 month"));
+                                                        }
+                                                        ?>
                                                     </td>
                                                     <td>
-                                                        <button type="submit" name="simpan" class="btn btn-info">Ubah</button>
+                                                        <span class="badge badge-danger p-2"><?= $transaksi['status_transaksi']; ?></span>
                                                     </td>
-                                                    </form>
                                                     <td>
-                                                        <a href="hapus/hapus-pembayaran.php?id=<?= $pembayaran['id_pembayaran']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
+                                                        <a href="kirim-tagihan.php?id=<?= $transaksi['id_transaksi']; ?>" class="btn btn-primary">Kirim</a>
+                                                        <a href="http://" target="_blank" rel="noopener noreferrer" class="btn btn-success">Watsapp</a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
+                                            <?php   ?>
                                         </tbody>
                                     </table>
                                 </div>
