@@ -40,9 +40,9 @@
                                     <tr>
                                        <th>No</th>
                                        <th>Nama Kelompok</th>
+                                       <th>Jumlah Anggota</th>
                                        <th>Waktu Undian</th>
-                                       <th>Countdown</th>
-                                       <th width="17%">Aksi</th>
+                                       <th>Aksi</th>
                                     </tr>
                                  </thead>
                                  <tbody>
@@ -54,11 +54,39 @@
                                     ?>
                                        <tr>
                                           <td><?= $no; ?></td>
-                                          <td width='20%'><?= $kelompok['nama_kelompok']; ?></td>
-                                          <td><?= date('d-m-Y', strtotime($kelompok['tanggal_mulai'])); ?></td>
-                                          <td>
-                                             <h1 id="counter" class="text-center mt-5 m-auto p-3 text-white"></h1>
-                                          </td>
+                                          <td><?= $kelompok['nama_kelompok']; ?></td>
+                                          <td><?= $kelompok['isi']; ?> Anggota</td>
+                                          <td><?= date('1 F Y', strtotime('+31 days', strtotime($kelompok['tanggal_mulai']))); ?></td>
+
+                                          <script>
+                                             var countDownDate = <?php echo strtotime('+31 days', strtotime($kelompok['tanggal_mulai'])) ?> * 1000;
+                                             var now = <?php echo time() ?> * 1000;
+
+
+                                             var x = setInterval(function() {
+
+                                                now = now + 1000;
+
+
+                                                var distance = countDownDate - now;
+
+
+                                                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+                                                document.getElementById("demo").innerHTML = days + " Hari " + hours + " Jam " +
+                                                   minutes + " Menit " + seconds + " Detik ";
+
+                                                if (distance < 0) {
+                                                   clearInterval(x);
+                                                   document.getElementById("demo").innerHTML = "Waktunya undian";
+                                                }
+                                             }, 1000);
+                                          </script>
+
                                           <td>
                                              <a type="button" class="btn btn-sm btn-info" href="detail-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>">
                                                 <i class="bi bi-eye-fill">Anggota</i>
@@ -79,6 +107,14 @@
                         <!-- /.card -->
 
                      </div>
+                     <div class="row mb-3 justify-content-center ">
+                        <div class="col-sm-5 text-center">
+                           <div class="rounded  p-3" style="background-color: #1a667e;">
+                              <h1 class="badge rounded-pill text-white" id="demo"></h1>
+                              <h3 class="text-white">Menuju waktu undian</h3>
+                           </div>
+                        </div><!-- /.col -->
+                     </div><!-- /.row -->
 
                      <!-- <button type="button" class="btn btn-info justify-content-center" data-toggle="modal" data-target="#modal-lg">
                         UNDI KELOMPOK
@@ -158,34 +194,8 @@
 
 
       <!-- Script -->
-      <script>
-         <?php
-         $data = strtotime($date);
-         echo $data;
 
-         $getDate = date("F d, Y", $data);
-         ?>
-         var countDownDate = new Date("<?php echo "$getDate $time"; ?>").getTime();
-         // Update the count down every 1 second
-         var x = setInterval(function() {
-            var now = new Date().getTime();
-            // Find the distance between now an the count down date
-            var distance = countDownDate - now;
-            // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            // Output the result in an element with id="counter"11
-            document.getElementById("counter").innerHTML = days + "Day : " + hours + "h " +
-               minutes + "m " + seconds + "s ";
-            // If the count down is over, write some text 
-            if (distance < 0) {
-               clearInterval(x);
-               document.getElementById("counter").innerHTML = "EXPIRED";
-            }
-         }, 1000);
-      </script>
+
 
       <!-- edit kelompok -->
 

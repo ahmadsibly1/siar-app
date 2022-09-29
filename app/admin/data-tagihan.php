@@ -124,7 +124,7 @@ $title2 = "Data tagihan";
                                             $query2 = mysqli_query($koneksi, "SELECT * FROM transaksi
                                                                 INNER JOIN users ON transaksi.id_user = users.id_user
                                                                 INNER JOIN kelompok ON users.id_kelompok = kelompok.id_kelompok
-                                                                WHERE transaksi.bulan = 1 AND transaksi.status_transaksi = 'Belum bayar'");
+                                                                WHERE transaksi.status_transaksi = 'Belum bayar'");
                                             while ($transaksi = mysqli_fetch_array($query2)) {
                                                 $no++
                                             ?>
@@ -136,19 +136,45 @@ $title2 = "Data tagihan";
                                                     <td><?= rupiah($transaksi['jumlah_iuran']); ?></td>
                                                     <td>
                                                         <?php
-                                                        if ($transaksi['bulan'] == 1) {
-                                                            echo date("F", strtotime("+1 month"));
-                                                        } elseif ($transaksi['bulan'] == 2) {
-                                                            echo date("F", strtotime("+1 month"));
+                                                        function bulan($angka)
+                                                        {
+                                                            global $transaksi;
+                                                            if ($transaksi['bulan'] == 1) {
+                                                                echo date("F", strtotime("+1 month"));
+                                                            } elseif ($transaksi['bulan'] == 2) {
+                                                                echo date("F", strtotime("+2 month"));
+                                                            } elseif ($transaksi['bulan'] == 3) {
+                                                                echo date("F", strtotime("+3 month"));
+                                                            } elseif ($transaksi['bulan'] == 4) {
+                                                                echo date("F", strtotime("+4 month"));
+                                                            } elseif ($transaksi['bulan'] == 5) {
+                                                                echo date("F", strtotime("+5 month"));
+                                                            } elseif ($transaksi['bulan'] == 6) {
+                                                                echo date("F", strtotime("+6 month"));
+                                                            } elseif ($transaksi['bulan'] == 7) {
+                                                                echo date("F", strtotime("+7 month"));
+                                                            } elseif ($transaksi['bulan'] == 8) {
+                                                                echo date("F", strtotime("+8 month"));
+                                                            } elseif ($transaksi['bulan'] == 9) {
+                                                                echo date("F", strtotime("+9 month"));
+                                                            } elseif ($transaksi['bulan'] == 10) {
+                                                                echo date("F", strtotime("+10 month"));
+                                                            } elseif ($transaksi['bulan'] == 11) {
+                                                                echo date("F", strtotime("+11 month"));
+                                                            } elseif ($transaksi['bulan'] == 12) {
+                                                                echo date("F", strtotime("+12 month"));
+                                                            }
                                                         }
                                                         ?>
+                                                        <?= bulan($transaksi['bulan']); ?>
                                                     </td>
                                                     <td>
                                                         <span class="badge badge-danger p-2"><?= $transaksi['status_transaksi']; ?></span>
                                                     </td>
                                                     <td>
-                                                        <a href="kirim-tagihan.php?id=<?= $transaksi['id_transaksi']; ?>" class="btn btn-primary">Kirim</a>
-                                                        <a href="http://" target="_blank" rel="noopener noreferrer" class="btn btn-success">Watsapp</a>
+
+                                                        <a href="kirim-tagihan.php?id=<?= $transaksi['id_user']; ?>" class="btn btn-primary">Kirim</a>
+                                                        <a href="https://api.whatsapp.com/send?phone=6289505347307&text=Kepada%20Yth%20Bpk/ibu%20<?= $transaksi['nama_user']; ?>,%20%0Anda%20terdaftar%20pada%20kelompok%20<?= $transaksi['nama_kelompok']; ?>%20dan%20belum%20melakukan%20pembayaran%20pada%20bulan%20<?= bulan($transaksi['bulan']); ?>%20sejumalah%20<?= rupiah($transaksi['jumlah_iuran']); ?>.%20%0Segera melakukan pembayaran sebelum" target="_blank" rel="noopener noreferrer" class="btn btn-success">Watsapp</a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>

@@ -5,8 +5,8 @@ include('../../conf/config.php');
 if (isset($_POST['simpan'])) {
     $data = $_POST['id_user'];
     $sql = mysqli_query($koneksi, "UPDATE users SET ikut ='$_POST[ikut]' WHERE id_user = '$data'");
-    $query2 = mysqli_query($koneksi, "INSERT INTO transaksi (id_transaksi, id_user) VALUES ('','$data')");
-
+    $query2 = mysqli_query($koneksi, "INSERT INTO transaksi (id_transaksi, id_user, januari, februari, maret, april, mei, juni, juli, agustus, september, oktober, november, desember) VALUES ('','$data','0','0','0','0','0','0','0','0','0','0','0','0')");
+    // $query = mysqli_query($koneksi, "INSERT INTO transaksi (id_transaksi, id_user, januari, februari, maret, april, mei, juni, juli, agustus, september, oktober, november, desember) VALUES ('','$data','0','0','0','0','0','0','0','0','0','0','0','0'");
     if ($sql && $query2) {
         echo "<script>alert('Konfirmasi Diubah');</script>";
         echo "<script>location  ='antrian-kelompok.php';</script>";

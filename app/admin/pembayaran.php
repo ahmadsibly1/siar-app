@@ -1,7 +1,4 @@
-<?php
-$title = "Data transaksi";
-$title2 = "Data pembayaran";
-?>
+<?php $title = "Data Pembayaran"; ?>
 
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
@@ -29,35 +26,19 @@ $title2 = "Data pembayaran";
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <!-- <div class="card">
-                                <div class="card-header">
-                                    <h5>Kirim Tagihan</h5>
-                                </div>
+                            <div class="card">
                                 <div class="card-body">
-                                    <div class="row justify-content-center">
+                                    <div class="row">
                                         <div class="col-md-3">
-                                            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                                <option selected>Pilih Bulan</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
+                                            <h5>Kirim Tagihan</h5>
                                         </div>
                                         <div class="col-md-3">
-                                            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                                <option selected>Pilih kelompok</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
                                         </div>
-                                        <div class="col-md-1">
-                                            <button class="btn btn-primary">cari</button>
-                                        </div>
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-3">jsjsd</div>
                                     </div>
                                 </div>
-                            </div> -->
-
+                            </div>
                             <div class="card">
                                 <div class="card-header">
                                     <h4>Bukti Pembayaran</h4>
@@ -88,6 +69,8 @@ $title2 = "Data pembayaran";
                                                             ON pembayaran.id_user = users.id_user
                                                             LEFT JOIN kelompok 
                                                             ON pembayaran.id_kelompok = kelompok.id_kelompok
+                                                            -- LEFT JOIN transaksi
+                                                            -- ON pembayaran.id_pembayaran = transaksi.id_pembayaran
                                                             ORDER BY pembayaran.id_pembayaran DESC");
                                             while ($pembayaran = mysqli_fetch_array($query)) {
                                                 $no++
@@ -108,6 +91,8 @@ $title2 = "Data pembayaran";
                                                     <td>
                                                         <form action="simpan-pembayaran.php" method="post">
                                                             <input type="hidden" name="id_pembayaran" value="<?php echo $pembayaran['id_pembayaran']; ?>">
+                                                            <input type="hidden" name="bulan" value="<?php echo $pembayaran['bulan']; ?>">
+                                                            <input type="hidden" name="id_user" value="<?php echo $pembayaran['id_user']; ?>">
                                                             <select class="form-control1" type="from-control" name="status_pembayaran">
                                                                 <option value="<?= $pembayaran['status_pembayaran']; ?>"><?= $pembayaran['status_pembayaran']; ?> </option>
                                                                 <option value="Dikonfirmasi">Dikonfirmasi</option>

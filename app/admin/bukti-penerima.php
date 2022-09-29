@@ -1,8 +1,4 @@
-<?php
-$title = "Data transaksi";
-$title2 = "Data penerima";
-
-?>
+<?php $title = "Data Penerima"; ?>
 
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
@@ -119,7 +115,7 @@ $title2 = "Data penerima";
 
 
         <div class="modal fade" id="tambah-pembayaran">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Form Pembayaran</h4>
@@ -134,97 +130,25 @@ $title2 = "Data penerima";
 
                             <div class="row mb-3">
                                 <div class="col-sm-12">
-                                    <select class="form-select-lg form-control" aria-label=".form-select-lg example">
+                                    <select class="form-select-lg form-control" aria-label=".form-select-lg example" name="nama_user">
                                         <option selected>Pilih nama anggota yang akan dibayar</option>
                                         <?php
-                                        $query = mysqli_query($koneksi, "SELECT * FROM users WHERE users.pemenang = '1'");
+                                        $query = mysqli_query($koneksi, "SELECT * FROM users WHERE users.pemenang = '1' AND users.level = 'user'");
                                         while ($pembayaran = mysqli_fetch_array($query)) {
                                             $id_user = $pembayaran['id_user'];
                                         ?>
-                                            <option value="<?= $pembayaran['id_user']; ?>"><?= $pembayaran['nama_user']; ?></option>
-                                        <?php } ?>
+                                            <option value="<?= $pembayaran['nama_user']; ?>"><?= $pembayaran['nama_user']; ?></option>
+
                                     </select>
+                                    <input class="form-control form-control" type="hidden" name="id_user" value="<?= $pembayaran['id_user']; ?>">
+                                <?php } ?>
                                 </div>
                             </div>
-
-                            <?php
-                            $query = mysqli_query($koneksi, "SELECT * FROM kelompok LEFT JOIN users
-                                                        ON kelompok.id_kelompok = users.id_kelompok
-                                                        WHERE users.id_user = '$id_user'");
-                            while ($data = mysqli_fetch_array($query)) {;
-
-                            ?>
-                                <div class="row mb-3">
-                                    <label for="exampleInputFile" class="col-sm-3 col-form-label">Foto Pembayaran</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" name="bukti_bayar" class="custom-file-input" id="exampleInputFile" required>
-                                                <label class="custom-file-label" for="exampleInputFile"></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for=nama_kelompok" class="col-sm-3 col-form-label">Nama Kelompok</label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control form-control" type="text" name="" value="<?= $data['nama_kelompok']; ?>" aria-label="Disabled input example" disabled readonly>
-                                        <input class="form-control form-control" type="hidden" name="nama_kelompok" value="<?= $data3['id_kelompok']; ?>">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="bank_tujuan" class="col-sm-3 col-form-label">Bank Tujuan</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-grup">
-                                            <select class="form-select form-control" aria-label="Default select example" id="bank_tujuan" name="bank_tujuan" placeholder="*" required>
-                                                <option selected>...Pilih...</option>
-                                                <option value="BRI">BRI</option>
-                                                <option value="BCA">BCA</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="tanggal_bayar" class="col-sm-3 col-form-label">Tanggal Bayar</label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control form-control" type="date" name="tanggal_bayar">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for=jumlah" class="col-sm-3 col-form-label">Jumlah</label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control form-control" type="text" value="<?= rupiah($data3['jumlah_iuran']); ?>" name="jumlah" disabled>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for=bulan" class="col-sm-3 col-form-label">Bulan</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-grup">
-                                            <select class="form-select form-control" aria-label="Default select example" id="bulan" name="bulan" placeholder="*" required>
-                                                <option selected>...Pilih...</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                                <option value="11">11</option>
-                                                <option value="12">12</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" name="simpan" class="btn btn-primary float-right">Bayar</button>
-                            <a href="." type="submit" class="btn btn-default">Cancel</a>
-                        </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <button type="submit" name="simpan" class="btn btn-primary float-right">Bayar</button>
+                                <a href="." type="submit" class="btn btn-default">Cancel</a>
+                            </div>
                     </form>
                 </div>
                 <!-- /.modal-content -->

@@ -24,6 +24,7 @@ if ($nama_kelompok == "") {
 } else {
     $query = mysqli_query($koneksi, "INSERT INTO pembayaran (id_pembayaran, bukti_bayar, id_user, id_kelompok, bank, tgl_bayar, jumlah, bulan) VALUES ('','$bukti_bayar','$id_user','$nama_kelompok','$bank_tujuan','$tanggal_bayar ','$jumlah','$bulan')");
     // die(var_dump($query));
+    $query2 = mysqli_query($koneksi, "UPDATE transaksi SET id_pembayaran = '$id_pembayaran' WHERE id_user = '$id_user' AND bulan = '$bulan'");
     if ($query == 1) {
 
         $message = "Pembayarana berhasil dan menunggu konfirmasi dari admin";

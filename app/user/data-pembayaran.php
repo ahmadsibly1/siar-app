@@ -235,18 +235,70 @@
                                     <div class="input-grup">
                                         <select class="form-select form-control" aria-label="Default select example" id="bulan" name="bulan" placeholder="*" required>
                                             <option selected>...Pilih...</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
+                                            <?php
+                                            $bulan = mysqli_query($koneksi, "SELECT * FROM transaksi");
+                                            $hasil = mysqli_fetch_array($bulan);
+                                            ?>
+                                            <option value="1">1 | <?php if ($hasil['status_transaksi'] == 'Belum bayar') {
+                                                                        echo 'Belum bayar';
+                                                                    } else {
+                                                                        echo 'Lunas';
+                                                                    }; ?></option>
+                                            <option value="2">2 | <?php if ($hasil['status_transaksi'] == 'Belum bayar') {
+                                                                        echo 'Belum bayar';
+                                                                    } else {
+                                                                        echo 'Lunas';
+                                                                    }; ?></option>
+                                            <option value="3">3 | <?php if ($hasil['status_transaksi'] == 'Belum bayar') {
+                                                                        echo 'Belum bayar';
+                                                                    } else {
+                                                                        echo 'Lunas';
+                                                                    }; ?></option>
+                                            <option value="4">4 | <?php if ($hasil['status_transaksi'] == 'Belum bayar') {
+                                                                        echo 'Belum bayar';
+                                                                    } else {
+                                                                        echo 'Lunas';
+                                                                    }; ?></option>
+                                            <option value="5">5 | <?php if ($hasil['status_transaksi'] == 'Belum bayar') {
+                                                                        echo 'Belum bayar';
+                                                                    } else {
+                                                                        echo 'Lunas';
+                                                                    }; ?></option>
+                                            <option value="6">6 | <?php if ($hasil['status_transaksi'] == 'Belum bayar') {
+                                                                        echo 'Belum bayar';
+                                                                    } else {
+                                                                        echo 'Lunas';
+                                                                    }; ?></option>
+                                            <option value="7">7 | <?php if ($hasil['status_transaksi'] == 'Belum bayar') {
+                                                                        echo 'Belum bayar';
+                                                                    } else {
+                                                                        echo 'Lunas';
+                                                                    }; ?></option>
+                                            <option value="8">8 | <?php if ($hasil['status_transaksi'] == 'Belum bayar') {
+                                                                        echo 'Belum bayar';
+                                                                    } else {
+                                                                        echo 'Lunas';
+                                                                    }; ?></option>
+                                            <option value="9">9 | <?php if ($hasil['status_transaksi'] == 'Belum bayar') {
+                                                                        echo 'Belum bayar';
+                                                                    } else {
+                                                                        echo 'Lunas';
+                                                                    }; ?></option>
+                                            <option value="10">10 | <?php if ($hasil['status_transaksi'] == 'Belum bayar') {
+                                                                        echo 'Belum bayar';
+                                                                    } else {
+                                                                        echo 'Lunas';
+                                                                    }; ?></option>
+                                            <option value="11">11 | <?php if ($hasil['status_transaksi'] == 'Belum bayar') {
+                                                                        echo 'Belum bayar';
+                                                                    } else {
+                                                                        echo 'Lunas';
+                                                                    }; ?></option>
+                                            <option value="12">12 | <?php if ($hasil['status_transaksi'] == 'Belum bayar') {
+                                                                        echo 'Belum bayar';
+                                                                    } else {
+                                                                        echo 'Lunas';
+                                                                    }; ?></option>
                                         </select>
                                     </div>
                                 </div>
