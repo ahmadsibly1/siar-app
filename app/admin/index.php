@@ -32,7 +32,7 @@ if ($_SESSION['level'] == "") {
         <div class="container-fluid">
           <div class="row mb-3">
             <div class="col-sm-12">
-              <div class="dashborad-admin">
+              <div class="alert alert-dark">
                 <h1 name="nama_user" class="m-1">Selamat Datang <?= $_SESSION['username']; ?>!</h1>
                 <p class="m-1">Di Sistem Informasi Arisan RT 01 RW 07 Kelurahan Lengkong wetan</p>
               </div>
@@ -99,7 +99,10 @@ if ($_SESSION['level'] == "") {
             </div> -->
           </div>
           <?php
-          $query = mysqli_query($koneksi, "SELECT * FROM users WHERE id_kelompok > 0 AND ikut = 'Pending'");
+          $query = mysqli_query($koneksi, "SELECT * FROM users
+                                          INNER JOIN kelompok ON users.id_kelompok = kelompok.id_kelompok
+                                          WHERE users.level='user' AND ikut = 'Pending'");
+
           while ($data = mysqli_fetch_array($query)) {
             # code...
           ?>
@@ -107,7 +110,7 @@ if ($_SESSION['level'] == "") {
               <div class="col-sm-12">
 
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <strong><?= $data['nama_user']; ?></strong> Telah bergabung kelompok, segera tinjau untuk konfirmasi.
+                  <strong><?= $data['nama_user']; ?></strong> Telah bergabung kelompok <strong><?= $data['nama_kelompok']; ?></strong>, segera tinjau untuk konfirmasi.
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>

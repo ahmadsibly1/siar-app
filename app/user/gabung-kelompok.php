@@ -1,3 +1,4 @@
+<?php $title = "Gabung kelompok"; ?>
 <?php session_start();
 
 // $id_user = $_GET['id_user'];

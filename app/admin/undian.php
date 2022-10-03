@@ -27,7 +27,7 @@
                <div class="row">
                   <div class="col-12">
                      <div class="card">
-                        <div class="card-header">
+                        <div class="card-header bg-dark">
                            <div class="card-title">
                               <h4>Undian</h4>
                            </div>

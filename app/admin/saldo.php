@@ -37,7 +37,7 @@ if ($_SESSION['level'] == "") {
             <div class="col-12">
               <!-- /.card -->
               <div class="card">
-                <div class="card-header justify-content-between">
+                <div class="card-header justify-content-between bg-dark">
                   <div class="card-title">
                     <div class=" d-flex">
                       <h4 class="">Pembayaran</h4>

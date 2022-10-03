@@ -35,7 +35,7 @@ $title = 'Kelompok';
                         <div class="col-12">
                             <!-- /.card -->
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header bg-dark">
                                     <div class="card-title">
                                         <div class="d-flex justify-content-center">
                                             <h4>Kelompok Tersedia</h4>
@@ -45,7 +45,7 @@ $title = 'Kelompok';
                                 <!-- /.card-header -->
                                 <div class="card-body ">
                                     <div class="table-responsive">
-                                        <table id="pembayaran" class="table table-md">
+                                        <table id="myTable" class="table table-sm table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
@@ -79,18 +79,12 @@ $title = 'Kelompok';
                                                         <td><?= rupiah($kelompok['jumlah_iuran']); ?></td>
                                                         <td>
                                                             <a type="button" class="btn btn-sm btn-info" href="detail-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>">
-                                                                <i class="bi bi-eye-fill"></i> Detail
+                                                                <i class="fa-solid fa-eye"></i> Detail
                                                             </a>
-                                                            <a href="gabung-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>" id="gabung ">
-                                                                <button class="btn btn-sm btn-success" <?php if ($data2['ikut'] == 'Terima' || $data2['ikut'] == 'Pending' || $kelompok['kuota'] == $kelompok['isi']) {
-                                                                                                            echo 'disabled';
-                                                                                                        } ?>>
-                                                                    <i class="bi bi-pen"></i>
-                                                                    Gabung
-                                                                </button>
+                                                            <a type="button" class="btn btn-sm btn-success" href="gabung-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>" id="gabung ">
+                                                                <i class="fa-solid fa-right-to-bracket"></i> Gabung
                                                             </a>
                                                         </td>
-
                                                         <!-- modal target -->
                                                         <div class="modal fade" id="detail-kelompok<?= $kelompok['id_kelompok']; ?>">
                                                             <div class="modal-dialog modal-lg">
@@ -174,17 +168,17 @@ $title = 'Kelompok';
                                 $data = mysqli_fetch_assoc($query);
 
                                 if ($data['ikut'] == "Terima") {
-                                    $message = '<div class="ikut text-white text-center p-2" style="background-color: #1a667e;">
+                                    $message = '<div class="rounded ikut text-white text-center p-2" style="background-color: #1a667e;">
                                                 <h3>Anda sedang mengikuti kelompok ' . $data["nama_kelompok"] . '</h3>
                                                 </div>';
                                     echo $message;
                                 } elseif ($data['ikut'] == "Pending") {
-                                    $message2 = '<div class="ikut text-white text-center p-2 bg-warning">
-                                                <h3>Sedang menunggu konfirmasi admin</h3>
+                                    $message2 = '<div class="ikut text-white text-center p-2 bg-warning rounded">
+                                                <h3>Anda telah mendaftar kelompok ' . $data["nama_kelompok"] . ' dengan status menunggu konfirmasi admin</h3>
                                                 </div>';
                                     echo $message2;
                                 } else {
-                                    $message2 = '<div class="ikut text-white text-center p-2" style="background-color: #1a667e;">
+                                    $message2 = '<div class="ikut rounded text-white text-center p-2" style="background-color: #1a667e;">
                                                 <h3>Anda tidak mengikuti kelompok manapun</h3>
                                                 </div>';
                                     echo $message2;

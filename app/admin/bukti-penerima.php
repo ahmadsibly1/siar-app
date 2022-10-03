@@ -1,4 +1,7 @@
-<?php $title = "Data Penerima"; ?>
+<?php
+$title = "Data transaksi";
+$title2 = "Data penerima";
+?>
 
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
@@ -27,7 +30,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header justify-content-between">
+                                <div class="card-header justify-content-between bg-dark">
                                     <div class="card-title">
                                         <div class=" d-flex">
                                             <h4 class="">Data Penerima</h4>

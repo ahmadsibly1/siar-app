@@ -26,7 +26,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header bg-dark">
                                     <div class="card-title">
                                         <h4>Antrian Kelompok</h4>
                                     </div>
@@ -66,6 +66,7 @@
                                                     <td>
                                                         <form action="simpan-antrian-kelompok.php" method="post">
                                                             <input type="hidden" name="id_user" value="<?php echo $kelompok['id_user']; ?>">
+                                                            <input type="hidden" name="id_kelompok" value="<?php echo $kelompok['id_kelompok']; ?>">
                                                             <select class="form-control1" type="from-control" name="ikut">
                                                                 <option value="<?php echo $kelompok['ikut']; ?>"><?php echo $kelompok['ikut']; ?></option>
                                                                 <option value="Terima">Terima</option>

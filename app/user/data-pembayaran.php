@@ -1,4 +1,7 @@
-<?php $title = "Pembayaran"; ?>
+<?php
+$titleParent = 'Transaksi';
+$title = "Pembayaran";
+?>
 <?php session_start(); ?>
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
@@ -29,37 +32,17 @@
             <!-- Main content -->
             <section class="content-header">
 
-
-                <!-- box pembayaran -->
-                <!-- <div class="row mb-3">
-                    <?php
-                    $id_user = $_GET['id_user'];
-                    $query = mysqli_query($koneksi, "SELECT * FROM pembayaran
-                    INNER JOIN kelompok
-                    ON pembayaran.id_kelompok = kelompok.id_kelompok
-                    WHERE id_user='$id_user'");
-                    $data = mysqli_fetch_array($query);
-
-                    for ($i = 1; $i < $data['kuota'] + 1; $i++) {
-
-                    ?>
-                        <div class="col-md-1 mb-3">
-                            <button type="button" class="btn" style="background-color: #1a667e; color:white;" <?php if ($data['status_pembayaran'] == 'Dikonfirmasi') {
-                                                                                                                    echo 'disabled';
-                                                                                                                } ?>>
-                                Bulan <span class="badge" style="background-color: #e65100;"><?= $i; ?></span>
-                            </button>
-                        </div>
-                    <?php } ?> -->
-
                 <div class="container-fluid">
 
                     <div class="row">
                         <div class="col-12">
 
+
+
+
                             <!-- /.card -->
                             <div class="card">
-                                <div class="card-header justify-content-between">
+                                <div class="card-header justify-content-between bg-dark">
                                     <div class="card-title">
                                         <div class="d-flex">
                                             <h4 class="">Pembayaran</h4>

@@ -14,73 +14,75 @@
   <link rel="stylesheet" href="app/dist/css/adminlte.min.css">
   <!-- daterange picker -->
   <link rel="stylesheet" href="app/plugins/daterangepicker/daterangepicker.css">
+  <!-- bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 
 <body class="hold-transition sidebar-mini">
   <!-- Main content -->
   <section class="content mt-4">
-    <div class="container">
-      <div class="row">
+    <div class="container ">
+      <div class="row justify-content-center">
         <!-- left column -->
-        <div class="col-md-12 ">
+        <div class="col-md-6">
           <!-- general form elements -->
           <div class="card card-info">
-            <div class="card-header">
+            <div class="card-header bg-dark">
               <h3 class="card-title">Form Registrasi</h3>
             </div>
             <form action="conf/pendaftaran.php" method="POST" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="row mb-3">
-                  <label for="nama" class="col-sm-2 col-form-label">Nama Lengkap</label>
-                  <div class="col-sm-10">
+                  <label for="nama" class="col-sm-3 col-form-label">Nama Lengkap</label>
+                  <div class="col-sm-9">
                     <input type="text" class="form-control" id="nama" name="nama" placeholder="*" required>
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="username" class="col-sm-2 col-form-label">Username</label>
-                  <div class="col-sm-10">
+                  <label for="username" class="col-sm-3 col-form-label">Username</label>
+                  <div class="col-sm-9">
                     <input type="text" class="form-control" id="username" name="username" placeholder="*" required>
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="password" class="col-sm-2 col-form-label">Password</label>
-                  <div class="col-sm-10">
+                  <label for="password" class="col-sm-3 col-form-label">Password</label>
+                  <div class="col-sm-9">
                     <input type="password" class="form-control" id="password" name="password" placeholder="*" required>
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="notelephone" class="col-sm-2 col-form-label">No HP</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="notelephone" name="notelephone" placeholder="*" required>
+                  <label for="notelephone" class="col-sm-3 col-form-label">No whatsapp</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="notelephone" name="notelephone" placeholder="628..." required>
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="nik" class="col-sm-2 col-form-label">NIK</label>
-                  <div class="col-sm-10">
+                  <label for="nik" class="col-sm-3 col-form-label">NIK</label>
+                  <div class="col-sm-9">
                     <input type="text" class="form-control" id="nik" name="nik" placeholder="*" required>
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="tempatlahir" class="col-sm-2 col-form-label">Tempat Lahir</label>
-                  <div class="col-sm-10">
+                  <label for="tempatlahir" class="col-sm-3 col-form-label">Tempat Lahir</label>
+                  <div class="col-sm-9">
                     <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="*" required>
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="tangallahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
-                  <div class="col-sm-10">
+                  <label for="tangallahir" class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                  <div class="col-sm-9">
                     <input class="form-control form-control" type="date" name="tanggallahir" placeholder="Tanggal Lahir" placeholder="*" required>
                   </div>
                 </div>
                 <!-- <div class="row mb-3">
-                  <label for=alamat_user" class="col-sm-2 col-form-label">Alamat</label>
-                  <div class="col-sm-10">
+                  <label for=alamat_user" class="col-sm-3 col-form-label">Alamat</label>
+                  <div class="col-sm-9">
                     <input class="form-control form-control" type="text" name="alamat_user" placeholder="*" required>
                   </div>
                 </div> -->
                 <div class="row mb-3">
-                  <label for="jeniskelamin" class="col-sm-2 col-form-label">Jenis Kelamin</label>
-                  <div class="col-sm-10">
+                  <label for="jeniskelamin" class="col-sm-3 col-form-label">Jenis Kelamin</label>
+                  <div class="col-sm-9">
                     <div class="input-grup">
                       <select class="form-select form-control" aria-label="Default select example" id="jeniskelamin" name="jeniskelamin" placeholder="*" required>
                         <option selected>...Pilih...</option>
@@ -91,8 +93,8 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="agama" class="col-sm-2 col-form-label">Agama</label>
-                  <div class="col-sm-10">
+                  <label for="agama" class="col-sm-3 col-form-label">Agama</label>
+                  <div class="col-sm-9">
                     <div class="input-grup">
                       <select class="form-select form-control" aria-label="Default select example" id="agama" name="agama">
                         <option selected>...Pilih...</option>
@@ -107,8 +109,8 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="exampleInputFile" class="col-sm-2 col-form-label">Upload KTP</label>
-                  <div class="col-sm-10">
+                  <label for="exampleInputFile" class="col-sm-3 col-form-label">Upload KTP</label>
+                  <div class="col-sm-9">
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" name="ktp" class="custom-file-input" id="exampleInputFile" placeholder="*" required>
@@ -118,10 +120,11 @@
                   </div>
                 </div>
                 <!-- /.card-body -->
-
-                <a href="index.php" type="submit" class="btn btn-default">Cancel</a>
-                <button type="submit" class="btn btn-primary float-right">Daftar</button>
-
+                <div class="card-footer">
+                  <a href="index.php" type="submit" class="btn btn-default">Cancel</a>
+                  <button type="submit" class="btn btn-primary float-right">Daftar</button>
+                </div>
+              </div>
             </form>
           </div>
         </div>
@@ -149,6 +152,7 @@
   <script src="app/plugins/daterangepicker/daterangepicker.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="app/dist/js/demo.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   <!-- Page specific script -->
   <script>
     $(function() {

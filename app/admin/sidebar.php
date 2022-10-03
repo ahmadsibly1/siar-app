@@ -25,6 +25,16 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
+                <a href="data-anggota.php" class="nav-link <?php if ($title == 'Data Anggota') {
+                                                                echo 'active';
+                                                            } ?>">
+                    <i class="nav-icon fas fa-solid fa-user mr-3"></i>
+                    <p>
+                        Data Anggota
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item mb-2">
                 <a href="" class="nav-link <?php if ($title == 'Data Kelompok') {
                                                 echo 'active';
                                             } ?>">
@@ -50,36 +60,49 @@
                 </ul>
             </li>
             <li class="nav-item mb-2">
-                <a href="data-anggota.php" class="nav-link <?php if ($title == 'Data Anggota') {
-                                                                echo 'active';
-                                                            } ?>">
-                    <i class="nav-icon fas fa-solid fa-user mr-3"></i>
+                <a href="" class="nav-link <?php if ($title == 'Data transaksi') {
+                                                echo 'active';
+                                            } ?>">
+                    <i class="nav-icon fas fa-solid fa-money-check-dollar mr-3"></i>
                     <p>
-                        Data Anggota
+                        Data Transaksi
+                        <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item mb-2">
+                        <a href="data-tagihan.php" class="nav-link <?php if ($title2 == 'Data tagihan') {
+                                                                        echo 'active';
+                                                                    } ?>">
+                            <i class="far fa-circle nav-icon mr-3"></i>
+                            <p>
+                                Data Tagihan
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="pembayaran.php" class="nav-link <?php if ($title2 == 'Data pembayaran') {
+                                                                        echo 'active';
+                                                                    } ?>">
+                            <i class="far fa-circle nav-icon mr-3"></i>
+                            <p>
+                                Data Pembayaran
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="bukti-penerima.php" class="nav-link <?php if ($title2 == 'Data penerima') {
+                                                                            echo 'active';
+                                                                        } ?>">
+                            <i class="far fa-circle nav-icon mr-3"></i>
+                            <p>
+                                Data Penerima
+                            </p>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li class="nav-item mb-2">
-                <a href="pembayaran.php" class="nav-link <?php if ($title == 'Data Pembayaran') {
-                                                                echo 'active';
-                                                            } ?>">
-                    <i class="nav-icon fas fa-solid fa-credit-card mr-3"></i>
-                    <p>
-                        Data Pembayaran
-                    </p>
-                </a>
 
-            </li>
-            <li class="nav-item mb-2">
-                <a href="bukti-penerima.php" class="nav-link <?php if ($title == 'Data Penerima') {
-                                                                    echo 'active';
-                                                                } ?>">
-                    <i class="nav-icon fa-solid fa-money-bill-transfer mr-3"></i>
-                    <p>
-                        Data Penerima
-                    </p>
-                </a>
-            </li>
             <li class="nav-item mb-2">
                 <a href="undian.php" class="nav-link <?php if ($title == 'Undian Arisan') {
                                                             echo 'active';

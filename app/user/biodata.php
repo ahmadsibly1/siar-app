@@ -36,7 +36,7 @@ $title = 'Biodata';
                         <div class="col-12">
                             <!-- /.card -->
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header bg-dark">
                                     <div class="card-title">
                                         <div class="d-flex justify-content-center">
                                             <h4>Biodata</h4>

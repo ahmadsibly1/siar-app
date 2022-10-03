@@ -6,6 +6,8 @@
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
+<!-- bootstrap 5 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
@@ -89,6 +91,19 @@
 <script>
     $(document).ready(function() {
         $('#pembayaran').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#tagihan').DataTable({
+            "paging": false,
+            "lengthChange": false,
+        });
     });
 </script>
 </body>

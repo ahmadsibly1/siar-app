@@ -26,7 +26,7 @@
           <div class="row mb-3">
             <div class="col-12">
               <div class="card">
-                <div class="card-header justify-content-between">
+                <div class="card-header justify-content-between bg-dark">
                   <div class="card-title">
                     <h4>Kelompok Aktif</h4>
                   </div>
@@ -77,7 +77,7 @@
                             <div class="modal fade" id="detail-kelompok<?= $kelompok['id_kelompok']; ?>">
                               <div class="modal-dialog modal-md">
                                 <div class="modal-content">
-                                  <div class="modal-header">
+                                  <div class="modal-header bg-dark">
                                     <h4 class="modal-title">Detail Anggota Kelompok</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
@@ -228,7 +228,7 @@
       <div class="modal fade" id="edit-kelompok">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-dark">
               <h4 class="modal-title">Form Tambah Kelompok</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>

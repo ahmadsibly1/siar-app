@@ -33,7 +33,7 @@
                 <a href="biodata.php?page=id" class="nav-link <?php if ($title == 'Biodata') {
                                                                     echo 'active';
                                                                 } ?>">
-                    <i class="nav-icon fas fa-solid fa-users mr-3"></i>
+                    <i class="nav-icon fas fa-solid fa-user mr-3"></i>
                     <p>
                         Biodata
                     </p>
@@ -43,32 +43,56 @@
                 <a href="data-kelompok.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'Kelompok') {
                                                                                                     echo 'active';
                                                                                                 } ?>">
-                    <i class="nav-icon fas fa-solid fa-user mr-3"></i>
+                    <i class="nav-icon fas fa-solid fa-users mr-3"></i>
                     <p>
                         Kelompok Arisan
                     </p>
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="data-pembayaran.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'Pembayaran') {
-                                                                                                        echo 'active';
-                                                                                                    } ?>">
+                <a href="" class="nav-link <?php if ($titleParent == 'Transaksi') {
+                                                echo 'active';
+                                            } ?>">
                     <i class="nav-icon fas fa-solid fa-credit-card mr-3"></i>
                     <p>
-                        Pembayaran
+                        Transaksi
+                        <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item mb-2">
+                        <a href="data-tagihan.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'Tagihan') {
+                                                                                                            echo 'active';
+                                                                                                        } ?>">
+                            <i class="nav-icon far fa-circle nav-icon mr-3"></i>
+                            <p>
+                                Tagihan
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="data-pembayaran.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'Pembayaran') {
+                                                                                                                echo 'active';
+                                                                                                            } ?>">
+                            <i class="nav-icon far fa-circle nav-icon mr-3"></i>
+                            <p>
+                                Pembayaran
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="data-penerima.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'Penerima') {
+                                                                                                            echo 'active';
+                                                                                                        } ?>">
+                            <i class="nav-icon far fa-circle nav-icon mr-3"></i>
+                            <p>
+                                Bukti Penerima
+                            </p>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li class="nav-item mb-2">
-                <a href="data-penerima.php?id_user=<?= $anggota['id_user']; ?>" class="nav-link <?php if ($title == 'Penerima') {
-                                                                                                    echo 'active';
-                                                                                                } ?>">
-                    <i class="nav-icon fa-solid fa-money-bill-transfer mr-3"></i>
-                    <p>
-                        Bukti Penerima
-                    </p>
-                </a>
-            </li>
+
             <li class="nav-item mb-2">
                 <a href="pages/widgets.html" class="nav-link <?php if ($title == 'Undian') {
                                                                     echo 'active';

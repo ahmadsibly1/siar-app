@@ -30,7 +30,7 @@ $title2 = "Data tagihan";
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header bg-dark">
                                     <h5>Kirim Tagihan</h5>
                                 </div>
                                 <?php
@@ -39,55 +39,38 @@ $title2 = "Data tagihan";
                                 ?>
                                 <div class="card-body">
                                     <div class="row justify-content-center">
-                                        <div class="col-md-3">
-                                            <?php
-                                            $sql = mysqli_query($koneksi, "SELECT * FROM transaksi");
-                                            $pilihan = mysqli_fetch_array($sql);
-                                            ?>
-                                            <form action="data-tagihan.php" method="POST">
-                                                <select class="form-select form-select-md mb-3" name="bulan" aria-label=".form-select-lg example">
 
-                                                    <option selected>Pilih Bulan</option>
-                                                    <option <?php if ($pilihan == 1) {
-                                                                echo 'selected';
-                                                            } ?> value="Januari">Januari</option>
-                                                    <option <?php if ($pilihan == 2) {
-                                                                echo 'selected';
-                                                            } ?> value="Februari">Februari</option>
-                                                    <option <?php if ($pilihan == 3) {
-                                                                echo 'selected';
-                                                            } ?> value="Maret">Maret</option>
-                                                    <option <?php if ($pilihan == 4) {
-                                                                echo 'selected';
-                                                            } ?> value="April">April</option>
-                                                    <option <?php if ($pilihan == 5) {
-                                                                echo 'selected';
-                                                            } ?> value="Mei">Mei</option>
-                                                    <option <?php if ($pilihan == 6) {
-                                                                echo 'selected';
-                                                            } ?> value="Juni">Juni</option>
-                                                    <option <?php if ($pilihan == 7) {
-                                                                echo 'selected';
-                                                            } ?> value="Juli">Juli</option>
-                                                    <option <?php if ($pilihan == 8) {
-                                                                echo 'selected';
-                                                            } ?> value="Agustus">Agustus</option>
-                                                    <option <?php if ($pilihan == 9) {
-                                                                echo 'selected';
-                                                            } ?> value="September">September</option>
-                                                    <option <?php if ($pilihan == 10) {
-                                                                echo 'selected';
-                                                            } ?> value="Oktober">Oktober</option>
-                                                    <option <?php if ($pilihan == 11) {
-                                                                echo 'selected';
-                                                            } ?> value="November">November</option>
-                                                    <option <?php if ($pilihan == 12) {
-                                                                echo 'selected';
-                                                            } ?> value="Desember">Desember</option>
+                                        <div class="col-md-3">
+                                            <form action="data-tagihan.php" method="POST">
+                                                <select class="form-select" name="id_kelompok" aria-label="Default select example">
+                                                    <option selected>Pilih kelompok</option>
+                                                    <?php
+                                                    $sql = mysqli_query($koneksi, "SELECT * FROM kelompok");
+                                                    while ($pilihan = mysqli_fetch_array($sql)) {
+                                                    ?>
+                                                        <option value="<?= $pilihan['id_kelompok']; ?>"><?= $pilihan['nama_kelompok']; ?></option>
+                                                    <?php } ?>
                                                 </select>
                                         </div>
+                                        <div class="col-md-3">
+                                            <select class="form-select" name="bulan" aria-label="Default select example">
+                                                <option selected>Pilih bulan</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                            </select>
+                                        </div>
                                         <div class="col-md-1">
-                                            <button class="btn btn-dark" type="submit">Cari</button>
+                                            <button class="btn btn-dark" type="submit" name="cari">Cari</button>
 
                                         </div>
                                         </form>
@@ -96,7 +79,7 @@ $title2 = "Data tagihan";
                             </div>
 
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header bg-dark">
                                     <h4>Data Tagihan</h4>
                                 </div>
                                 <!-- /.card-header -->
@@ -106,11 +89,10 @@ $title2 = "Data tagihan";
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama</th>
-                                                <th>Nama Kelompok</th>
                                                 <th>Jumlah</th>
                                                 <th>Bulan</th>
                                                 <th>Status</th>
-                                                <th>Aksi</th>
+                                                <th>Kirim Notifikasi</th>
 
                                             </tr>
                                         </thead>
@@ -118,67 +100,37 @@ $title2 = "Data tagihan";
                                             <?php
 
                                             $no = 0;
-                                            // if (isset($_POST['submit'])) {
-                                            // $bulan = $_POST['bulan'];
-                                            // $kelompok = $_POST['kelompok'];
-                                            $query2 = mysqli_query($koneksi, "SELECT * FROM transaksi
+                                            if (isset($_POST['cari'])) {
+                                                $bulan = $_POST['bulan'];
+                                                $kelompok = $_POST['id_kelompok'];
+                                                $query2 = mysqli_query($koneksi, "SELECT * FROM transaksi
                                                                 INNER JOIN users ON transaksi.id_user = users.id_user
-                                                                INNER JOIN kelompok ON users.id_kelompok = kelompok.id_kelompok
-                                                                WHERE transaksi.status_transaksi = 'Belum bayar'");
-                                            while ($transaksi = mysqli_fetch_array($query2)) {
-                                                $no++
+                                                                INNER JOIN kelompok ON transaksi.id_kelompok = kelompok.id_kelompok
+                                                                WHERE transaksi.status_transaksi = 'Belum bayar'
+                                                                AND transaksi.id_kelompok = '$kelompok'
+                                                                AND transaksi.bulan = '$bulan'
+                                                                ORDER BY transaksi.id_transaksi DESC");
+                                                while ($transaksi = mysqli_fetch_array($query2)) {
+                                                    $no++
                                             ?>
-                                                <tr>
+                                                    <tr>
 
-                                                    <td><?= $no; ?></td>
-                                                    <td><?= $transaksi['nama_user']; ?></td>
-                                                    <td><?= $transaksi['nama_kelompok']; ?></td>
-                                                    <td><?= rupiah($transaksi['jumlah_iuran']); ?></td>
-                                                    <td>
-                                                        <?php
-                                                        function bulan($angka)
-                                                        {
-                                                            global $transaksi;
-                                                            if ($transaksi['bulan'] == 1) {
-                                                                echo date("F", strtotime("+1 month"));
-                                                            } elseif ($transaksi['bulan'] == 2) {
-                                                                echo date("F", strtotime("+2 month"));
-                                                            } elseif ($transaksi['bulan'] == 3) {
-                                                                echo date("F", strtotime("+3 month"));
-                                                            } elseif ($transaksi['bulan'] == 4) {
-                                                                echo date("F", strtotime("+4 month"));
-                                                            } elseif ($transaksi['bulan'] == 5) {
-                                                                echo date("F", strtotime("+5 month"));
-                                                            } elseif ($transaksi['bulan'] == 6) {
-                                                                echo date("F", strtotime("+6 month"));
-                                                            } elseif ($transaksi['bulan'] == 7) {
-                                                                echo date("F", strtotime("+7 month"));
-                                                            } elseif ($transaksi['bulan'] == 8) {
-                                                                echo date("F", strtotime("+8 month"));
-                                                            } elseif ($transaksi['bulan'] == 9) {
-                                                                echo date("F", strtotime("+9 month"));
-                                                            } elseif ($transaksi['bulan'] == 10) {
-                                                                echo date("F", strtotime("+10 month"));
-                                                            } elseif ($transaksi['bulan'] == 11) {
-                                                                echo date("F", strtotime("+11 month"));
-                                                            } elseif ($transaksi['bulan'] == 12) {
-                                                                echo date("F", strtotime("+12 month"));
-                                                            }
-                                                        }
-                                                        ?>
-                                                        <?= bulan($transaksi['bulan']); ?>
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge badge-danger p-2"><?= $transaksi['status_transaksi']; ?></span>
-                                                    </td>
-                                                    <td>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $transaksi['nama_user']; ?></td>
+                                                        <td><?= rupiah($transaksi['jumlah_iuran']); ?></td>
+                                                        <td><?= $transaksi['bulan']; ?></td>
+                                                        <td>
+                                                            <span class="badge badge-danger p-2"><?= $transaksi['status_transaksi']; ?></span>
+                                                        </td>
+                                                        <td>
 
-                                                        <a href="kirim-tagihan.php?id=<?= $transaksi['id_user']; ?>" class="btn btn-primary">Kirim</a>
-                                                        <a href="https://api.whatsapp.com/send?phone=6289505347307&text=Kepada%20Yth%20Bpk/ibu%20<?= $transaksi['nama_user']; ?>,%20%0Anda%20terdaftar%20pada%20kelompok%20<?= $transaksi['nama_kelompok']; ?>%20dan%20belum%20melakukan%20pembayaran%20pada%20bulan%20<?= bulan($transaksi['bulan']); ?>%20sejumalah%20<?= rupiah($transaksi['jumlah_iuran']); ?>.%20%0Segera melakukan pembayaran sebelum" target="_blank" rel="noopener noreferrer" class="btn btn-success">Watsapp</a>
-                                                    </td>
-                                                </tr>
+                                                            <a href="kirim-tagihan.php?id=<?= $transaksi['id_user']; ?>" class="btn btn-primary">Dashboard</a>
+                                                            <a href="https://api.whatsapp.com/send?phone=6289505347307&text=Kepada%20Yth%20Bpk/ibu%20<?= $transaksi['nama_user']; ?>,%20Anda%20terdaftar%20pada%20kelompok%20<?= $transaksi['nama_kelompok']; ?>%20dan%20belum%20melakukan%20pembayaran%20pada%20bulan%20<?= $transaksi['bulan']; ?>%20sejumalah%20<?= rupiah($transaksi['jumlah_iuran']); ?>.%20Segera melakukan pembayaran sebelum jatuh tempo" target="_blank" rel="noopener noreferrer" class="btn btn-success">Watsapp</a>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
                                             <?php } ?>
-                                            <?php   ?>
+
                                         </tbody>
                                     </table>
                                 </div>

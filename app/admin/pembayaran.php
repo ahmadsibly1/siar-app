@@ -1,4 +1,7 @@
-<?php $title = "Data Pembayaran"; ?>
+<?php
+$title = "Data transaksi";
+$title2 = "Data pembayaran";
+?>
 
 <?php include('header.php'); ?>
 <?php include('../../conf/config.php'); ?>
@@ -26,7 +29,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <div class="card">
+                            <!-- <div class="card">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-3">
@@ -38,9 +41,9 @@
                                         <div class="col-md-3">jsjsd</div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header bg-dark">
                                     <h4>Bukti Pembayaran</h4>
                                 </div>
                                 <!-- /.card-header -->
@@ -93,6 +96,7 @@
                                                             <input type="hidden" name="id_pembayaran" value="<?php echo $pembayaran['id_pembayaran']; ?>">
                                                             <input type="hidden" name="bulan" value="<?php echo $pembayaran['bulan']; ?>">
                                                             <input type="hidden" name="id_user" value="<?php echo $pembayaran['id_user']; ?>">
+                                                            <input type="hidden" name="id_kelompok" value="<?php echo $pembayaran['id_kelompok']; ?>">
                                                             <select class="form-control1" type="from-control" name="status_pembayaran">
                                                                 <option value="<?= $pembayaran['status_pembayaran']; ?>"><?= $pembayaran['status_pembayaran']; ?> </option>
                                                                 <option value="Dikonfirmasi">Dikonfirmasi</option>
