@@ -29,19 +29,7 @@ $title2 = "Data pembayaran";
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <!-- <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <h5>Kirim Tagihan</h5>
-                                        </div>
-                                        <div class="col-md-3">
-                                        </div>
-                                        <div class="col-md-3"></div>
-                                        <div class="col-md-3">jsjsd</div>
-                                    </div>
-                                </div>
-                            </div> -->
+
                             <div class="card">
                                 <div class="card-header bg-dark">
                                     <h4>Bukti Pembayaran</h4>
@@ -68,9 +56,9 @@ $title2 = "Data pembayaran";
                                             $no = 0;
                                             // $query = mysqli_query($koneksi, "SELECT * FROM pembayaran LEFT JOIN users ON pembayaran.id_pembayaran = users.id_user");
                                             $query = mysqli_query($koneksi, "SELECT * FROM pembayaran
-                                                            LEFT JOIN users 
+                                                            INNER JOIN users 
                                                             ON pembayaran.id_user = users.id_user
-                                                            LEFT JOIN kelompok 
+                                                            INNER JOIN kelompok 
                                                             ON pembayaran.id_kelompok = kelompok.id_kelompok
                                                             -- LEFT JOIN transaksi
                                                             -- ON pembayaran.id_pembayaran = transaksi.id_pembayaran
@@ -81,7 +69,7 @@ $title2 = "Data pembayaran";
                                                 <tr>
                                                     <td><?= $no; ?></td>
                                                     <td width='5%'>
-                                                        <a href="../user/tambah/images/<? $pembayaran['bukti_bayar']; ?>">
+                                                        <a href="../user/tambah/images/<?= $pembayaran['bukti_bayar']; ?>" target="_blank" rel="noopener noreferrer">
                                                             <img src="../user/tambah/images/<?= $pembayaran['bukti_bayar']; ?>" alt="" width="60px">
                                                         </a>
                                                     </td>
@@ -109,10 +97,13 @@ $title2 = "Data pembayaran";
                                                     </td>
                                                     </form>
                                                     <td>
+
+
                                                         <a href="hapus/hapus-pembayaran.php?id=<?= $pembayaran['id_pembayaran']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -131,70 +122,6 @@ $title2 = "Data pembayaran";
         </div>
 
 
-
-        <!-- tambah kelompok -->
-        <div class="modal fade" id="tambah-kelompok">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Form Pembayaran</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form action="tambah/tambah-kelompok.php" method="POST" enctype="multipart/form-data">
-                        <div class="card-body">
-                            <div class="row mb-3">
-                                <input type="hidden" class="form-control" id="id_user" name="id_user" value="id">
-                                <label for="nama_kelompok" class="col-sm-2 col-form-label">Nama kelompok</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nama_kelompok" name="nama_kelompok" required>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="tanggal_mulai" class="col-sm-2 col-form-label">Tanggal Mulai</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control form-control" type="date" name="tanggal_mulai" required>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for=tipe_arisan" class="col-sm-2 col-form-label">Tipe Arisan</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control form-control" type="text" name="tipe_arisan" required>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="kuota" class="col-sm-2 col-form-label">Kuota</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="kuota" name="kuota" required>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="isi" class="col-sm-2 col-form-label">Isi</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="isi" name="isi" required>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="jumlah_iuran" class="col-sm-2 col-form-label">Jumlah Iuran</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="jumlah_iuran" name="jumlah_iuran" required>
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Buat</button>
-                            <a href="data-kelompok.php" type="submit" class="btn btn-default float-right">Cancel</a>
-                        </div>
-                    </form>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
 
 
 

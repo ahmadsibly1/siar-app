@@ -48,9 +48,9 @@ $title = "Pembayaran";
                                             <h4 class="">Pembayaran</h4>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn mb-3 float-right" data-toggle="modal" data-target="#tambah-pembayaran" style="background-color: #1a667e; color:white;">
+                                    <!-- <button type="button" class="btn mb-3 float-right" data-toggle="modal" data-target="#tambah-pembayaran" style="background-color: #1a667e; color:white;">
                                         Tambah Pembayaran
-                                    </button>
+                                    </button> -->
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body ">
@@ -60,14 +60,15 @@ $title = "Pembayaran";
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th width="10%">Bukti Pembayaran</th>
-                                                    <th>Nama Pembayar</th>
+                                                    <!-- <th width="10%">Bukti Pembayaran</th> -->
+                                                    <!-- <th>Nama Pembayar</th> -->
                                                     <th>Nama Kelompok</th>
-                                                    <th>Bank Tujuan</th>
+                                                    <!-- <th>Bank Tujuan</th> -->
                                                     <th>Tanggal Transfer</th>
-                                                    <th width="10%">Jumlah</th>
+                                                    <th>Jumlah</th>
                                                     <th>Bulan</th>
                                                     <th>Status</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -86,17 +87,17 @@ $title = "Pembayaran";
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
-                                                        <td width='10%'>
+                                                        <!-- <td width='10%'>
                                                             <a href="tambah/images/<?= $pembayaran['bukti_bayar']; ?>">
                                                                 <img src="tambah/images/<?= $pembayaran['bukti_bayar']; ?>" alt="" width="60px">
                                                             </a>
-                                                        </td>
-                                                        <td><?= $pembayaran['nama_user']; ?></td>
+                                                        </td> -->
+                                                        <!-- <td><?= $pembayaran['nama_user']; ?></td> -->
                                                         <td><?= $pembayaran['nama_kelompok']; ?></td>
-                                                        <td><?= $pembayaran['bank']; ?></td>
+                                                        <!-- <td><?= $pembayaran['bank']; ?></td> -->
                                                         <td><?= date('d-m-Y', strtotime($pembayaran['tgl_bayar'])); ?></td>
                                                         <td><?= rupiah($pembayaran['jumlah']); ?></td>
-                                                        <td><?= $pembayaran['bulan']; ?></td>
+                                                        <td>Ke - <?= $pembayaran['bulan']; ?></td>
                                                         <td>
                                                             <!-- <div id="status"><?= $pembayaran['status_pembayaran']; ?></div> -->
                                                             <?php
@@ -108,7 +109,88 @@ $title = "Pembayaran";
 
                                                             ?>
                                                         </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?= $pembayaran['id_pembayaran']; ?>">
+                                                                <i class="fa-solid fa-eye"></i>
+                                                            </button>
+                                                            <a href="invoice-print.php?id_pembayaran=<?= $pembayaran['id_pembayaran']; ?>" target="_blank">
+                                                                <button type="button" class="btn btn-dark">
+                                                                    <i class="fa-solid fa-print"></i>
+                                                                </button>
+                                                            </a>
 
+
+                                                            <!-- <a href="invoice-print.php?id_pembayaran=<?= $pembayaran['id_pembayaran']; ?>" class="btn btn-dark">
+                                                                <i class="fa-solid fa-print"></i>
+                                                            </a> -->
+                                                        </td>
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="staticBackdrop<?= $pembayaran['id_pembayaran']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Detail pembayaran</h1>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm-12 text-center">
+                                                                                <a href="tambah/images/<?= $pembayaran['bukti_bayar']; ?>" target="_blank" rel="noopener noreferrer">
+                                                                                    <img src="tambah/images/<?= $pembayaran['bukti_bayar']; ?>" alt="" width="200px">
+                                                                                </a>
+                                                                                <p>Bukti transfer</p>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm-3">
+                                                                                <h6 class="mb-0">Nama Pembayar</h6>
+                                                                            </div>
+                                                                            <div class="col-sm-9 text-secondary">
+                                                                                : <?= $pembayaran['nama_user']; ?>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm-3">
+                                                                                <h6 class="mb-0">Nama Kelompok</h6>
+                                                                            </div>
+                                                                            <div class="col-sm-9 text-secondary">
+                                                                                : <?= $pembayaran['nama_kelompok']; ?>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm-3">
+                                                                                <h6 class="mb-0">Tanggal transfer</h6>
+                                                                            </div>
+                                                                            <div class="col-sm-9 text-secondary">
+                                                                                : <?= $pembayaran['tgl_bayar']; ?>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm-3">
+                                                                                <h6 class="mb-0">Jumlah</h6>
+                                                                            </div>
+                                                                            <div class="col-sm-9 text-secondary">
+                                                                                : <?= $pembayaran['jumlah']; ?>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mb-2">
+                                                                            <div class="col-sm-3">
+                                                                                <h6 class="mb-0">Bulan</h6>
+                                                                            </div>
+                                                                            <div class="col-sm-9 text-secondary">
+                                                                                : Ke - <?= $pembayaran['bulan']; ?>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>

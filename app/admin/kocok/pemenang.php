@@ -10,7 +10,9 @@ $dtt = mysqli_fetch_array($cari);
 
 // die(var_dump($dtt));
 $sql = mysqli_query($koneksi, 'UPDATE users  SET pemenang = 1 WHERE id_user="' . $dtt['id_user'] . '"');
-if ($sql) {
+$sql2 = mysqli_query($koneksi, 'UPDATE users  SET pesan = 1 WHERE id_kelompok > 0 AND level="user"');
+$sql3 = mysqli_query($koneksi, 'INSERT INTO undian (id_user, id_kelompok) VALUES (' . $dtt['id_user'] . ', ' . $dtt['id_kelompok'] . ')');
+if ($sql == true && $sql2 == true) {
     echo "<script>
     window.alert('Pemenang berhasil ditetapkan');window.location.href='undi-kelompok.php?id_kelompok=$id_kelompok';
     </script>";

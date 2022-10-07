@@ -163,7 +163,7 @@ $title = 'Kelompok';
                                         WHERE username='$_SESSION[username]'
                                         ");
                             // menghitung jumlah data yang ditemukan
-                            $cek = mysqli_num_rows($query);
+                            // $cek = mysqli_num_rows($query);
                             if (mysqli_num_rows($query) == 1) {
                                 $data = mysqli_fetch_assoc($query);
 

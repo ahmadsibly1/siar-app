@@ -102,7 +102,11 @@
     $(document).ready(function() {
         $('#tagihan').DataTable({
             "paging": false,
-            "lengthChange": false,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false
         });
     });
 </script>

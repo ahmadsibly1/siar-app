@@ -10,10 +10,16 @@ $tanggal_bayar =  $_POST['tanggal_bayar'];
 $jumlah =  $_POST['jumlah'];
 $bulan =  $_POST['bulan'];
 $bukti_bayar = $_FILES['bukti_bayar']['name'];
-$lokasi = $_FILES['bukti_bayar']['tmp_name'];
-$tipe = $_FILES['bukti_bayar']['type'];
-// die(print_r($nama_kelompok));
-move_uploaded_file($lokasi, "images/$bukti_bayar");
+
+
+
+// proses upload foto
+// menentukan destinasi untuk menyimpan foro
+$dir = "images/";
+// temporaari file
+$tmpFile = $_FILES['bukti_bayar']['tmp_name'];
+
+move_uploaded_file($tmpFile, $dir . $bukti_bayar);
 if ($nama_kelompok == "") {
 
     $message = "Anda belum mengikuti kelompok arisan, silahkan ikuti kelompok arisan terlebih dahulu";

@@ -120,6 +120,7 @@ $title = "Tagihan";
                                                                     <th>Kelompok</th>
                                                                     <th>Deskripsi</th>
                                                                     <th>Total</th>
+                                                                    <th>Aksi</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -139,6 +140,10 @@ $title = "Tagihan";
                                                                         <td><?= $data['nama_kelompok']; ?></td>
                                                                         <td>Tagihan arisan <span class="badge badge-warning">bulan ke - <?= $data['bulan']; ?></span></td>
                                                                         <td><?= rupiah($data['jumlah_iuran']); ?></td>
+                                                                        <td><button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                                                                                <i class="far fa-credit-card"></i> Bayar tagihan
+                                                                            </button>
+                                                                        </td>
                                                                     </tr>
                                                                 <?php } ?>
                                                             </tbody>
@@ -153,9 +158,7 @@ $title = "Tagihan";
                                                     <div class="col-12">
                                                         <!-- <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a> -->
 
-                                                        <button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                            <i class="far fa-credit-card"></i> Bayar tagihan
-                                                        </button>
+
 
                                                         <!-- Modal -->
                                                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -336,7 +339,7 @@ $title = "Tagihan";
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        ...
+
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -355,7 +358,67 @@ $title = "Tagihan";
 
                                         <!-- Riwayat tagihan -->
                                         <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                                            Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
+                                            <div class="row">
+                                                <div class="col-12 table-responsive">
+                                                    <table id="myTable" class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>No</th>
+                                                                <th>Nama</th>
+                                                                <th>Kelompok</th>
+                                                                <th>Deskripsi</th>
+                                                                <th>Total</th>
+                                                                <th>Tanggal pembayaran</th>
+                                                                <th>Aksi</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            $no = 0;
+                                                            $query = mysqli_query($koneksi, "SELECT * FROM transaksi
+                                                                                                LEFT JOIN users ON transaksi.id_user = users.id_user 
+                                                                                                INNER JOIN kelompok ON transaksi.id_kelompok = kelompok.id_kelompok 
+                                                                                                WHERE status_transaksi = 'Lunas'
+                                                                                                AND users.username = '$_SESSION[username]'");
+                                                            while ($data = mysqli_fetch_array($query)) {
+                                                                $no++
+                                                            ?>
+                                                                <tr>
+                                                                    <td><?= $no; ?></td>
+                                                                    <td><?= $data['nama_user']; ?></td>
+                                                                    <td><?= $data['nama_kelompok']; ?></td>
+                                                                    <td>Tagihan arisan <span class="badge badge-warning">bulan ke - <?= $data['bulan']; ?></span></td>
+                                                                    <td><?= rupiah($data['jumlah_iuran']); ?></td>
+                                                                    <td><?= $data['waktu']; ?></td>
+                                                                    <td><button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#detailtagihan">
+                                                                            <i class="far fa-eye"></i> Detail
+                                                                        </button>
+                                                                        <!-- Modal -->
+                                                                        <div class="modal fade" id="detailtagihan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        ...
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                        <button type="button" class="btn btn-primary">Understood</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php } ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- /.col -->
+                                            </div>
                                         </div>
                                     </div>
 

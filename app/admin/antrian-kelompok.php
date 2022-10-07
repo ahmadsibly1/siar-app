@@ -81,7 +81,7 @@
                                                             Lihat
                                                         </button>
                                                         <div class="modal fade" id="modal-lg<?= $kelompok['id_user']; ?>">
-                                                            <div class="modal-dialog modal-lg">
+                                                            <div class="modal-dialog modal-xl">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h4 class="modal-title">Detail Data Anggota</h4>
