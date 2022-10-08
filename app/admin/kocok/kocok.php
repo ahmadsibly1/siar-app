@@ -20,16 +20,8 @@
                                 ORDER BY RAND() LIMIT 1");
     $dtt = mysqli_fetch_array($cari);
 
-    ?>
-    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-        <span class="visually-hidden">Loading...</span>
-    </div>
-    <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
-        <span class="visually-hidden">Loading...</span>
-    </div>
-    <?php
     // die(var_dump($id_kelompok));
-    $sql = mysqli_query($koneksi, 'UPDATE users  SET status_menang = "Menang" WHERE id_user="' . $dtt['id_user'] . '"');
+    $sql = mysqli_query($koneksi, 'UPDATE users  SET status_menang = "Menang", pemenang_bulan=' . $bulan . ' WHERE id_user="' . $dtt['id_user'] . '"');
     if ($sql) {
         echo "<script>
         

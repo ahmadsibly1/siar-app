@@ -43,7 +43,7 @@ if ($_SESSION['level'] == "") {
                       <h4 class="">Pembayaran</h4>
                     </div>
                   </div>
-                  <button type="button" class="btn btn-info mb-3 float-right" data-toggle="modal" data-target="#tambah-pembayaran">
+                  <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#tambah-pembayaran">
                     Tambah Pembayaran
                   </button>
                 </div>

@@ -91,9 +91,9 @@
                         </a>
                     </li>
                     <li class="nav-item mb-2">
-                        <a href="bukti-penerima.php" class="nav-link <?php if ($title2 == 'Data penerima') {
-                                                                            echo 'active';
-                                                                        } ?>">
+                        <a href="data-penerima.php" class="nav-link <?php if ($title2 == 'Data penerima') {
+                                                                        echo 'active';
+                                                                    } ?>">
                             <i class="far fa-circle nav-icon mr-3"></i>
                             <p>
                                 Data Penerima

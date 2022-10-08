@@ -30,7 +30,7 @@
                   <div class="card-title">
                     <h4>Kelompok Aktif</h4>
                   </div>
-                  <button type="button" class="btn btn-info mb-3 float-lg-right" data-toggle="modal" data-target="#tambah-kelompok">
+                  <button type="button" class="btn btn-info float-lg-right" data-toggle="modal" data-target="#tambah-kelompok">
                     Tambah Kelompok
                   </button>
                 </div>

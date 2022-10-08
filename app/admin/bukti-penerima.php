@@ -36,66 +36,46 @@ $title2 = "Data penerima";
                                             <h4 class="">Data Penerima</h4>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-info mb-3 float-right" data-toggle="modal" data-target="#tambah-pembayaran">
+                                    <!-- <button type="button" class="btn btn-info mb-3 float-right" data-toggle="modal" data-target="#tambah-pembayaran">
                                         Tambah Penerima
-                                    </button>
+                                    </button> -->
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="myTable" class="table table-striped">
+                                    <table id="myTable" class="table table-responsive-md table-striped">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Bukti pembayaran</th>
-                                                <th>Nama Anggota</th>
-                                                <th>Tanggal Terima</th>
-                                                <th>Jumlah Terima</th>
-                                                <th>Status</th>
+                                                <th>Nama</th>
+                                                <th>Kelompok</th>
+                                                <th>Deskripsi</th>
+                                                <th>Total</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             $no = 0;
-                                            // $query = mysqli_query($koneksi, "SELECT * FROM pembayaran LEFT JOIN users ON pembayaran.id_pembayaran = users.id_user");
-                                            $query = mysqli_query($koneksi, "SELECT * FROM penerima
-                                                            LEFT JOIN users 
-                                                            ON penerima.id_user = users.id_user
-                                                            LEFT JOIN kelompok 
-                                                            ON penerima.id_kelompok = kelompok.id_kelompok");
-                                            while ($penerima = mysqli_fetch_array($query)) {
+                                            $query = mysqli_query($koneksi, "SELECT * FROM penerima 
+                                                                            JOIN users 
+                                                                            ON penerima.id_user = users.id_user 
+                                                                            JOIN kelompok 
+                                                                            ON penerima.id_kelompok = kelompok.id_kelompok
+                                                                            
+                                                                            ");
+                                            while ($data = mysqli_fetch_array($query)) {
                                                 $no++
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
-                                                    <td width='5%'>
-                                                        <a href="../user/tambah/images/<? $penerima['bukti_penerima']; ?>">
-                                                            <img src="../user/tambah/images/<?= $penerima['bukti_penerima']; ?>" alt="" width="60px">
-                                                        </a>
+                                                    <td><?= $data['nama_user']; ?></td>
+                                                    <td><?= $data['nama_kelompok']; ?></td>
+                                                    <td>Pemenang <span class="badge badge-warning">bulan ke - <?= $data['pemenang_bulan']; ?></span></td>
+                                                    <td><?= rupiah($data['jumlah_iuran'] - ($data['jumlah_iuran'] * 5 / 100)); ?></td>
+                                                    <td><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                                                            <i class="far fa-credit-card"></i> Bayar tagihan
+                                                        </button>
                                                     </td>
-                                                    <td><?= $penerima['nama_user']; ?></td>
-                                                    <td><?= date('d-m-Y', strtotime($penerima['tanggal_terima'])); ?></td>
-                                                    <td>
-                                                        <?php
-                                                        if ($penerima['tipe_arisan'] == 'Bulanan') {
-                                                            echo rupiah($penerima['jumlah_terima'] * 12);
-                                                        } else {
-                                                            echo rupiah($penerima['jumlah_terima'] * 6);
-                                                        }
-                                                        ?>
-                                                    </td>
-
-                                                    <td>
-                                                        <?php
-                                                        if ($penerima['status_penerima'] == 'Pending') {
-                                                            echo '<span class="badge badge-warning p-2">Pending</span>';
-                                                        } elseif ($penerima['status_penerima'] == 'Dikonfirmasi') {
-                                                            echo '<span class="badge badge-success p-2">Diterima</span>';
-                                                        }
-
-                                                        ?>
-
-                                                    </td>
-
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
@@ -117,58 +97,82 @@ $title2 = "Data penerima";
 
 
 
+
+        <!-- 
         <div class="modal fade" id="tambah-pembayaran">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Form Pembayaran</h4>
+                        <h4 class="modal-title">Daftar Pemenang</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
 
                     <!-- ganti hidden menjadi text -->
-                    <form action="tambah/tambah-pembayaran.php" method="POST" name="pembayaran" enctype="multipart/form-data">
-                        <div class="card-body">
+        <form action="" method="POST" name="pembayaran" enctype="multipart/form-data">
+            <div class="modal-body">
 
-                            <div class="row mb-3">
-                                <div class="col-sm-12">
-                                    <select class="form-select-lg form-control" aria-label=".form-select-lg example" name="nama_user">
-                                        <option selected>Pilih nama anggota yang akan dibayar</option>
-                                        <?php
-                                        $query = mysqli_query($koneksi, "SELECT * FROM users WHERE users.pemenang = '1' AND users.level = 'user'");
-                                        while ($pembayaran = mysqli_fetch_array($query)) {
-                                            $id_user = $pembayaran['id_user'];
-                                        ?>
-                                            <option value="<?= $pembayaran['nama_user']; ?>"><?= $pembayaran['nama_user']; ?></option>
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <select class="form-select-lg form-control" aria-label=".form-select-lg example" name="nama_user">
+                            <option selected>Pilih nama anggota yang akan dibayar</option>
+                            <?php
+                            $query = mysqli_query($koneksi, "SELECT * FROM users WHERE users.pemenang = '1' AND users.level = 'user'");
+                            while ($pembayaran = mysqli_fetch_array($query)) {
+                                $id_user = $pembayaran['id_user'];
+                            ?>
+                                <option value="<?= $pembayaran['nama_user']; ?>"><?= $pembayaran['nama_user']; ?></option>
 
-                                    </select>
-                                    <input class="form-control form-control" type="hidden" name="id_user" value="<?= $pembayaran['id_user']; ?>">
-                                <?php } ?>
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer">
-                                <button type="submit" name="simpan" class="btn btn-primary float-right">Bayar</button>
-                                <a href="." type="submit" class="btn btn-default">Cancel</a>
-                            </div>
-                    </form>
+                        </select>
+                        <input class="form-control form-control" type="hidden" name="id_user" value="<?= $pembayaran['id_user']; ?>">
+                    <?php } ?>
+                    </div>
                 </div>
-                <!-- /.modal-content -->
+                <!-- /.card-body -->
             </div>
-            <!-- /.modal-dialog -->
-        </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Bayar
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Understood</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <a href="." type="submit" class="btn btn-default">Cancel</a> -->
+            </div>
+        </form>
+    </div>
+    <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+    </div>
+
+    -->
 
 
 
 
-
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
     <?php include('footer.php'); ?>

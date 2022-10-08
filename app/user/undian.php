@@ -59,34 +59,36 @@ $title = "Undian";
                                         <div class="row mb-1">
                                             <div class="col-sm-12">
                                                 <?php
-                                                // $query = mysqli_query($koneksi, "SELECT * FROM undian WHERE users.username = '$_SESSION[username]'");
-                                                // if ($data = mysqli_num_rows($query)) {
+                                                $id_user = $_GET['id_user'];
+                                                $query = mysqli_query($koneksi, "SELECT * FROM users WHERE users.id_user = $id_user");
+                                                if ($data = mysqli_num_rows($query)) {
 
-                                                //     $data = mysqli_fetch_assoc($query);
-                                                //     if ($data['status_menang'] == 'Menang' && $data['pemenang'] == 1) {
-                                                //         echo '<div class="alert alert-success" role="alert">
-                                                //         Selamat, Anda Menang Undian bulan ini
-                                                //         <button type="submit" class="close" data-dismiss="alert" aria-label="Close">
-                                                //         <span aria-hidden="true">&times;</span>
-                                                //         </button>
-                                                //         </div>
-                                                //         ';
-                                                //     } else {
-                                                //         echo '<div class="alert alert-danger" role="alert"> Anda belum menang undian bulan ini
-                                                //         <button type="submit" class="close" data-dismiss="alert" aria-label="Close">
-                                                //         <span aria-hidden="true">&times;</span>
-                                                //         </button>
-                                                //         </div>
-                                                //         ';
-                                                //     }
-                                                // }
-                                                // else {
-                                                //     echo '<div class="alert alert-danger" role="alert"> Anda belum menang undian bulan ini
-                                                //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                //     <span aria-hidden="true">&times;</span>
-                                                //     </button>';
-                                                // }
+                                                    $data = mysqli_fetch_assoc($query);
+                                                    if ($data['status_menang'] == 'Menang' && $data['pesan'] == 1) {
+                                                        echo '<div class="alert alert-success" role="alert">
+                                                        Selamat, Anda Menang Undian bulan ke - ' . $data['pemenang_bulan'] . '
+                                                        <button type="submit" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        </div>
+                                                        ';
+                                                    } else {
+                                                        echo '<div class="alert alert-danger" role="alert"> Anda belum menang undian bulan ini
+                                                        <button type="submit" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        </div>
+                                                        ';
+                                                    }
+                                                } else {
+                                                    echo '<div class="alert alert-danger" role="alert"> Anda belum menang undian bulan ini
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>';
+                                                }
+
                                                 ?>
+
 
                                             </div><!-- /.col -->
                                         </div>
