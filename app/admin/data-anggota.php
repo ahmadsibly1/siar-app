@@ -39,8 +39,8 @@
                         <th>Nama</th>
                         <th>KTP</th>
                         <th>Jenis Kelamin</th>
-                        <th>Tempat Lahir</th>
-                        <th>Tanggal Lahir</th>
+                        <!-- <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th> -->
                         <th>HP</th>
                         <th>Aksi</th>
                       </tr>
@@ -54,15 +54,15 @@
                       ?>
                         <tr>
                           <td><?= $no; ?></td>
-                          <td width='13%'><?= $anggota['nama_user']; ?></td>
+                          <td width='20%'><?= $anggota['nama_user']; ?></td>
                           <td>
                             <a href="../../conf/img/<?= $anggota['ktp']; ?>">
                               <img src="../../conf/img/<?= $anggota['ktp']; ?>" alt="" width="60px">
                             </a>
                           </td>
                           <td><?= $anggota['jenis_kelamin']; ?></td>
-                          <td><?= $anggota['tempat_lahir']; ?></td>
-                          <td><?= date('d-m-Y', strtotime($anggota['tanggal_lahir'])); ?></td>
+                          <!-- <td><?= $anggota['tempat_lahir']; ?></td>
+                          <td><?= date('d-m-Y', strtotime($anggota['tanggal_lahir'])); ?></td> -->
                           <td><?= $anggota['no_telp']; ?></td>
                           <td>
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg<?= $anggota['id_user']; ?>">
@@ -110,6 +110,12 @@
                                       </div>
                                     </div>
 
+                                    <div class="mb-3 row">
+                                      <label for="" class="col-sm-3 col-form-label">Alamat</label>
+                                      <div class="col-sm-9">
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly><?= $anggota['alamat']; ?></textarea>
+                                      </div>
+                                    </div>
                                     <div class="mb-3 row">
                                       <label for="" class="col-sm-3 col-form-label">Jenis Kelamin</label>
                                       <div class="col-sm-9">

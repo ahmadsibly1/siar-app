@@ -122,6 +122,12 @@
                                                                         </div>
 
                                                                         <div class="mb-3 row">
+                                                                            <label for="" class="col-sm-3 col-form-label">Alamat</label>
+                                                                            <div class="col-sm-9">
+                                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly><?= $kelompok['alamat']; ?></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="mb-3 row">
                                                                             <label for="" class="col-sm-3 col-form-label">Jenis Kelamin</label>
                                                                             <div class="col-sm-9">
                                                                                 <input class="form-control" type="text" value="<?= $kelompok['jenis_kelamin']; ?>" aria-label="readonly input example" readonly>

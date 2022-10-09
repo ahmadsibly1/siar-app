@@ -77,7 +77,7 @@
                 <div class="row mb-3">
                   <label for=alamat_user" class="col-sm-3 col-form-label">Alamat</label>
                   <div class="col-sm-9">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" name="alamat_user" rows="3"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="alamat" rows="3"></textarea>
                     <!-- <input class="form-control form-control" type="text-area" name="alamat_user" placeholder="*" required> -->
                   </div>
                 </div>

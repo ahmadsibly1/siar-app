@@ -94,6 +94,13 @@ $title = 'Biodata';
                                     </div>
 
                                     <div class="row mb-3">
+                                        <label for="jeniskelamin" class="col-sm-2 col-form-label">Alamat</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" disabled><?= $anggota['alamat']; ?></textarea>
+                                            <!-- <input class="form-control" type="text" value="<?= $anggota['alamat']; ?>" aria-label="Disabled input example" disabled readonly> -->
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
                                         <label for="jeniskelamin" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                                         <div class="col-sm-10">
                                             <input class="form-control" type="text" value="<?= $anggota['jenis_kelamin']; ?>" aria-label="Disabled input example" disabled readonly>

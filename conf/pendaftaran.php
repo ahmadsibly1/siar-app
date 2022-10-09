@@ -8,7 +8,7 @@ $notelp = $_POST['notelephone'];
 $nik = $_POST['nik'];
 $tempatlahir = $_POST['tempatlahir'];
 $tanggallahir = $_POST['tanggallahir'];
-// $alamat_user = $_POST['alamat_user'];
+$alamat = $_POST['alamat'];
 $jeniskelamin = $_POST['jeniskelamin'];
 $agama = $_POST['agama'];
 $ktp = $_FILES['ktp']['name'];
@@ -22,7 +22,7 @@ $tmpFile = $_FILES['ktp']['tmp_name'];
 
 move_uploaded_file($tmpFile, $dir . $ktp);
 
-$query = mysqli_query($koneksi, "INSERT INTO users (id_user, nama_user, username, password, no_telp, nik, tempat_lahir, tanggal_lahir, jenis_kelamin, agama, ktp, level) VALUES ('','$nama','$username','$password','$notelp','$nik','$tempatlahir','$tanggallahir','$jeniskelamin','$agama','$ktp','user')");
+$query = mysqli_query($koneksi, "INSERT INTO users (id_user, nama_user, username, password, no_telp, nik, tempat_lahir, alamat, tanggal_lahir, jenis_kelamin, agama, ktp, level) VALUES ('','$nama','$username','$password','$notelp','$nik','$tempatlahir','$alamat','$tanggallahir','$jeniskelamin','$agama','$ktp','user')");
 
 $message = "Anda berhasil mendaftar silahkan masuk!";
 echo "<script>
