@@ -234,7 +234,6 @@ $title = "Tagihan";
                                                                         ?>
                                                                         <!-- ganti hidden menjadi text -->
                                                                         <form action="tambah/tambah-pembayaran.php" method="POST" name="pembayaran" enctype="multipart/form-data">
-                                                                            <!-- <input type="hidden" name="id_user" value="<?= $_SESSION['username'] ?>"> -->
 
                                                                             <div class="card-body">
 

@@ -127,7 +127,7 @@ $title2 = "Data tagihan";
                                                         </td>
                                                         <td>
 
-                                                            <a href="kirim-tagihan.php?id=<?= $transaksi['id_user']; ?>" class="btn btn-primary">
+                                                            <a href="kirim-tagihan.php?id=<?= $transaksi['id_user']; ?>" class="btn btn-info">
                                                                 <i class="fa-solid fa-gauge"></i> Dashboard
                                                             </a>
                                                             <a href="https://api.whatsapp.com/send?phone=6289505347307&text=Kepada%20Yth%20Bpk/ibu%20<?= $transaksi['nama_user']; ?>,%20Anda%20terdaftar%20pada%20kelompok%20<?= $transaksi['nama_kelompok']; ?>%20dan%20belum%20melakukan%20pembayaran%20pada%20bulan%20<?= $transaksi['bulan']; ?>%20sejumalah%20<?= rupiah($transaksi['jumlah_iuran']); ?>.%20Segera melakukan pembayaran sebelum jatuh tempo" target="_blank" rel="noopener noreferrer" class="btn btn-success">

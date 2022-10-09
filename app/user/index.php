@@ -64,25 +64,6 @@ $data = mysqli_fetch_array($query);
                     </div><!-- /.row -->
 
 
-                    <?php
-                    $query = mysqli_query($koneksi, "SELECT * FROM transaksi INNER JOIN users ON transaksi.id_user = users.id_user WHERE status_transaksi = 'Belum bayar' AND transaksi.pesan = 1 AND users.username = '$_SESSION[username]'");
-                    while ($data = mysqli_fetch_array($query)) {
-                        # code...
-                    ?>
-                        <div class="row mb-1">
-                            <div class="col-sm-12">
-
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    Hallo <strong><?= $data['nama_user']; ?></strong>! Anda mempunyai tagihan pada bulan ke <?= $data['bulan']; ?>, segera lakukan pembayaran sebelum jatuh tempo.
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-
-                                </div>
-                            </div><!-- /.col -->
-                        </div>
-                    <?php  } ?>
-
 
                 </div><!-- /.container-fluid -->
             </div>

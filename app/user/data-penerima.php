@@ -49,7 +49,8 @@ $title = "Penerima";
                                                     <th>Foto pembayaran</th>
                                                     <th>Tanggal Terima</th>
                                                     <th>Jumlah Terima</th>
-                                                    <th colspan="2">Status</th>
+                                                    <th>Metode</th>
+                                                    <th>Status</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -63,7 +64,9 @@ $title = "Penerima";
                                                             ON penerima.id_user = users.id_user
                                                             LEFT JOIN kelompok 
                                                             ON penerima.id_kelompok = kelompok.id_kelompok
-                                                            WHERE penerima.id_user = '$id_user'");
+                                                            WHERE penerima.id_user = '$id_user'
+                                                            AND status_penerima = 'Pending'
+                                                            OR status_penerima = 'Sudah dibayar'");
                                                 while ($penerima = mysqli_fetch_array($query)) {
                                                     $no++
                                                 ?>
@@ -74,32 +77,36 @@ $title = "Penerima";
                                                                 <img src="../user/tambah/images/<?= $penerima['bukti_terima']; ?>" alt="" width="60px">
                                                             </a>
                                                         </td>
-                                                        <td><?= date('d-m-Y', strtotime($penerima['tanggal_terima'])); ?></td>
+                                                        <td><?= $penerima['tanggal_terima']; ?></td>
+                                                        <td><?= rupiah($penerima['jumlah_terima']); ?></td>
+                                                        <td><?= $penerima['metode']; ?></td>
                                                         <td>
                                                             <?php
-                                                            if ($penerima['tipe_arisan'] == 'Bulanan') {
-                                                                echo rupiah($penerima['jumlah_terima'] * 12);
+                                                            if ($penerima['metode'] == 'cod') {
+                                                                echo "<span class='badge badge-success'>Sudah diterima</span>";
                                                             } else {
-                                                                echo rupiah($penerima['jumlah_terima'] * 6);
-                                                            }
+
                                                             ?>
+
+                                                                <form action="simpan-penerima.php" method="post">
+                                                                    <input type="hidden" name="id_penerima" value="<?php echo $penerima['id_penerima']; ?>">
+                                                                    <select class="form-control1" type="from-control" name="status_penerima">
+                                                                        <option value="<?= $penerima['status_penerima']; ?>"><?= $penerima['status_penerima']; ?> </option>
+                                                                        <option value="Dikonfirmasi">Dikonfirmasi</option>
+                                                                        <!-- <option value="Delumdikonfirmasi">Belum dikonfirmasi</option> -->
+                                                                    </select>
+                                                                <?php } ?>
                                                         </td>
 
+                                                        <!-- <td>
+                                                            <button type="submit" name="simpan" class="btn btn-info">Ubah</button>
+                                                        </td> -->
                                                         <td>
-                                                            <form action="simpan-penerima.php" method="post">
-                                                                <input type="hidden" name="id_penerima" value="<?php echo $penerima['id_penerima']; ?>">
-                                                                <select class="form-control1" type="from-control" name="status_penerima">
-                                                                    <option value="<?= $penerima['status_penerima']; ?>"><?= $penerima['status_penerima']; ?> </option>
-                                                                    <option value="Dikonfirmasi">Dikonfirmasi</option>
-                                                                    <!-- <option value="Delumdikonfirmasi">Belum dikonfirmasi</option> -->
-                                                                </select>
+                                                            <button type="submit" name="simpan" class="btn btn-info">Ubah</button>
 
-                                                        </td>
-                                                        <td><button type="submit" name="simpan" class="btn btn-info">Ubah</button></td>
-                                                        </form>
-                                                        <td>
                                                             <a href="hapus/hapus-penerima.php?id=<?= $penerima['id_penerima']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
                                                         </td>
+                                                        </form>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>

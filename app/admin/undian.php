@@ -89,7 +89,7 @@
 
                                           <td>
                                              <a type="button" class="btn btn-sm btn-info" href="detail-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>">
-                                                <i class="bi bi-eye-fill"></i> Anggota
+                                                <i class="fa-regular fa-eye"></i> Anggota
                                              </a>
                                              <a href="kocok/undi-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>" class=" btn btn-sm btn-success">
                                                 <i class="bi bi-pen"></i> Undi
