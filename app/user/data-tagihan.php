@@ -116,6 +116,7 @@ $title = "Tagihan";
                                                             <thead>
                                                                 <tr>
                                                                     <th>No</th>
+                                                                    <th>No tagihan</th>
                                                                     <th>Nama</th>
                                                                     <th>Kelompok</th>
                                                                     <th>Deskripsi</th>
@@ -136,11 +137,12 @@ $title = "Tagihan";
                                                                 ?>
                                                                     <tr>
                                                                         <td><?= $no; ?></td>
+                                                                        <td>TGH<?= $data['id_transaksi']; ?></td>
                                                                         <td><?= $data['nama_user']; ?></td>
                                                                         <td><?= $data['nama_kelompok']; ?></td>
                                                                         <td>Tagihan arisan <span class="badge badge-warning">bulan ke - <?= $data['bulan']; ?></span></td>
                                                                         <td><?= rupiah($data['jumlah_iuran']); ?></td>
-                                                                        <td><button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                                                                        <td><button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                                                                 <i class="far fa-credit-card"></i> Bayar tagihan
                                                                             </button>
                                                                         </td>
@@ -157,8 +159,6 @@ $title = "Tagihan";
                                                 <div class="row no-print">
                                                     <div class="col-12">
                                                         <!-- <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a> -->
-
-
 
                                                         <!-- Modal -->
                                                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -187,9 +187,6 @@ $title = "Tagihan";
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keluar</button>
-                                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="target">
-                                                                            Lanjut
-                                                                        </button>
 
                                                                         <?php
                                                                         if (isset($_POST['metode'])) {
@@ -237,17 +234,7 @@ $title = "Tagihan";
 
                                                                             <div class="card-body">
 
-                                                                                <div class="row mb-3">
-                                                                                    <label for="exampleInputFile" class="col-sm-3 col-form-label">Upload Struk</label>
-                                                                                    <div class="col-sm-9">
-                                                                                        <div class="input-group">
-                                                                                            <div class="custom-file">
-                                                                                                <input type="file" name="bukti_bayar" class="custom-file-input" id="exampleInputFile" placeholder="*" required>
-                                                                                                <label class="custom-file-label" for="exampleInputFile"></label>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+
                                                                                 <div class="row mb-3">
                                                                                     <label for=nama_pembayar" class="col-sm-3 col-form-label">Nama Pembayar</label>
                                                                                     <div class="col-sm-9">
@@ -263,6 +250,24 @@ $title = "Tagihan";
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="row mb-3">
+                                                                                    <label for=jumlah" class="col-sm-3 col-form-label">Jumlah</label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <input class="form-control form-control" type="text" value="<?= rupiah($data3['jumlah_iuran']); ?>" name="jumlah" disabled>
+                                                                                        <input class="form-control form-control" type="hidden" name="jumlah" value="<?= $data3['jumlah_iuran']; ?>">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row mb-3">
+                                                                                    <label for="exampleInputFile" class="col-sm-3 col-form-label">Upload Struk</label>
+                                                                                    <div class="col-sm-9">
+                                                                                        <div class="input-group">
+                                                                                            <div class="custom-file">
+                                                                                                <input type="file" name="bukti_bayar" class="custom-file-input" id="exampleInputFile" placeholder="*" required>
+                                                                                                <label class="custom-file-label" for="exampleInputFile"></label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row mb-3">
                                                                                     <label for="bank_tujuan" class="col-sm-3 col-form-label">Bank Tujuan</label>
                                                                                     <div class="col-sm-9">
                                                                                         <div class="input-grup">
@@ -274,19 +279,7 @@ $title = "Tagihan";
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="row mb-3">
-                                                                                    <label for="tanggal_bayar" class="col-sm-3 col-form-label">Tanggal Bayar</label>
-                                                                                    <div class="col-sm-9">
-                                                                                        <input class="form-control form-control" type="date" name="tanggal_bayar">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row mb-3">
-                                                                                    <label for=jumlah" class="col-sm-3 col-form-label">Jumlah</label>
-                                                                                    <div class="col-sm-9">
-                                                                                        <input class="form-control form-control" type="text" value="<?= rupiah($data3['jumlah_iuran']); ?>" name="jumlah" disabled>
-                                                                                        <input class="form-control form-control" type="hidden" name="jumlah" value="<?= $data3['jumlah_iuran']; ?>">
-                                                                                    </div>
-                                                                                </div>
+
                                                                                 <div class="row mb-3">
                                                                                     <label for=bulan" class="col-sm-3 col-form-label">Bulan</label>
                                                                                     <div class="col-sm-9">
@@ -319,9 +312,7 @@ $title = "Tagihan";
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit" name="simpan" class="btn btn-primary float-right" <?php if ($data3['ikut'] == 'Belum' || $data3['ikut'] == 'Pending') {
-                                                                                                                                                    echo 'disabled';
-                                                                                                                                                } ?>>Bayar</button>
+                                                                        <button type="submit" name="simpan" class="btn btn-primary float-right">Bayar</button>
                                                                     </div>
                                                                     </form>
                                                                 </div>

@@ -66,7 +66,7 @@
                                                                                                         } ?>">
                             <i class="nav-icon far fa-circle nav-icon mr-3"></i>
                             <p>
-                                Tagihan
+                                Data tagihan
                             </p>
                         </a>
                     </li>
@@ -76,7 +76,7 @@
                                                                                                             } ?>">
                             <i class="nav-icon far fa-circle nav-icon mr-3"></i>
                             <p>
-                                Pembayaran
+                                Data pembayaran
                             </p>
                         </a>
                     </li>
@@ -86,7 +86,7 @@
                                                                                                         } ?>">
                             <i class="nav-icon far fa-circle nav-icon mr-3"></i>
                             <p>
-                                Bukti Penerima
+                                Data penerima
                             </p>
                         </a>
                     </li>

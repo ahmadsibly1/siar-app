@@ -53,6 +53,7 @@ $title2 = "Data penerima";
                                         <tbody>
                                             <?php
                                             $no = 0;
+
                                             $query = mysqli_query($koneksi, "SELECT * FROM penerima 
                                                                             JOIN users 
                                                                             ON penerima.id_user = users.id_user 
@@ -68,11 +69,13 @@ $title2 = "Data penerima";
                                                     <td><?= $data['nama_user']; ?></td>
                                                     <td><?= $data['nama_kelompok']; ?></td>
                                                     <td><?= rupiah($data['jumlah_iuran'] - ($data['jumlah_iuran'] * 5 / 100)); ?></td>
-                                                    <td>Pemenang <span class="badge badge-warning">bulan ke - <?= $data['pemenang_bulan']; ?></span></td>
+                                                    <td>Pemenang <span class="badge badge-info">bulan ke - <?= $data['pemenang_bulan']; ?></span></td>
                                                     <td>
                                                         <?php
                                                         if ($data['status_penerima'] == "Belum bayar") {
                                                             echo "<span class='badge badge-danger'>Belum Dibayar</span>";
+                                                        } elseif ($data['status_penerima'] == "Pending") {
+                                                            echo "<span class='badge badge-warning'>Pending</span>";
                                                         } else {
                                                             echo "<span class='badge badge-success'>Sudah Dibayar</span>";
                                                         }
@@ -162,85 +165,73 @@ $title2 = "Data penerima";
                                                         </form>
 
                                                         <!-- Pembayaran Transfer -->
-                                                        <div class="modal fade" id="myModal1<?php echo $data['id_user']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog modal-lg">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Form pembayaran transfer</h1>
-                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="row mb-3 px-5">
-                                                                            <label for="exampleInputFile" class="col-sm-3 col-form-label">Upload struk</label>
-                                                                            <div class="col-sm-9">
-                                                                                <div class="input-group">
-                                                                                    <div class="custom-file">
-                                                                                        <input type="file" name="bukti_bayar" class="custom-file-input" id="exampleInputFile" placeholder="*" required>
-                                                                                        <label class="custom-file-label" for="exampleInputFile"></label>
+                                                        <form action="tambah/transfer-penerima.php" method="post" enctype="multipart/form-data">
+                                                            <div class="modal fade" id="myModal1<?php echo $data['id_user']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-lg">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Form pembayaran transfer</h1>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="row mb-3 px-5">
+                                                                                <label for=nama_bank" class="col-sm-3 col-form-label">Nama Bank</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <input class="form-control form-control" type="text" name="" value="<?= $data['nama_bank']; ?>" aria-label="Disabled input example" disabled readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row mb-3 px-5">
+                                                                                <label for=no_rekening" class="col-sm-3 col-form-label">No Rekening</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <input class="form-control form-control" type="text" value="<?= $data['no_rekening']; ?>" aria-label="Disabled input example" disabled readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row mb-3 px-5">
+                                                                                <label for="exampleInputFile" class="col-sm-3 col-form-label">Upload struk</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <div class="input-group">
+                                                                                        <div class="custom-file">
+                                                                                            <input type="file" name="bukti_bayar" class="custom-file-input" id="exampleInputFile" placeholder="*" required>
+                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
 
+                                                                                        </div>
                                                                                     </div>
-                                                                                </div>
-                                                                                <!-- <div class="form-text">bukti telah memberika hasil undian ke angota</div> -->
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row mb-3 px-5">
-                                                                            <label for=nama_pembayar" class="col-sm-3 col-form-label">Nama Penerima</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input class="form-control form-control" type="text" name="" value="<?= $data['nama_user']; ?>" aria-label="Disabled input example" disabled readonly>
-                                                                                <input class="form-control form-control" type="hidden" name="id_user" value="<?= $id_user; ?>">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row mb-3 px-5">
-                                                                            <label for=nama_kelompok" class="col-sm-3 col-form-label">Nama Kelompok</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input class="form-control form-control" type="text" name="" value="<?= $data['nama_kelompok']; ?>" aria-label="Disabled input example" disabled readonly>
-                                                                                <input class="form-control form-control" type="hidden" name="nama_kelompok" value="<?= $data['id_kelompok']; ?>">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row mb-3 px-5">
-                                                                            <label for="bank_tujuan" class="col-sm-3 col-form-label">Bank Tujuan</label>
-                                                                            <div class="col-sm-9">
-                                                                                <div class="input-grup">
-                                                                                    <select class="form-select form-control" aria-label="Default select example" id="bank_tujuan" name="bank_tujuan" placeholder="*" required>
-                                                                                        <option selected>...Pilih...</option>
-                                                                                        <option value="BRI">BRI</option>
-                                                                                        <option value="BCA">BCA</option>
-                                                                                    </select>
+                                                                                    <!-- <div class="form-text">bukti telah memberika hasil undian ke angota</div> -->
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="row mb-3 px-5">
-                                                                            <label for="bank_tujuan" class="col-sm-3 col-form-label">Bank Tujuan</label>
-                                                                            <div class="col-sm-9">
-                                                                                <div class="input-grup">
+                                                                            <div class="row mb-3 px-5">
+                                                                                <label for=nama_pembayar" class="col-sm-3 col-form-label">Nama Penerima</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <input class="form-control form-control" type="text" name="" value="<?= $data['nama_user']; ?>" aria-label="Disabled input example" disabled readonly>
+                                                                                    <input class="form-control form-control" type="hidden" name="id_user" value="<?= $data['id_user']; ?>">
+                                                                                    <input class="form-control form-control" type="hidden" name="id_penerima" value="<?= $data['id_penerima']; ?>">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row mb-3 px-5">
+                                                                                <label for=nama_kelompok" class="col-sm-3 col-form-label">Nama Kelompok</label>
+                                                                                <div class="col-sm-9">
                                                                                     <input class="form-control form-control" type="text" name="" value="<?= $data['nama_kelompok']; ?>" aria-label="Disabled input example" disabled readonly>
+                                                                                    <!-- <input class="form-control form-control" type="hidden" name="nama_kelompok" value="<?= $data['id_kelompok']; ?>"> -->
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="row mb-3 px-5">
-                                                                            <label for="tanggal_bayar" class="col-sm-3 col-form-label">Tanggal Bayar</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input class="form-control form-control" type="date" name="tanggal_bayar">
+                                                                            <div class="row mb-3 px-5">
+                                                                                <label for=jumlah" class="col-sm-3 col-form-label">Jumlah</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <input class="form-control form-control" type="text" value="<?= rupiah($data['jumlah_iuran'] - ($data['jumlah_iuran'] * 5 / 100)); ?>" name="jumlah" disabled>
+                                                                                    <input class="form-control form-control" type="hidden" name="jumlah" value="<?= $data['jumlah_iuran'] - ($data['jumlah_iuran'] * 5 / 100); ?>">
+                                                                                    <div class="form-text">Setelah dipotong 5%</div>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="row mb-3 px-5">
-                                                                            <label for=jumlah" class="col-sm-3 col-form-label">Jumlah</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input class="form-control form-control" type="text" value="<?= rupiah($data['jumlah_iuran'] - ($data['jumlah_iuran'] * 5 / 100)); ?>" name="jumlah" disabled>
-                                                                                <input class="form-control form-control" type="hidden" name="jumlah" value="<?= $data['jumlah_iuran'] - ($data['jumlah_iuran'] * 5 / 100); ?>">
-                                                                                <div class="form-text">Setelah dipotong 5%</div>
-                                                                            </div>
-                                                                        </div>
 
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                            <button type="submit" class="btn btn-primary">Bayar</button>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             <?php } ?>

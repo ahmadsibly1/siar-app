@@ -123,6 +123,16 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item mb-2">
+                <a href="laporan.php" class="nav-link <?php if ($title == 'Laporan') {
+                                                            echo 'active';
+                                                        } ?>">
+                    <i class="nav-icon fas fa-solid fa-book mr-3"></i>
+                    <p>
+                        Laporan
+                    </p>
+                </a>
+            </li>
             <li class="nav-item mb-2 menu-open">
                 <a href="logout.php" class="nav-link">
                     <i class="nav-icon fas fa-solid fa-arrow-left mr-3" style="color:#f44336;"></i>

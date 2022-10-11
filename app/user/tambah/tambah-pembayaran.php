@@ -6,7 +6,7 @@ include('../../../conf/config.php');
 $id_user =  $_POST['id_user'];
 $nama_kelompok =  $_POST['nama_kelompok'];
 $bank_tujuan =  $_POST['bank_tujuan'];
-$tanggal_bayar =  $_POST['tanggal_bayar'];
+// $tanggal_bayar =  $_POST['tanggal_bayar'];
 $jumlah =  $_POST['jumlah'];
 $bulan =  $_POST['bulan'];
 $bukti_bayar = $_FILES['bukti_bayar']['name'];
@@ -28,7 +28,7 @@ if ($nama_kelompok == "") {
     window.location.href = '../data-pembayaran.php?id_user=$id_user';
     </script>";
 } else {
-    $query = mysqli_query($koneksi, "INSERT INTO pembayaran (id_pembayaran, bukti_bayar, id_user, id_kelompok, bank, tgl_bayar, jumlah, bulan) VALUES ('','$bukti_bayar','$id_user','$nama_kelompok','$bank_tujuan','$tanggal_bayar ','$jumlah','$bulan')");
+    $query = mysqli_query($koneksi, "INSERT INTO pembayaran (id_pembayaran, bukti_bayar, id_user, id_kelompok, bank, tgl_bayar, jumlah, bulan) VALUES ('','$bukti_bayar','$id_user','$nama_kelompok','$bank_tujuan',NOW(),'$jumlah','$bulan')");
     // die(var_dump($query));
     $query2 = mysqli_query($koneksi, "UPDATE transaksi SET status_transaksi = 'Pending', waktu = NOW() WHERE id_user = '$id_user' AND bulan = '$bulan'");
     if ($query == 1 && $query2 == 1) {

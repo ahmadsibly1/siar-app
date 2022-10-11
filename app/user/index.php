@@ -39,26 +39,6 @@ $data = mysqli_fetch_array($query);
                                 <h1 name="nama_user" class="m-1">Selamat Datang <?= $data['nama_user']; ?>!</h1>
                                 <h5 class="m-1">Di Sistem Informasi Arisan RT 01 RW 07 Kelurahan Lengkong wetan</h5>
                                 <hr>
-                                <p class="m-1 mb-4">
-                                    Untuk melakukan pembayaran melalui <strong>Bank BRI</strong>, Silahkan salin nomor ini &nbsp;
-                                    <button type="button" class="btn btn-sm btn-light">
-                                        <span onclick="copyTeks()" id="dataCopy">
-                                            <strong>098872277</strong>
-                                        </span>
-                                    </button>
-                                    &nbsp; Atas nama Ahmad Fauzi
-                                </p>
-                                <p class="m-1">
-                                    Untuk melakukan pembayaran melalui <strong>Bank BCA</strong>, Silahkan salin nomor ini &nbsp;
-                                    <button type="button" class="btn btn-sm btn-light">
-                                        <span onclick="copyTeks()" id="dataCopy">
-                                            <strong>56798872277</strong>
-
-                                        </span>
-                                    </button>
-                                    &nbsp; Atas nama Ahmad Fauzi
-                                </p>
-
                             </div>
                         </div><!-- /.col -->
                     </div><!-- /.row -->

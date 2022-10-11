@@ -43,9 +43,6 @@ if ($_SESSION['level'] == "") {
                       <h4 class="">Pembayaran</h4>
                     </div>
                   </div>
-                  <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#tambah-pembayaran">
-                    Tambah Pembayaran
-                  </button>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body ">
@@ -57,18 +54,20 @@ if ($_SESSION['level'] == "") {
                           <th>No</th>
                           <th>Nama Kelompok</th>
                           <th>Saldo</th>
-                          <th>Bulan</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
                       <?php
                       $no = 0;
                       $totalSaldo = 0;
+                      $sql = mysqli_query($koneksi, "SELECT * FROM kelompok");
+                      $kelompok = mysqli_fetch_array($sql);
+                      $id_kelompok = $kelompok['id_kelompok'];
                       // $query = mysqli_query($koneksi, "SELECT * FROM pembayaran LEFT JOIN users ON pembayaran.id_pembayaran = users.id_user");
-                      $query = mysqli_query($koneksi, "SELECT * FROM pembayaran 
-                                                      INNER JOIN kelompok 
-                                                      ON pembayaran.id_kelompok = kelompok.id_kelompok
-                                                      Group BY pembayaran.id_kelompok");
+                      $query = mysqli_query($koneksi, "SELECT SUM(jumlah ) AS total FROM pembayaran 
+                                                      
+                                                      -- Group BY pembayaran.id_kelompok
+                                                      ");
                       while ($saldo = mysqli_fetch_array($query)) {
                         $no++
 
@@ -77,9 +76,8 @@ if ($_SESSION['level'] == "") {
                         <tbody>
                           <tr>
                             <td><?= $no; ?></td>
-                            <td><?= $saldo['nama_kelompok']; ?></td>
-                            <td><?= $saldo['jumlah']; ?></td>
-                            <td><?= $saldo['bulan']; ?></td>
+                            <td><?= $kelompok['nama_kelompok']; ?></td>
+                            <td><?= $saldo['total']; ?></td>
                             <td>X</td>
                           </tr>
                         </tbody>

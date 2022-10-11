@@ -81,9 +81,16 @@ $title = 'Kelompok';
                                                             <a type="button" class="btn btn-sm btn-info" href="detail-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>">
                                                                 <i class="fa-solid fa-eye"></i> Detail
                                                             </a>
-                                                            <a type="button" class="btn btn-sm btn-success" href="gabung-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>" id="gabung ">
-                                                                <i class="fa-solid fa-right-to-bracket"></i> Gabung
-                                                            </a>
+
+                                                            <?php
+                                                            if ($data2['id_kelompok'] > 0 || $kelompok['isi'] == $kelompok['kuota']) {
+                                                                echo '<button type="button" class="btn btn-sm btn-success" disabled> <i class="fa-solid fa-right-to-bracket"></i> Gabung</button>';
+                                                            } else {
+                                                            ?>
+                                                                <a type="button" class="btn btn-sm btn-success" href="gabung-kelompok.php?id_kelompok=<?= $kelompok['id_kelompok']; ?>" id="gabung ">
+                                                                    <i class="fa-solid fa-right-to-bracket"></i> Gabung
+                                                                </a>
+                                                            <?php } ?>
                                                         </td>
                                                         <!-- modal target -->
                                                         <div class="modal fade" id="detail-kelompok<?= $kelompok['id_kelompok']; ?>">

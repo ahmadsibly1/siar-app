@@ -19,15 +19,17 @@ move_uploaded_file($tmpFile, $dir . $bukti_bayar);
 $query = mysqli_query($koneksi, "UPDATE penerima SET 
 jumlah_terima = '$jumlah',
 tanggal_terima = NOW(),
-status_penerima = 'Sudah dibayar',
-bukti_terima = '$bukti_bayar' 
+status_penerima = 'Pending',
+bukti_terima = '$bukti_bayar', 
+metode = 'transfer'
 WHERE id_penerima = '$id_penerima'
 AND id_user = '$id_user'");
 
-$query2 = mysqli_query($koneksi, "UPDATE users set pesan = 0 WHERE id_user = '$id_user'");
-if ($query == 1 && $query2 == 1) {
 
-    $message = "Pembayarana berhasil";
+
+if ($query == 1) {
+
+    $message = "Pembayaran berhasil";
     // die();
     echo "<script type='text/javascript'>
         alert('$message');
