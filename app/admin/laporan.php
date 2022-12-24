@@ -51,23 +51,7 @@ $title = "Laporan";
                                                     <?php } ?>
                                                 </select>
                                         </div>
-                                        <!-- <div class="col-md-3">
-                                            <select class="form-select" name="bulan" aria-label="Default select example">
-                                                <option selected>Pilih bulan</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                                <option value="11">11</option>
-                                                <option value="12">12</option>
-                                            </select>
-                                        </div> -->
+
                                         <div class="col-md-1">
                                             <button class="btn btn-dark" type="submit" name="cari">Cari</button>
 
@@ -76,58 +60,72 @@ $title = "Laporan";
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="card">
-                                <div class="card-header justify-content-between bg-dark">
-                                    <div class="card-title">
-                                        <h4>Data Laporan</h4>
+                            <?php
+                            $no = 0;
+                            if (isset($_POST['cari'])) {
+                                // $bulan = $_POST['bulan'];
+                                $kelompok = $_POST['id_kelompok'];
+                                $query2 = mysqli_query($koneksi, "SELECT * FROM users
+                                INNER JOIN kelompok ON users.id_kelompok = kelompok.id_kelompok
+                                WHERE users.id_kelompok > 0 
+                                AND users.id_kelompok = '$kelompok' 
+                                ORDER BY users.id_user DESC");
+                            ?>
+                                <div class="card">
+                                    <div class="card-header justify-content-between bg-dark">
+                                        <div class="card-title">
+                                            <h4>Data Laporan</h4>
+                                        </div>
+                                        <a href="invoice.php?id_kelompok=<?= $kelompok; ?>" target="_blank" rel="noopener noreferrer">
+                                            <button type="button" class="btn btn-xl btn-info float-lg-right">
+                                                Print
+                                            </button>
+                                        </a>
                                     </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <table id="myTable" class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama anggota</th>
+                                                    <th>Status pemenang</th>
+                                                    <th>Pemenang bulan</th>
+                                                    <th>Alamat</th>
 
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="myTable" class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama anggota</th>
-                                                <th>Status pemenang</th>
-                                                <th>Pemenang bulan</th>
-                                                <th>Alamat</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-
-                                            $no = 0;
-                                            if (isset($_POST['cari'])) {
-                                                // $bulan = $_POST['bulan'];
-                                                $kelompok = $_POST['id_kelompok'];
-                                                $query2 = mysqli_query($koneksi, "SELECT * FROM users
-                                                                INNER JOIN kelompok ON users.id_kelompok = kelompok.id_kelompok
-                                                                WHERE users.id_kelompok > 0 
-                                                                AND users.id_kelompok = '$kelompok' 
-                                                                ORDER BY users.id_user DESC");
                                                 while ($laporan = mysqli_fetch_array($query2)) {
                                                     $no++
-                                            ?>
+                                                ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
                                                         <td><?= $laporan['nama_user']; ?></td>
                                                         <td><?= $laporan['status_menang']; ?></td>
-                                                        <td> Ke - <?= $laporan['pemenang_bulan']; ?></td>
+                                                        <td>
+                                                            <?php
+                                                            if ($laporan['pemenang_bulan'] == 0) {
+                                                                echo '<span class="badge badge-warning p-2">Belum menang</span>';
+                                                            } else {
+                                                                echo 'Ke - ' . $laporan['pemenang_bulan'];
+                                                            }
+                                                            ?>
+
+                                                        </td>
                                                         <td><?= $laporan['alamat']; ?></td>
 
                                                     </tr>
                                                 <?php } ?>
                                             <?php } ?>
 
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- /.card-body -->
+                                <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>

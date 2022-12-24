@@ -1,6 +1,5 @@
 <?php include "../../../conf/config.php"; ?>
 
-
 <html>
 
 <head>
@@ -11,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/materialize.min.js"></script>
+    <script src="../../plugins/sweetalert2/sweetalert2.all.min.js"></script>;
 </head>
 
 <body>
@@ -38,6 +38,10 @@
                 <div class="col-md-4 d-flex justify-content-evenly" style="margin-bottom: 10px;">
                     <!-- <a href="v_tambah.php"><button class="btn waves-effect grey">Tambah</button></a> -->
                     <select class="form-select" name="bulan" aria-label="Default select example">
+                        <?php
+                        $query_select = "SELECT * FROM users WHERE id_kelompok = '$id_kelompok'";
+                        $pemenang_bulan = mysqli_query($koneksi, $query_select);
+                        ?>
                         <option selected>Pilih Bulan</option>
                         <option value="1">ke - 1</option>
                         <option value="2">ke - 2</option>
@@ -57,35 +61,49 @@
                     <a href="../../admin/undian.php" class="btn blue">Kembali</a>
         </form>
         <?php
+        // 1
         if (isset($_POST['undi'])) {
+            // 2
             $id_kelompok = $_GET['id_kelompok'];
             $bulan = $_POST['bulan'];
-            $cari = mysqli_query($koneksi, "SELECT id_user FROM users 
-                                WHERE status_menang = 'Belum Menang' 
-                                AND id_kelompok = '$id_kelompok' 
-                                ORDER BY RAND() LIMIT 1");
+            $cari = mysqli_query($koneksi, "SELECT id_user FROM users WHERE status_menang = 'Belum Menang' AND id_kelompok = '$id_kelompok' ORDER BY RAND() LIMIT 1");
             $dtt = mysqli_fetch_array($cari);
             $id_user = $dtt['id_user'];
-            $pemenang = $dtt['nama_user'];
-            // die(var_dump($dtt));
-            // // die(var_dump($id_kelompok));
-            $sql = mysqli_query($koneksi, "UPDATE users  SET status_menang = 'Pending', pemenang_bulan = $bulan
-                                WHERE id_user= $id_user");
+            $sql = mysqli_query($koneksi, "UPDATE users  SET status_menang = 'Pending', pemenang_bulan = $bulan WHERE id_user= $id_user");
+            // 3
             if ($sql) {
-
-                // $query = mysqli_query($koneksi, 'UPDATE users  SET pemenang_bulan = $bulan
-                //                 WHERE id_user="' . $dtt['id_user'] . '"');
-
-                echo "<script>
-                
-                window.alert('Berhasil Mendapatkan Pemenang dan pemenangnya adalah $pemenang');
-                window.location.href='undi-kelompok.php?id_kelompok=$id_kelompok';
-                </script>";
+                // 4
+                echo "<script type='text/javascript'>
+                    Swal.fire({
+                        title: 'Sistem telah mengacak nama anggota, dan berhasil mendapatkan pemenang.',
+                        width: 600,
+                        padding: '3em',
+                        color: '#716add',
+                        background: '#fff)',
+                        backdrop: `
+                        rgba(0,0,123,0.4)
+                        url('../images/undian.gif')
+                        left top
+                        no-repeat
+                        `
+                    }).then(function() {
+                        window.location = 'undi-kelompok.php?id_kelompok=$id_kelompok';
+                    });
+                    </script>";
+                // 5
             } else {
-                echo "<script>
-                window.alert('Gagal Mendapatkan Pemenang');window.location.href='undi-kelompok.php?id_kelompok=$id_kelompok';
+                // 6
+                echo "<script type='text/javascript'>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Maaf',
+                    text: 'Anda Anda belum Memilih bulan!',
+                }).then(function() {
+                    window.location = 'undi-kelompok.php?id_kelompok=$id_kelompok';
+                });
                 </script>";
             }
+            // 
         }
         ?>
     </div>
@@ -102,7 +120,6 @@
                     </tr>
                     <?php
                     $id_kelompok = $_GET['id_kelompok'];
-                    // $id_kelompok = $_GET['id_kelompok'];
                     $no = 0;
                     $query = "SELECT DISTINCT (nama_user), status_pembayaran, status_menang FROM users
                         INNER JOIN pembayaran ON users.id_user = pembayaran.id_user
@@ -145,12 +162,15 @@
                             }
                             ?>
                             <td>
-                                <!-- <input type="text" name="pemenang_bulan" value=""><?= $bulan; ?> -->
-                                <a href="pemenang.php?id_kelompok=<?= $id_kelompok; ?>" class="btn grey modal-trigger">Tetapkan</a>
                                 <?php
-                                // $query = mysqli_query($koneksi, "UPDATE users SET pemenang = '1' WHERE id_kelompok = '$id_kelompok' AND status_menang = 'Menang'");
-                                // $data = mysqli_fetch_array($query);
+                                if ($dtt['status_menang'] == 'Menang') {
                                 ?>
+                                    <a class="btn btn-default disabled" role="button" aria-disabled="true" href="pemenang.php?id_kelompok=<?= $id_kelompok; ?>" class="btn grey modal-trigger">
+                                        Tetapkan
+                                    </a>
+                                <?php } elseif ($dtt['status_menang'] == 'Pending') { ?>
+                                    <a href="pemenang.php?id_kelompok=<?= $id_kelompok; ?>" class="btn grey modal-trigger">Tetapkan</a>
+                                <?php } ?>
                             </td>
                             </tr>
                         <?php } ?>

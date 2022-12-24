@@ -67,17 +67,25 @@
                                                         <form action="simpan-antrian-kelompok.php" method="post">
                                                             <input type="hidden" name="id_user" value="<?php echo $kelompok['id_user']; ?>">
                                                             <input type="hidden" name="id_kelompok" value="<?php echo $kelompok['id_kelompok']; ?>">
-                                                            <select class="form-control1" type="from-control" name="ikut">
-                                                                <option value="<?php echo $kelompok['ikut']; ?>"><?php echo $kelompok['ikut']; ?></option>
-                                                                <option value="Terima">Terima</option>
-                                                                <option value="Tolak">Tolak</option>
-                                                            </select>
+                                                            <?php
+                                                            if ($kelompok['ikut'] == "Terima") {
+                                                                echo '<span class="badge badge-success p-2">Diterima</span>';
+                                                            } elseif ($kelompok['ikut'] == "Tolak") {
+                                                                echo '<span class="badge badge-danger p-2">Ditolak</span>';
+                                                            } else {
+                                                            ?>
+                                                                <select class="form-control1" type="from-control" name="ikut">
+                                                                    <option value="<?php echo $kelompok['ikut']; ?>"><?php echo $kelompok['ikut']; ?></option>
+                                                                    <option value="Terima">Terima</option>
+                                                                    <option value="Tolak">Tolak</option>
+                                                                </select>
+                                                            <?php } ?>
 
                                                     </td>
                                                     <td>
-                                                        <button type="submit" name="simpan" class="btn btn-info">Ubah</button>
+                                                        <button type="submit" name="simpan" class="btn btn-sm btn-info">Ubah</button>
                                                         <!-- <button type="submit" name="simpan" class="btn btn-info">Lihat</button> -->
-                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-lg<?= $kelompok['id_user']; ?>">
+                                                        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-lg<?= $kelompok['id_user']; ?>">
                                                             Lihat
                                                         </button>
                                                         <div class="modal fade" id="modal-lg<?= $kelompok['id_user']; ?>">

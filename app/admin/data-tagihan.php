@@ -126,17 +126,16 @@ $title2 = "Data tagihan";
                                                             <span class="badge badge-danger p-2"><?= $transaksi['status_transaksi']; ?></span>
                                                         </td>
                                                         <td>
-
-                                                            <a href="kirim-tagihan.php?id=<?= $transaksi['id_user']; ?>" class="btn btn-info">
+                                                            <a href="kirim-tagihan.php?id=<?= $transaksi['id_user']; ?>" class="btn btn-sm btn-info">
                                                                 <i class="fa-solid fa-gauge"></i> Dashboard
                                                             </a>
-                                                            <a href="https://api.whatsapp.com/send?phone=6289505347307&text=Kepada%20Yth%20Bpk/ibu%20<?= $transaksi['nama_user']; ?>,%20Anda%20terdaftar%20pada%20kelompok%20<?= $transaksi['nama_kelompok']; ?>%20dan%20belum%20melakukan%20pembayaran%20pada%20bulan%20<?= $transaksi['bulan']; ?>%20sejumalah%20<?= rupiah($transaksi['jumlah_iuran']); ?>.%20Segera melakukan pembayaran sebelum jatuh tempo" target="_blank" rel="noopener noreferrer" class="btn btn-success">
+                                                            <a href="https://api.whatsapp.com/send?phone=<?= $transaksi['no_telp']; ?>&text=Kepada%20Yth%20Bpk/ibu%20<?= $transaksi['nama_user']; ?>,%20Anda%20terdaftar%20pada%20<?= $transaksi['nama_kelompok']; ?>%20dan%20belum%20melakukan%20pembayaran%20pada%20bulan%20<?= $transaksi['bulan']; ?>%20sejumalah%20<?= rupiah($transaksi['jumlah_iuran']); ?>.%20Segera melakukan pembayaran sebelum jatuh tempo" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-success">
                                                                 <i class="fa-brands fa-whatsapp"></i> Watsapp
                                                             </a>
 
                                                         </td>
                                                         <td>
-                                                            <a href="pembayaran-langsung.php?id_user=<?= $transaksi['id_user']; ?>" class="btn btn-dark">
+                                                            <a href="pembayaran-langsung.php?id_user=<?= $transaksi['id_user']; ?>" class="btn btn-sm btn-dark">
                                                                 <i class="far fa-credit-card"></i> Pembayaran manual
                                                             </a>
                                                         </td>

@@ -1,3 +1,4 @@
+<script src="../../plugins/sweetalert2/sweetalert2.all.min.js"></script>;
 <?php
 
 include('../../../conf/config.php');

@@ -59,17 +59,7 @@ $title2 = "Data pembayaran";
 
                                         <div class="card-body">
 
-                                            <div class="row mb-3">
-                                                <label for="exampleInputFile" class="col-sm-3 col-form-label">Upload Struk</label>
-                                                <div class="col-sm-9">
-                                                    <div class="input-group">
-                                                        <div class="custom-file">
-                                                            <input type="file" name="bukti_bayar" class="custom-file-input" id="exampleInputFile" placeholder="*" required>
-                                                            <label class="custom-file-label" for="exampleInputFile"></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                             <div class="row mb-3">
                                                 <label for=nama_pembayar" class="col-sm-3 col-form-label">Nama Pembayar</label>
                                                 <div class="col-sm-9">
@@ -82,28 +72,32 @@ $title2 = "Data pembayaran";
                                                 <div class="col-sm-9">
                                                     <input class="form-control form-control" type="text" name="" value="<?= $data3['nama_kelompok']; ?>" aria-label="Disabled input example" disabled readonly>
                                                     <input class="form-control form-control" type="hidden" name="nama_kelompok" value="<?= $data3['id_kelompok']; ?>">
-                                                    <!-- <input class="form-control form-control" type="text" name="id_pembayaran" value="<?= $anggota['id_pembayaran']; ?>"> -->
+                                                    <input class="form-control form-control" type="hidden" name="id_pembayaran" value="<?= $anggota['id_pembayaran']; ?>">
                                                 </div>
                                             </div>
-                                            <div class="row mb-3">
-                                                <label for="bank_tujuan" class="col-sm-3 col-form-label">Bank Tujuan</label>
-                                                <div class="col-sm-9">
-                                                    <div class="input-grup">
-                                                        <!-- <input class="form-control form-control" type="text" name="bank_tujuan" value="Pembayaran_langsung" aria-label="Disabled input example" disabled readonly> -->
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <!-- 
                                             <div class="row mb-3">
                                                 <label for="tanggal_bayar" class="col-sm-3 col-form-label">Tanggal Bayar</label>
                                                 <div class="col-sm-9">
                                                     <input class="form-control form-control" type="date" name="tanggal_bayar">
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="row mb-3">
                                                 <label for=jumlah" class="col-sm-3 col-form-label">Jumlah</label>
                                                 <div class="col-sm-9">
                                                     <input class="form-control form-control" type="text" value="<?= rupiah($data3['jumlah_iuran']); ?>" name="jumlah" disabled>
                                                     <input class="form-control form-control" type="hidden" name="jumlah" value="<?= $data3['jumlah_iuran']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label for="exampleInputFile" class="col-sm-3 col-form-label">Upload Struk</label>
+                                                <div class="col-sm-9">
+                                                    <div class="input-group">
+                                                        <div class="custom-file">
+                                                            <input type="file" name="bukti_bayar" class="custom-file-input" id="exampleInputFile" placeholder="*" required>
+                                                            <label class="custom-file-label" for="exampleInputFile"></label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">

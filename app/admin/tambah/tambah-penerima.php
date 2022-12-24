@@ -1,3 +1,4 @@
+<script src="../../plugins/sweetalert2/sweetalert2.all.min.js"></script>;
 <?php
 
 include('../../../conf/config.php');
@@ -26,12 +27,16 @@ AND id_user = '$id_user'");
 
 $query2 = mysqli_query($koneksi, "UPDATE users set pesan = 0 WHERE id_user = '$id_user'");
 if ($query == 1 && $query2 == 1) {
-
-    $message = "Pembayarana berhasil";
-    // die();
     echo "<script type='text/javascript'>
-        alert('$message');
-        window.location.href = '../data-penerima.php';
+        Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Pembayaran berhasil',
+        showConfirmButton: false,
+        timer: 2000
+        }).then(function() {
+            window.location = '../data-penerima.php';
+        });
         </script>";
 } else {
     $message = "Pembayaran gagal";

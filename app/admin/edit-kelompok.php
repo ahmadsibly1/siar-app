@@ -68,12 +68,6 @@
                         <input type="text" class="form-control" id="kuota" name="kuota" value=" <?= $kelompok['kuota']; ?>">
                       </div>
                     </div>
-                    <!-- <div class="row mb-3">
-                      <label for="isi" class="col-sm-2 col-form-label">Isi</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="isi" name="isi" value=" <?= $kelompok['isi']; ?>">
-                      </div>
-                    </div> -->
                     <div class="row mb-3">
                       <label for="jumlah_iuran" class="col-sm-2 col-form-label">Jumlah Iuran</label>
                       <div class="col-sm-10">

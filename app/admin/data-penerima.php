@@ -82,10 +82,10 @@ $title2 = "Data penerima";
                                                         ?>
                                                     <td>
                                                         <!-- Button untuk modal -->
-                                                        <a href="#" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal<?php echo $data['id_user']; ?>">
+                                                        <a href="#" type="button" class="btn btn-sm btn-info btn-md" data-toggle="modal" data-target="#myModal<?php echo $data['id_user']; ?>">
                                                             <i class="fa-solid fa-hand-holding-dollar"></i> Langsung
                                                         </a>
-                                                        <a href="#" type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal1<?php echo $data['id_user']; ?>">
+                                                        <a href="#" type="button" class="btn btn-sm btn-success btn-md" data-toggle="modal" data-target="#myModal1<?php echo $data['id_user']; ?>">
                                                             <i class="fa-solid fa-money-bill-transfer"></i> Transfer
                                                         </a>
 
@@ -157,7 +157,7 @@ $title2 = "Data penerima";
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                            <button type="submit" class="btn btn-primary">Bayar</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -225,8 +225,8 @@ $title2 = "Data penerima";
 
                                                                         </div>
                                                                         <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                            <button type="submit" class="btn btn-primary">Bayar</button>
+                                                                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                            <button type="submit" class="btn btn-sm btn-primary">Bayar</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>

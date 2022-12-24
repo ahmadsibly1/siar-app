@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$title = 'Print data';
+include('header.php');
+date_default_timezone_set("Asia/Jakarta");
+?>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Invoice Print</title>
-
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-</head>
 <?php
 include('../../conf/config.php');
+include('../../conf/rupiah.php');
 // $id_user = $_GET['id_user'];
 $id_pembayaran = $_GET['id_pembayaran'];
 $query = mysqli_query($koneksi, "SELECT * FROM pembayaran
@@ -26,128 +18,133 @@ $query = mysqli_query($koneksi, "SELECT * FROM pembayaran
     ON pembayaran.id_pembayaran = transaksi.id_pembayaran
     WHERE pembayaran.id_pembayaran = '$id_pembayaran'");
 $data = mysqli_fetch_array($query);
+
 ?>
 
 <body>
+
     <div class="wrapper">
         <!-- Main content -->
-        <section class="invoice">
-            <!-- title row -->
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="page-header">
+
+        <div class="container mt-4">
+            <div class="d-flex justify-content-center">
+                <div class="row text-center">
+                    <div class="col-lg-12">
+
                         <span>
                             <img src="../dist/img/logo-siar.png" alt="" width="50">
-                        </span> Siar App
-                        <small class="float-right"><?= $data['waktu']; ?></small>
-                    </h2>
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- info row -->
-            <div class="row invoice-info">
-                <div class="col-sm-4 invoice-col">
-                    From
-                    <address>
-                        <strong>Admin, Inc.</strong><br>
-                        795 Folsom Ave, Suite 600<br>
-                        San Francisco, CA 94107<br>
-                        Phone: (804) 123-5432<br>
-                        Email: info@almasaeedstudio.com
-                    </address>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 invoice-col">
-                    To
-                    <address>
-                        <strong>John Doe</strong><br>
-                        795 Folsom Ave, Suite 600<br>
-                        San Francisco, CA 94107<br>
-                        Phone: (555) 539-1037<br>
-                        Email: john.doe@example.com
-                    </address>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 invoice-col">
-                    <b>Invoice #007612</b><br>
-                    <br>
-                    <b>Order ID:</b> 4F3S8J<br>
-                    <b>Payment Due:</b> 2/22/2014<br>
-                    <b>Account:</b> 968-34567
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
+                        </span>
+                        <!-- <h5 class="float-right"><?= $data['waktu']; ?></h5> -->
+                        <h2>Sistem Informasi Arisan RT 07</h2>
+                        <p>Bukti Transaksi</p>
+                        <p>Tanggal Cetak : <?= date("d-m-Y, H:i:s"); ?></p>
 
-            <!-- Table row -->
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <?php
+            $no = 0;
+            $id_user = $_GET['id_user'];
+            $id_pembayaran = $_GET['id_pembayaran'];
+            // $query = mysqli_query($koneksi, "SELECT * FROM pembayaran LEFT JOIN users ON pembayaran.id_pembayaran = users.id_user");
+            $query = mysqli_query($koneksi, "SELECT * FROM pembayaran
+                                                    LEFT JOIN users 
+                                                    ON pembayaran.id_user = users.id_user
+                                                    LEFT JOIN kelompok 
+                                                    ON pembayaran.id_kelompok = kelompok.id_kelompok
+                                                    WHERE pembayaran.id_user = '$id_user'
+                                                    AND pembayaran.id_pembayaran = '$id_pembayaran'");
+            $pembayaran = mysqli_fetch_array($query);
+            ?>
+
+            <!-- /.content -->
             <div class="row">
-                <div class="col-12 table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Qty</th>
-                                <th>Product</th>
-                                <th>Serial #</th>
-                                <th>Description</th>
-                                <th>Subtotal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Call of Duty</td>
-                                <td>455-981-221</td>
-                                <td>El snort testosterone trophy driving gloves handsome</td>
-                                <td>$64.50</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
+                <div class="col-lg-12">
+                    <div class="card   rounded">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="mb-2">Foto Struk</p>
+                                    <a href="tambah/images/<?= $pembayaran['bukti_bayar']; ?>" target="_blank" rel="noopener noreferrer">
+                                        <img src="tambah/images/<?= $pembayaran['bukti_bayar']; ?>" alt="" width="200px">
+                                    </a>
+                                </div>
+                            </div>
 
-            <div class="row">
-                <!-- accepted payments column -->
-                <div class="col-6">
-                    <p class="lead">Metode pembayaran:</p>
-                    <img src="tambah/images/">
+                            <div class="row">
+                                <div class="col-sm-12 mt-4">
+                                    <div class="table-responsive-lg">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Nama Pembayar</th>
+                                                    <th class="text-center" scope="col">Nama kelompok</th>
+                                                    <th class="text-center" scope="col">Tanggal Transfer</th>
+                                                    <th class="text-center" scope="col">Jumlah</th>
+                                                    <th class="text-center" scope="col">Bulan</th>
+                                                    <th class="text-center" scope="col">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-                    <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr
-                        jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-                    </p>
-                </div>
-                <!-- /.col -->
-                <div class="col-6">
-                    <p class="lead">Amount Due 2/22/2014</p>
+                                                <tr>
+                                                    <!-- <td><?= $no; ?></td> -->
+                                                    <td><?= $pembayaran['nama_user']; ?></td>
+                                                    <td class="text-center" scope="col"><?= $pembayaran['nama_kelompok']; ?></td>
+                                                    <!-- <td><?= $pembayaran['bank']; ?></td> -->
+                                                    <td class="text-center" scope="col"><?= $pembayaran['tgl_bayar']; ?></td>
+                                                    <td class="text-center" scope="col"><?= rupiah($pembayaran['jumlah']); ?></td>
+                                                    <td class="text-center" scope="col">Ke - <?= $pembayaran['bulan']; ?></td>
+                                                    <td class="text-center" scope="col">
+                                                        <!-- <div id="status"><?= $pembayaran['status_pembayaran']; ?></div> -->
+                                                        <?php
+                                                        if ($pembayaran['status_pembayaran'] == 'Pending') {
+                                                            echo '<span class="badge badge-warning p-2">Pending</span>';
+                                                        } elseif ($pembayaran['status_pembayaran'] == 'Dikonfirmasi') {
+                                                            echo '<span class="badge badge-success p-2">Diterima</span>';
+                                                        }
 
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tr>
-                                <th style="width:50%">Subtotal:</th>
-                                <td>$250.30</td>
-                            </tr>
-                            <tr>
-                                <th>Tax (9.3%)</th>
-                                <td>$10.34</td>
-                            </tr>
-                            <tr>
-                                <th>Shipping:</th>
-                                <td>$5.80</td>
-                            </tr>
-                            <tr>
-                                <th>Total:</th>
-                                <td>$265.24</td>
-                            </tr>
-                        </table>
+                                                        ?>
+                                                    </td>
+
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        <h6 class="mb-0">Total</h6>
+                                                    </td>
+                                                    <td class="text-center"></td>
+                                                    <td class="text-center"></td>
+                                                    <td class="text-center"><b><?= rupiah($pembayaran['jumlah']); ?></b></td>
+                                                    <td class="text-center"></td>
+                                                    <td class="text-center"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="mb-0 mt-4">
+                                        Terimakasih telah melakukan pembayaran || Admin Arisan
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- /.col -->
             </div>
-            <!-- /.row -->
-        </section>
-        <!-- /.content -->
+        </div>
     </div>
     <!-- ./wrapper -->
     <!-- Page specific script -->

@@ -87,15 +87,10 @@ $title = "Pembayaran";
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
-                                                        <!-- <td width='10%'>
-                                                            <a href="tambah/images/<?= $pembayaran['bukti_bayar']; ?>">
-                                                                <img src="tambah/images/<?= $pembayaran['bukti_bayar']; ?>" alt="" width="60px">
-                                                            </a>
-                                                        </td> -->
                                                         <!-- <td><?= $pembayaran['nama_user']; ?></td> -->
                                                         <td><?= $pembayaran['nama_kelompok']; ?></td>
                                                         <!-- <td><?= $pembayaran['bank']; ?></td> -->
-                                                        <td><?= date('d-m-Y', strtotime($pembayaran['tgl_bayar'])); ?></td>
+                                                        <td><?= $pembayaran['tgl_bayar']; ?></td>
                                                         <td><?= rupiah($pembayaran['jumlah']); ?></td>
                                                         <td>Ke - <?= $pembayaran['bulan']; ?></td>
                                                         <td>
@@ -113,7 +108,7 @@ $title = "Pembayaran";
                                                             <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?= $pembayaran['id_pembayaran']; ?>">
                                                                 <i class="fa-solid fa-eye"></i>
                                                             </button>
-                                                            <a href="invoice-print.php?id_pembayaran=<?= $pembayaran['id_pembayaran']; ?>" target="_blank">
+                                                            <a href="invoice-print.php?id_pembayaran=<?= $pembayaran['id_pembayaran']; ?>&id_user=<?= $pembayaran['id_user']; ?>" target="_blank">
                                                                 <button type="button" class="btn btn-dark">
                                                                     <i class="fa-solid fa-print"></i>
                                                                 </button>

@@ -16,11 +16,15 @@
     <link rel="stylesheet" href="app/dist/css/adminlte.min.css">
     <!-- fafvicon -->
     <link rel="shortcut icon" href="app/dist/img/logo-siar.png" type="image/x-icon">
+    <!-- sweetalert2 -->
+    <link rel="stylesheet" href="app/plugins/sweetalert2/sweetalert2.css">
     <!-- bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 
 <body class="hold-transition login-page">
+    <h1 class="" style="color: #1a667e;">Sistem Informasi Pengelolaan Arisan</h1>
+    <h3 class="mb-5" style="color: #1a667e;">RT 01 RW 07 Kelurahan Lengkong wetan</h3>
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline">
@@ -32,7 +36,7 @@
 
                 <form action="conf/autentikasi.php" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" name="username" class="form-control" placeholder="Username" required>
+                        <input type="text" id="usename" name="username" class="form-control" placeholder="Username" required>
                         <div class=" input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -40,7 +44,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -50,11 +54,10 @@
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-12">
-                            <button onclick="login('conf/autentikasi.php')" type="submit" name="login" class="btn btn-block mb-2 text-light" style="background-color: #1a667e;">MASUK</button>
+                            <button onclick="login('conf/autentikasi.php')" type="submit" id="tombol-simpan" name="login" class="btn btn-block mb-2 text-light" style="background-color: #1a667e;">MASUK</button>
                         </div>
                         <div class="col-12">
                             <a href="registrasi.php" class="btn btn-danger btn-block" style="background-color: #e65100;">PENDAFTARAN</a>
-
                         </div>
                         <!-- /.col -->
                     </div>
@@ -73,8 +76,7 @@
 
 
     <!-- SweetAlert2 -->
-    <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
-
+    <script src="app/plugins/sweetalert2/sweetalert2.min.js"></script>
     <!-- jQuery -->
     <script src="app/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -95,6 +97,36 @@
             })
         }
     </script>
+
+    <!-- <script>
+        $(document).ready(function() {
+            $('#tombol-simpan').click(function(e) {
+                e.preventDefault();
+                var username = $('#username').val();
+                var password = $('#password').val();
+                $.ajax({
+                    type: "POST",
+                    url: "conf/autentikasi.php",
+                    data: {
+                        username: username,
+                        password: password
+                    },
+                    dataType: "JSON",
+                    success: function(response) {
+                        if (response.sukses) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Your work has been saved',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    }
+                });
+            });
+        });
+    </script> -->
 </body>
 
 </html>

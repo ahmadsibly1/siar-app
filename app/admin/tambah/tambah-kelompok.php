@@ -1,24 +1,15 @@
+<?php include('../../../conf/config.php'); ?>
+<?php include('../header.php'); ?>
+
+<script src="../../plugins/sweetalert2/sweetalert2.all.min.js"></script>;
+
 <?php
 
-include('../../../conf/config.php');
-
-$nama_kelompok =  $_POST['nama_kelompok'];
-$id_user =  $_POST['id_user'];
-$tanggal_mulai =  $_POST['tanggal_mulai'];
-$kuota =  $_POST['kuota'];
-$jumlah_iuran =  $_POST['jumlah_iuran'];
-
-// if (isset($_POST['submit'])) {
-//     mysqli_query($koneksi, "INSERT INTO kelompok SET 
-//     nama_kelompok =  '$_POST[nama_kelompok]',
-//     tanggal_mulai =  '$_POST[tanggal_mulai]',
-//     tipe_arisan =  '$_POST[tipe_arisan]',
-//     kuota =  '$_POST[kuota]',
-//     isi =  '$_POST[isi]',
-//     jumlah_iuran =  '$_POST[jumlah_iuran]'");
-
-//     echo "<script>alert('data berhasil di tambah')</script>";
-// }
+$nama_kelompok = $_POST['nama_kelompok'];
+$id_user = $_POST['id_user'];
+$tanggal_mulai = $_POST['tanggal_mulai'];
+$kuota = $_POST['kuota'];
+$jumlah_iuran = $_POST['jumlah_iuran'];
 
 $query = mysqli_query($koneksi, "INSERT INTO kelompok (id_kelompok, nama_kelompok, tanggal_mulai, kuota, isi, jumlah_iuran) VALUES ('','$nama_kelompok','$tanggal_mulai','$kuota','0','$jumlah_iuran')");
 
@@ -28,14 +19,21 @@ if ($query == 1) {
 
     $message = "Kelompok Berhasil di buat!";
     echo "<script type='text/javascript'>
-    alert('$message');
-    window.location.href = '../data-kelompok.php';
-    </script>";
-} 
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+        }).then(function() {
+            window.location = '../data-kelompok.php';
+        });
+</script>";
+}
 // else {
-//     $message = "Kelompok Gagal di buat!";
-//     echo "<script type='text/javascript'>
-//     alert('$message');
-//     window.location.href = 'tambah-kelompok.php';
-//     </script>";
+// $message = "Kelompok Gagal di buat!";
+// echo "<script type='text/javascript'>
+    //     alert('$message');
+    //     window.location.href = 'tambah-kelompok.php';
+    //     
 // }

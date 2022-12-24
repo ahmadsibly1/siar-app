@@ -1,6 +1,8 @@
-<?php
+<?php include('../../../conf/config.php'); ?>
+<?php include('../header.php'); ?>
+<script src="../../plugins/sweetalert2/sweetalert2.all.min.js"></script>;
 
-include('../../../conf/config.php');
+<?php
 
 $nama_kelompok =  $_GET['nama_kelompok'];
 $id_kelompok = $_GET['id_kelompok'];
@@ -19,11 +21,17 @@ WHERE id_kelompok=$id_kelompok";
 
 if (mysqli_query($koneksi, $query)) {
     // echo "Record updated successfully";
-    $message = "Kelompok Berhasil di Ubah!";
     echo "<script type='text/javascript'>
-    alert('$message');
-    window.location.href = '../data-kelompok.php';
-    </script>";
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Kelompok berhasil di rubah',
+        showConfirmButton: false,
+        timer: 1500
+        }).then(function() {
+            window.location = '../data-kelompok.php';
+        });
+        </script>";
 } else {
     echo "Error updating record: " . mysqli_error($koneksi);
 }

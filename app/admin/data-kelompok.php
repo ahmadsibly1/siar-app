@@ -151,7 +151,11 @@
 
 
 
-                            <a href="hapus/hapus-kelompok.php?id=<?= $kelompok['id_kelompok']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
+                            <a href="hapus/hapus-kelompok.php?id=<?= $kelompok['id_kelompok']; ?>" class="btn btn-danger btn-del">
+                              <i class="bi bi-trash"></i>
+                            </a>
+
+
                           </td>
                         </tr>
                       <?php } ?>
@@ -298,3 +302,23 @@
     </div>
     <!-- ./wrapper -->
     <?php include('footer.php'); ?>
+
+    <script>
+      $('.btn-del').on('click', function(e) {
+        e.preventDefault();
+        const href = $(this).attr('href');
+        Swal.fire({
+          title: 'Apakah anda yakin?',
+          text: "Data yang dihapus tidak dapat dikembalikan!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya, hapus!'
+        }).then((result) => {
+          if (result.value) {
+            document.location.href = href;
+          }
+        })
+      });
+    </script>

@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Proses</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css">
+    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+</body>
+
+</html>
+
 <?php
 
 include('../../conf/config.php');

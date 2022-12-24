@@ -49,7 +49,6 @@ $title = 'Biodata';
                                 $anggota = mysqli_fetch_array($query);
                                 ?>
                                 <div class="card-body ">
-
                                     <div class="row mb-3">
                                         <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                         <div class="col-sm-10">
@@ -113,6 +112,18 @@ $title = 'Biodata';
                                         </div>
                                     </div>
                                     <div class="row mb-3">
+                                        <label for="nama_bank" class="col-sm-2 col-form-label">Nama Bank</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="text" value="<?= $anggota['nama_bank']; ?>" aria-label="Disabled input example" disabled readonly>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="no_rekening" class="col-sm-2 col-form-label">Nomor Rekening</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="text" value="<?= $anggota['no_rekening']; ?>" aria-label="Disabled input example" disabled readonly>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
                                         <label for="exampleInputFile" class="col-sm-2 col-form-label">KTP</label>
                                         <div class="col-sm-10">
                                             <div class="input-group">
@@ -124,14 +135,11 @@ $title = 'Biodata';
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <a href="edit-biodata.php">
                                         <button class="btn btn-primary float-right" type="submit">
                                             Edit
                                         </button>
                                     </a>
-
                                 </div>
                                 <!-- /.card-body -->
                             </div>

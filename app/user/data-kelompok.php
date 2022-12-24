@@ -176,12 +176,12 @@ $title = 'Kelompok';
 
                                 if ($data['ikut'] == "Terima") {
                                     $message = '<div class="rounded ikut text-white text-center p-2" style="background-color: #1a667e;">
-                                                <h3>Anda sedang mengikuti kelompok ' . $data["nama_kelompok"] . '</h3>
+                                                <h3>Anda sedang mengikuti ' . $data["nama_kelompok"] . '</h3>
                                                 </div>';
                                     echo $message;
                                 } elseif ($data['ikut'] == "Pending") {
                                     $message2 = '<div class="ikut text-white text-center p-2 bg-warning rounded">
-                                                <h3>Anda telah mendaftar kelompok ' . $data["nama_kelompok"] . ' dengan status menunggu konfirmasi admin</h3>
+                                                <h3>Anda telah mendaftar ' . $data["nama_kelompok"] . ' dengan status menunggu konfirmasi admin</h3>
                                                 </div>';
                                     echo $message2;
                                 } else {

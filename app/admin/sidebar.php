@@ -113,7 +113,7 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item mb-2">
+            <!-- <li class="nav-item mb-2">
                 <a href="saldo.php" class="nav-link <?php if ($title == 'Saldo') {
                                                         echo 'active';
                                                     } ?>">
@@ -122,7 +122,7 @@
                         Saldo
                     </p>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item mb-2">
                 <a href="laporan.php" class="nav-link <?php if ($title == 'Laporan') {
                                                             echo 'active';

@@ -1,23 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Proses</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css">
+    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+</body>
+
+</html>
+
+
 <?php
 
 include('../../conf/config.php');
 
 if (isset($_POST['simpan'])) {
+
     $id_user = $_POST['id_user'];
     $id_kelompok = $_POST['id_kelompok'];
     $sql = mysqli_query($koneksi, "UPDATE users SET ikut ='$_POST[ikut]' WHERE id_user = '$id_user'");
-    $query2 = mysqli_query($koneksi, "INSERT INTO transaksi 
-    (id_transaksi, id_user, id_pembayaran, id_kelompok, bulan) 
-    VALUES 
-    ('','$id_user','0','$id_kelompok',1)");
-
-
-    // $query = mysqli_query($koneksi, "INSERT INTO transaksi (id_transaksi, id_user, januari, februari, maret, april, mei, juni, juli, agustus, september, oktober, november, desember) VALUES ('','$data','0','0','0','0','0','0','0','0','0','0','0','0'");
-    if ($sql && $query2) {
-        echo "<script>alert('Konfirmasi Diubah');</script>";
-        echo "<script>location  ='antrian-kelompok.php';</script>";
+    if ($sql == 1) {
+        echo "<script type='text/javascript'>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: 'Anda berhasil mengubah status!',
+        }).then(function() {
+            window.location = 'antrian-kelompok.php';
+        });
+        </script>";
     } else {
-        echo "<script>alert('Konfirmasi Tidak Bisa Diubah');</script>";
-        echo "<script>location  ='antrian-kelompok.php';</script>";
+        echo "<script type='text/javascript'>
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal',
+            text: 'Anda gagal mengubah status!',
+        }).then(function() {
+            window.location = 'antrian-kelompok.php';
+        });
+        </script>";
+    }
+
+    $sql2 = mysqli_query($koneksi, "SELECT * FROM users WHERE id_user = '$id_user'");
+    $ikut = mysqli_fetch_array($sql2);
+
+    if ($ikut['ikut'] == "Terima") {
+        $query2 = mysqli_query($koneksi, "INSERT INTO transaksi (id_transaksi, id_user, id_pembayaran, id_kelompok, bulan) VALUES ('','$id_user','0','$id_kelompok',1)");
     }
 }

@@ -24,7 +24,7 @@
     <div class="container ">
       <div class="row justify-content-center">
         <!-- left column -->
-        <div class="col-md-6">
+        <div class="col-md-7">
           <!-- general form elements -->
           <div class="card card-info">
             <div class="card-header bg-dark">
@@ -107,6 +107,18 @@
                         <option value="Konghucu">Konghucu</option>
                       </select>
                     </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="nama_bank" class="col-sm-3 col-form-label">Nama Bank</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="nama_bank" name="nama_bank" placeholder="*" required>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="no_rekening" class="col-sm-3 col-form-label">Nomor Rekening</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="no_rekening" name="no_rekening" placeholder="*" required>
                   </div>
                 </div>
                 <div class="row mb-3">

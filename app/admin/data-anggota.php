@@ -65,7 +65,7 @@
                           <td><?= date('d-m-Y', strtotime($anggota['tanggal_lahir'])); ?></td> -->
                           <td><?= $anggota['no_telp']; ?></td>
                           <td>
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg<?= $anggota['id_user']; ?>">
+                            <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-lg<?= $anggota['id_user']; ?>">
                               <i class="bi bi-eye-fill"></i>
                             </button>
                             <!-- modal target -->
@@ -128,6 +128,18 @@
                                         <input class="form-control" type="text" value="<?= $anggota['agama']; ?>" aria-label="readonly input example" readonly>
                                       </div>
                                     </div>
+                                    <div class="mb-3 row">
+                                      <label for="" class="col-sm-3 col-form-label">Nama Bank</label>
+                                      <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="<?= $anggota['nama_bank']; ?>" aria-label="readonly input example" readonly>
+                                      </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                      <label for="" class="col-sm-3 col-form-label">Nomor Rekening</label>
+                                      <div class="col-sm-9">
+                                        <input class="form-control" type="text" value="<?= $anggota['no_rekening']; ?>" aria-label="readonly input example" readonly>
+                                      </div>
+                                    </div>
 
                                   </div>
                                   <div class="modal-footer justify-content-between">
@@ -139,7 +151,7 @@
                               <!-- /.modal-dialog -->
                             </div>
 
-                            <a href="hapus/hapus_anggota.php?id=<?= $anggota['id_user']; ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
+                            <a href="hapus/hapus_anggota.php?id=<?= $anggota['id_user']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin untuk menghapus data?');"><i class="bi bi-trash"></i></a>
                           </td>
                         </tr>
                       <?php } ?>

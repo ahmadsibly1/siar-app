@@ -97,7 +97,7 @@ $title = "Tagihan";
                                                                 <strong>098872277</strong>
                                                             </span>
                                                         </button>
-                                                        &nbsp; Atas nama Ahmad Fauzi
+                                                        &nbsp; Atas nama Novi novalia
                                                     </p>
                                                     <p class="">
                                                         Pembayaran melalui <strong>Bank BCA</strong>, salin nomor ini &nbsp;
@@ -107,7 +107,7 @@ $title = "Tagihan";
 
                                                             </span>
                                                         </button>
-                                                        &nbsp; Atas nama Ahmad Fauzi
+                                                        &nbsp; Atas nama Novi novalia
                                                     </p>
                                                 </div>
                                                 <div class="row">
@@ -116,7 +116,7 @@ $title = "Tagihan";
                                                             <thead>
                                                                 <tr>
                                                                     <th>No</th>
-                                                                    <th>No tagihan</th>
+                                                                    <!-- <th>No tagihan</th> -->
                                                                     <th>Nama</th>
                                                                     <th>Kelompok</th>
                                                                     <th>Deskripsi</th>
@@ -137,7 +137,7 @@ $title = "Tagihan";
                                                                 ?>
                                                                     <tr>
                                                                         <td><?= $no; ?></td>
-                                                                        <td>TGH<?= $data['id_transaksi']; ?></td>
+                                                                        <!-- <td>TGH<?= $data['id_transaksi']; ?></td> -->
                                                                         <td><?= $data['nama_user']; ?></td>
                                                                         <td><?= $data['nama_kelompok']; ?></td>
                                                                         <td>Tagihan arisan <span class="badge badge-warning">bulan ke - <?= $data['bulan']; ?></span></td>
@@ -176,9 +176,15 @@ $title = "Tagihan";
                                                                                 </button>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <button type="button" class="btn btn-success btn-block" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                                                                                <?php
+                                                                                $nama = mysqli_query($koneksi, "SELECT * FROM users WHERE username = '$_SESSION[username]'");
+                                                                                $data = mysqli_fetch_array($nama);
+                                                                                ?>
+                                                                                <a class="btn btn-success btn-block" href="https://api.whatsapp.com/send?phone=6289505347307&text=Halo Admin! saya <?= $data['nama_user']; ?> ingin melakukan pembayaran secara langsung" target="_blank">
+
                                                                                     <i class="fas fa-solid fa-money-check-dollar mr-3"></i> Pembayaran langsung
-                                                                                </button>
+
+                                                                                </a>
 
                                                                             </div>
 
@@ -233,8 +239,6 @@ $title = "Tagihan";
                                                                         <form action="tambah/tambah-pembayaran.php" method="POST" name="pembayaran" enctype="multipart/form-data">
 
                                                                             <div class="card-body">
-
-
                                                                                 <div class="row mb-3">
                                                                                     <label for=nama_pembayar" class="col-sm-3 col-form-label">Nama Pembayar</label>
                                                                                     <div class="col-sm-9">
@@ -359,7 +363,7 @@ $title = "Tagihan";
                                                                 <th>Deskripsi</th>
                                                                 <th>Total</th>
                                                                 <th>Tanggal pembayaran</th>
-                                                                <th>Aksi</th>
+                                                                <!-- <th>Aksi</th> -->
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -380,10 +384,10 @@ $title = "Tagihan";
                                                                     <td>Tagihan arisan <span class="badge badge-warning">bulan ke - <?= $data['bulan']; ?></span></td>
                                                                     <td><?= rupiah($data['jumlah_iuran']); ?></td>
                                                                     <td><?= $data['waktu']; ?></td>
-                                                                    <td><button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#detailtagihan">
+                                                                    <!-- <td><button type="button" class="btn btn-success float-right" data-bs-toggle="modal" data-bs-target="#detailtagihan">
                                                                             <i class="far fa-eye"></i> Detail
                                                                         </button>
-                                                                        <!-- Modal -->
+                                                                        
                                                                         <div class="modal fade" id="detailtagihan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                                             <div class="modal-dialog">
                                                                                 <div class="modal-content">
@@ -401,7 +405,7 @@ $title = "Tagihan";
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </td>
+                                                                    </td> -->
                                                                 </tr>
                                                             <?php } ?>
                                                         </tbody>

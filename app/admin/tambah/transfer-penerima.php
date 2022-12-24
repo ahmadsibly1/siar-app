@@ -1,3 +1,4 @@
+<script src="../../plugins/sweetalert2/sweetalert2.all.min.js"></script>;
 <?php
 
 include('../../../conf/config.php');
@@ -32,8 +33,15 @@ if ($query == 1) {
     $message = "Pembayaran berhasil";
     // die();
     echo "<script type='text/javascript'>
-        alert('$message');
-        window.location.href = '../data-penerima.php';
+        Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Pembayarana berhasil',
+        showConfirmButton: false,
+        timer: 2000
+        }).then(function() {
+            window.location ='../data-penerima.php';
+        });
         </script>";
 } else {
     $message = "Pembayaran gagal";

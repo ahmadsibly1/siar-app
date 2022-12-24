@@ -42,7 +42,11 @@ if ($_SESSION['level'] == "") {
           <div class="row mb-3">
             <div class="col-sm-4">
               <div class="info-box">
-                <span class="info-box-icon" style="background-color: #e65100; color:#ffffff; --fa-animation-duration: 2s;"><i class="fa-solid fa-user fa-beat"></i></span>
+                <span class="info-box-icon" style="background-color: #e65100; color:#ffffff; --fa-animation-duration: 2s;">
+                  <a href="data-anggota.php" class="text-reset">
+                    <i class="fa-solid fa-user fa-beat"></i>
+                  </a>
+                </span>
 
                 <div class="info-box-content">
                   <span class="info-box-text">Jumlah Anggota</span>
@@ -57,8 +61,11 @@ if ($_SESSION['level'] == "") {
             </div>
             <div class="col-sm-4">
               <div class="info-box">
-                <span class="info-box-icon" style="background-color: #e65100; color:#ffffff; --fa-animation-duration: 2s;"><i class="fas fa-solid fa-users fa-beat"></i></span>
-
+                <span class="info-box-icon" style="background-color: #e65100; color:#ffffff; --fa-animation-duration: 2s;">
+                  <a href="data-kelompok.php" class="text-reset">
+                    <i class="fas fa-solid fa-users fa-beat"></i>
+                  </a>
+                </span>
                 <div class="info-box-content">
                   <span class="info-box-text">Jumlah Kelompok</span>
                   <?php
@@ -72,7 +79,11 @@ if ($_SESSION['level'] == "") {
             </div>
             <div class="col-sm-4">
               <div class="info-box">
-                <span class="info-box-icon" style="background-color: #e65100; color:#ffffff; --fa-animation-duration: 2s;"><i class="fas fa-solid fa-dollar-sign fa-beat"></i></span>
+                <span class="info-box-icon" style="background-color: #e65100; color:#ffffff; --fa-animation-duration: 2s;">
+                  <a href="saldo.php" class="text-reset">
+                    <i class="fas fa-solid fa-dollar-sign fa-beat"></i>
+                  </a>
+                </span>
 
                 <div class="info-box-content">
                   <?php

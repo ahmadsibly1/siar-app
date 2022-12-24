@@ -1,5 +1,7 @@
-<?php
+<?php include('../header.php'); ?>
+<script src="../../plugins/sweetalert2/sweetalert2.all.min.js"></script>;
 
+<?php
 include('../../../conf/config.php');
 
 // $bukti_bayar =  $_FILES['bukti_bayar'];
@@ -33,11 +35,16 @@ if ($nama_kelompok == "") {
     $query2 = mysqli_query($koneksi, "UPDATE transaksi SET status_transaksi = 'Pending', waktu = NOW() WHERE id_user = '$id_user' AND bulan = '$bulan'");
     if ($query == 1 && $query2 == 1) {
 
-        $message = "Pembayarana berhasil dan menunggu konfirmasi dari admin";
-        // die();
         echo "<script type='text/javascript'>
-        alert('$message');
-        window.location.href = '../data-pembayaran.php?id_user=$id_user';
+        Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Pembayarana berhasil dan menunggu konfirmasi dari admin',
+        showConfirmButton: false,
+        timer: 1500
+        }).then(function() {
+            window.location = '../data-pembayaran.php?id_user=$id_user';
+        });
         </script>";
     }
 }

@@ -1,4 +1,6 @@
-<!-- <a href="../../../conf/img/"></a> -->
+<?php include('../header.php'); ?>
+<script src="../../plugins/sweetalert2/sweetalert2.all.min.js"></script>;
+
 <?php
 include('../../../conf/config.php');
 $id_user = $_POST['id_user'];
@@ -11,6 +13,8 @@ $tempatlahir = $_POST['tempatlahir'];
 $alamat = $_POST['alamat'];
 $jeniskelamin = $_POST['jeniskelamin'];
 $agama = $_POST['agama'];
+$nama_bank = $_POST['nama_bank'];
+$no_rekening = $_POST['no_rekening'];
 // $ktp = $_FILES['ktp']['name'];
 
 
@@ -32,16 +36,24 @@ nik = '$nik',
 tempat_lahir = '$tempatlahir',
 alamat = '$alamat',
 jenis_kelamin = '$jeniskelamin',
-agama = '$agama'
+agama = '$agama',
+nama_bank = '$nama_bank',
+no_rekening = '$no_rekening'
 WHERE id_user=$id_user";
 
 if (mysqli_query($koneksi, $query)) {
 
-    $message = "Data Berhasil di Ubah!";
     echo "<script type='text/javascript'>
-    alert('$message');
-    window.location.href = '../biodata.php';
-    </script>";
+        Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Data berhasil di ubah',
+        showConfirmButton: false,
+        timer: 1500
+        }).then(function() {
+            window.location = '../biodata.php';
+        });
+        </script>";
 } else {
     echo "Error updating record: " . mysqli_error($koneksi);
 }

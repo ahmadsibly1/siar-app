@@ -84,6 +84,31 @@
     });
 </script>
 
+<script>
+    $("YOUR FORM NAME OR ID").on('submit', (e) => {
+        // prevent default for not realoding after sent
+        e.preventDefault();
+
+        $.ajax({
+            url: "YOUR URL FOR SUBMIT FORM",
+            type: "POST"
+        }).done(() => {
+            // Our request submited
+            swal({
+                title: 'Your Message Was Sent Successfully',
+                type: 'success',
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'CLOSE',
+            }).then(() => {
+                if (result.value) {
+                    // handle Confirm button click
+                } else {
+                    // result.dismiss can be 'cancel', 'overlay', 'esc' or 'timer'
+                }
+            });
+        })
+    })
+</script>
 <!-- countdown -->
 
 </body>

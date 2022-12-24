@@ -116,6 +116,18 @@
                                                             <input class="form-control" type="text" name="agama" value="<?= $anggota['agama']; ?>">
                                                         </div>
                                                     </div>
+                                                    <div class="row mb-3">
+                                                        <label for="nama_bank" class="col-sm-2 col-form-label">Nama Bank</label>
+                                                        <div class="col-sm-10">
+                                                            <input class="form-control" type="text" name="nama_bank" value="<?= $anggota['nama_bank']; ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <label for="no_rekening" class="col-sm-2 col-form-label">Nomor Rekening</label>
+                                                        <div class="col-sm-10">
+                                                            <input class="form-control" type="text" name="no_rekening" value="<?= $anggota['no_rekening']; ?>">
+                                                        </div>
+                                                    </div>
 
                                                     <!-- <div class="row mb-3">
                                                         <label for="exampleInputFile" class="col-sm-2 col-form-label"> upload KTP</label>
